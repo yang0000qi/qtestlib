@@ -1,0 +1,389 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - QtCore/qfutureinterface.h</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">QtCore</a> - qfutureinterface.h<span style="font-size: 80%;"> (source / <a href="qfutureinterface.h.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-05-04</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /****************************************************************************</a>
+<span class="lineNum">       2 </span>            : **
+<span class="lineNum">       3 </span>            : ** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
+<span class="lineNum">       4 </span>            : ** Contact: http://www.qt-project.org/legal
+<span class="lineNum">       5 </span>            : **
+<span class="lineNum">       6 </span>            : ** This file is part of the QtCore module of the Qt Toolkit.
+<span class="lineNum">       7 </span>            : **
+<span class="lineNum">       8 </span>            : ** $QT_BEGIN_LICENSE:LGPL$
+<span class="lineNum">       9 </span>            : ** Commercial License Usage
+<span class="lineNum">      10 </span>            : ** Licensees holding valid commercial Qt licenses may use this file in
+<span class="lineNum">      11 </span>            : ** accordance with the commercial license agreement provided with the
+<span class="lineNum">      12 </span>            : ** Software or, alternatively, in accordance with the terms contained in
+<span class="lineNum">      13 </span>            : ** a written agreement between you and Digia.  For licensing terms and
+<span class="lineNum">      14 </span>            : ** conditions see http://qt.digia.com/licensing.  For further information
+<span class="lineNum">      15 </span>            : ** use the contact form at http://qt.digia.com/contact-us.
+<span class="lineNum">      16 </span>            : **
+<span class="lineNum">      17 </span>            : ** GNU Lesser General Public License Usage
+<span class="lineNum">      18 </span>            : ** Alternatively, this file may be used under the terms of the GNU Lesser
+<span class="lineNum">      19 </span>            : ** General Public License version 2.1 as published by the Free Software
+<span class="lineNum">      20 </span>            : ** Foundation and appearing in the file LICENSE.LGPL included in the
+<span class="lineNum">      21 </span>            : ** packaging of this file.  Please review the following information to
+<span class="lineNum">      22 </span>            : ** ensure the GNU Lesser General Public License version 2.1 requirements
+<span class="lineNum">      23 </span>            : ** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+<span class="lineNum">      24 </span>            : **
+<span class="lineNum">      25 </span>            : ** In addition, as a special exception, Digia gives you certain additional
+<span class="lineNum">      26 </span>            : ** rights.  These rights are described in the Digia Qt LGPL Exception
+<span class="lineNum">      27 </span>            : ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+<span class="lineNum">      28 </span>            : **
+<span class="lineNum">      29 </span>            : ** GNU General Public License Usage
+<span class="lineNum">      30 </span>            : ** Alternatively, this file may be used under the terms of the GNU
+<span class="lineNum">      31 </span>            : ** General Public License version 3.0 as published by the Free Software
+<span class="lineNum">      32 </span>            : ** Foundation and appearing in the file LICENSE.GPL included in the
+<span class="lineNum">      33 </span>            : ** packaging of this file.  Please review the following information to
+<span class="lineNum">      34 </span>            : ** ensure the GNU General Public License version 3.0 requirements will be
+<span class="lineNum">      35 </span>            : ** met: http://www.gnu.org/copyleft/gpl.html.
+<span class="lineNum">      36 </span>            : **
+<span class="lineNum">      37 </span>            : **
+<span class="lineNum">      38 </span>            : ** $QT_END_LICENSE$
+<span class="lineNum">      39 </span>            : **
+<span class="lineNum">      40 </span>            : ****************************************************************************/
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : #ifndef QFUTUREINTERFACE_H
+<span class="lineNum">      43 </span>            : #define QFUTUREINTERFACE_H
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : #include &lt;QtCore/qglobal.h&gt;
+<span class="lineNum">      46 </span>            : #include &lt;QtCore/qrunnable.h&gt;
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span>            : #ifndef QT_NO_QFUTURE
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span>            : #include &lt;QtCore/qmutex.h&gt;
+<span class="lineNum">      51 </span>            : #include &lt;QtCore/qtconcurrentexception.h&gt;
+<span class="lineNum">      52 </span>            : #include &lt;QtCore/qtconcurrentresultstore.h&gt;
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            : QT_BEGIN_HEADER
+<span class="lineNum">      55 </span>            : QT_BEGIN_NAMESPACE
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            : QT_MODULE(Core)
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : template &lt;typename T&gt; class QFuture;
+<span class="lineNum">      60 </span>            : class QFutureInterfaceBasePrivate;
+<span class="lineNum">      61 </span>            : class QFutureWatcherBase;
+<span class="lineNum">      62 </span>            : class QFutureWatcherBasePrivate;
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span>            : class Q_CORE_EXPORT QFutureInterfaceBase
+<span class="lineNum">      65 </span>            : {
+<span class="lineNum">      66 </span>            : public:
+<span class="lineNum">      67 </span>            :     enum State {
+<span class="lineNum">      68 </span>            :         NoState   = 0x00,
+<span class="lineNum">      69 </span>            :         Running   = 0x01,
+<span class="lineNum">      70 </span>            :         Started   = 0x02,
+<span class="lineNum">      71 </span>            :         Finished  = 0x04,
+<span class="lineNum">      72 </span>            :         Canceled  = 0x08,
+<span class="lineNum">      73 </span>            :         Paused    = 0x10,
+<span class="lineNum">      74 </span>            :         Throttled = 0x20
+<span class="lineNum">      75 </span>            :     };
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span>            :     QFutureInterfaceBase(State initialState = NoState);
+<span class="lineNum">      78 </span>            :     QFutureInterfaceBase(const QFutureInterfaceBase &amp;other);
+<span class="lineNum">      79 </span>            :     virtual ~QFutureInterfaceBase();
+<span class="lineNum">      80 </span>            : 
+<span class="lineNum">      81 </span>            :     // reporting functions available to the engine author:
+<span class="lineNum">      82 </span>            :     void reportStarted();
+<span class="lineNum">      83 </span>            :     void reportFinished();
+<span class="lineNum">      84 </span>            :     void reportCanceled();
+<span class="lineNum">      85 </span>            : #ifndef QT_NO_EXCEPTIONS
+<span class="lineNum">      86 </span>            :     void reportException(const QtConcurrent::Exception &amp;e);
+<span class="lineNum">      87 </span>            : #endif
+<span class="lineNum">      88 </span>            :     void reportResultsReady(int beginIndex, int endIndex);
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span>            :     void setRunnable(QRunnable *runnable);
+<span class="lineNum">      91 </span>            :     void setFilterMode(bool enable);
+<span class="lineNum">      92 </span>            :     void setProgressRange(int minimum, int maximum);
+<span class="lineNum">      93 </span>            :     int progressMinimum() const;
+<span class="lineNum">      94 </span>            :     int progressMaximum() const;
+<span class="lineNum">      95 </span>            :     bool isProgressUpdateNeeded() const;
+<span class="lineNum">      96 </span>            :     void setProgressValue(int progressValue);
+<span class="lineNum">      97 </span>            :     int progressValue() const;
+<span class="lineNum">      98 </span>            :     void setProgressValueAndText(int progressValue, const QString &amp;progressText);
+<span class="lineNum">      99 </span>            :     QString progressText() const;
+<span class="lineNum">     100 </span>            : 
+<span class="lineNum">     101 </span>            :     void setExpectedResultCount(int resultCount);
+<span class="lineNum">     102 </span>            :     int expectedResultCount();
+<span class="lineNum">     103 </span>            :     int resultCount() const;
+<span class="lineNum">     104 </span>            : 
+<span class="lineNum">     105 </span>            :     bool queryState(State state) const;
+<span class="lineNum">     106 </span>            :     bool isRunning() const;
+<span class="lineNum">     107 </span>            :     bool isStarted() const;
+<span class="lineNum">     108 </span>            :     bool isCanceled() const;
+<span class="lineNum">     109 </span>            :     bool isFinished() const;
+<span class="lineNum">     110 </span>            :     bool isPaused() const;
+<span class="lineNum">     111 </span>            :     bool isThrottled() const;
+<span class="lineNum">     112 </span>            :     bool isResultReadyAt(int index) const;
+<span class="lineNum">     113 </span>            : 
+<span class="lineNum">     114 </span>            :     void cancel();
+<span class="lineNum">     115 </span>            :     void setPaused(bool paused);
+<span class="lineNum">     116 </span>            :     void togglePaused();
+<span class="lineNum">     117 </span>            :     void setThrottled(bool enable);
+<span class="lineNum">     118 </span>            : 
+<span class="lineNum">     119 </span>            :     void waitForFinished();
+<span class="lineNum">     120 </span>            :     bool waitForNextResult();
+<span class="lineNum">     121 </span>            :     void waitForResult(int resultIndex);
+<span class="lineNum">     122 </span>            :     void waitForResume();
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span>            :     QMutex *mutex() const;
+<span class="lineNum">     125 </span>            :     QtConcurrent::internal::ExceptionStore &amp;exceptionStore();
+<span class="lineNum">     126 </span>            :     QtConcurrent::ResultStoreBase &amp;resultStoreBase();
+<span class="lineNum">     127 </span>            :     const QtConcurrent::ResultStoreBase &amp;resultStoreBase() const;
+<span class="lineNum">     128 </span>            : 
+<span class="lineNum">     129 </span>            :     inline bool operator==(const QFutureInterfaceBase &amp;other) const { return d == other.d; }
+<span class="lineNum">     130 </span>            :     inline bool operator!=(const QFutureInterfaceBase &amp;other) const { return d != other.d; }
+<span class="lineNum">     131 </span>            :     QFutureInterfaceBase &amp;operator=(const QFutureInterfaceBase &amp;other);
+<span class="lineNum">     132 </span>            : 
+<span class="lineNum">     133 </span>            : protected:
+<span class="lineNum">     134 </span>            :     bool referenceCountIsOne() const;
+<span class="lineNum">     135 </span>            : public:
+<span class="lineNum">     136 </span>            : 
+<span class="lineNum">     137 </span>            : #ifndef QFUTURE_TEST
+<span class="lineNum">     138 </span>            : private:
+<span class="lineNum">     139 </span>            : #endif
+<span class="lineNum">     140 </span>            :     QFutureInterfaceBasePrivate *d;
+<span class="lineNum">     141 </span>            : 
+<span class="lineNum">     142 </span>            : private:
+<span class="lineNum">     143 </span>            :     friend class QFutureWatcherBase;
+<span class="lineNum">     144 </span>            :     friend class QFutureWatcherBasePrivate;
+<span class="lineNum">     145 </span>            : };
+<span class="lineNum">     146 </span>            : 
+<span class="lineNum">     147 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     148 </span>            : class QFutureInterface : public QFutureInterfaceBase
+<span class="lineNum">     149 </span>            : {
+<span class="lineNum">     150 </span>            : public:
+<span class="lineNum">     151 </span>            :     QFutureInterface(State initialState = NoState)
+<span class="lineNum">     152 </span>            :         : QFutureInterfaceBase(initialState)
+<span class="lineNum">     153 </span>            :     { }
+<span class="lineNum">     154 </span>            :     QFutureInterface(const QFutureInterface &amp;other)
+<span class="lineNum">     155 </span>            :         : QFutureInterfaceBase(other)
+<span class="lineNum">     156 </span>            :     { }
+<span class="lineNum">     157 </span>            :     ~QFutureInterface()
+<span class="lineNum">     158 </span>            :     {
+<span class="lineNum">     159 </span>            :         if (referenceCountIsOne())
+<span class="lineNum">     160 </span>            :             resultStore().clear();
+<span class="lineNum">     161 </span>            :     }
+<span class="lineNum">     162 </span>            : 
+<span class="lineNum">     163 </span>            :     static QFutureInterface canceledResult()
+<span class="lineNum">     164 </span>            :     { return QFutureInterface(State(Started | Finished | Canceled)); }
+<span class="lineNum">     165 </span>            : 
+<span class="lineNum">     166 </span>            :     QFutureInterface &amp;operator=(const QFutureInterface &amp;other)
+<span class="lineNum">     167 </span>            :     {
+<span class="lineNum">     168 </span>            :         if (referenceCountIsOne())
+<span class="lineNum">     169 </span>            :             resultStore().clear();
+<span class="lineNum">     170 </span>            :         QFutureInterfaceBase::operator=(other);
+<span class="lineNum">     171 </span>            :         return *this;
+<span class="lineNum">     172 </span>            :     }
+<span class="lineNum">     173 </span>            : 
+<span class="lineNum">     174 </span>            :     inline QFuture&lt;T&gt; future(); // implemented in qfuture.h
+<span class="lineNum">     175 </span>            : 
+<span class="lineNum">     176 </span>            :     inline void reportResult(const T *result, int index = -1);
+<span class="lineNum">     177 </span>            :     inline void reportResult(const T &amp;result, int index = -1);
+<span class="lineNum">     178 </span>            :     inline void reportResults(const QVector&lt;T&gt; &amp;results, int beginIndex = -1, int count = -1);
+<span class="lineNum">     179 </span>            :     inline void reportFinished(const T *result = 0);
+<span class="lineNum">     180 </span>            : 
+<span class="lineNum">     181 </span>            :     inline const T &amp;resultReference(int index) const;
+<span class="lineNum">     182 </span>            :     inline const T *resultPointer(int index) const;
+<span class="lineNum">     183 </span>            :     inline QList&lt;T&gt; results();
+<span class="lineNum">     184 </span>            : private:
+<span class="lineNum">     185 </span>            :     QtConcurrent::ResultStore&lt;T&gt; &amp;resultStore()
+<span class="lineNum">     186 </span>            :     { return static_cast&lt;QtConcurrent::ResultStore&lt;T&gt; &amp;&gt;(resultStoreBase()); }
+<span class="lineNum">     187 </span>            :     const QtConcurrent::ResultStore&lt;T&gt; &amp;resultStore() const
+<span class="lineNum">     188 </span>            :     { return static_cast&lt;const QtConcurrent::ResultStore&lt;T&gt; &amp;&gt;(resultStoreBase()); }
+<span class="lineNum">     189 </span>            : };
+<span class="lineNum">     190 </span>            : 
+<span class="lineNum">     191 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     192 </span>            : inline void QFutureInterface&lt;T&gt;::reportResult(const T *result, int index)
+<span class="lineNum">     193 </span>            : {
+<span class="lineNum">     194 </span>            :     QMutexLocker locker(mutex());
+<span class="lineNum">     195 </span>            :     if (this-&gt;queryState(Canceled) || this-&gt;queryState(Finished)) {
+<span class="lineNum">     196 </span>            :         return;
+<span class="lineNum">     197 </span>            :     }
+<span class="lineNum">     198 </span>            : 
+<span class="lineNum">     199 </span>            :     QtConcurrent::ResultStore&lt;T&gt; &amp;store = resultStore();
+<span class="lineNum">     200 </span>            : 
+<span class="lineNum">     201 </span>            : 
+<span class="lineNum">     202 </span>            :     if (store.filterMode()) {
+<span class="lineNum">     203 </span>            :         const int resultCountBefore = store.count();
+<span class="lineNum">     204 </span>            :         store.addResult(index, result);
+<span class="lineNum">     205 </span>            :         this-&gt;reportResultsReady(resultCountBefore, resultCountBefore + store.count());
+<span class="lineNum">     206 </span>            :     } else {
+<span class="lineNum">     207 </span>            :         const int insertIndex = store.addResult(index, result);
+<span class="lineNum">     208 </span>            :         this-&gt;reportResultsReady(insertIndex, insertIndex + 1);
+<span class="lineNum">     209 </span>            :     }
+<span class="lineNum">     210 </span>            : }
+<span class="lineNum">     211 </span>            : 
+<span class="lineNum">     212 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     213 </span>            : inline void QFutureInterface&lt;T&gt;::reportResult(const T &amp;result, int index)
+<span class="lineNum">     214 </span>            : {
+<span class="lineNum">     215 </span>            :     reportResult(&amp;result, index);
+<span class="lineNum">     216 </span>            : }
+<span class="lineNum">     217 </span>            : 
+<span class="lineNum">     218 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     219 </span>            : inline void QFutureInterface&lt;T&gt;::reportResults(const QVector&lt;T&gt; &amp;_results, int beginIndex, int count)
+<span class="lineNum">     220 </span>            : {
+<span class="lineNum">     221 </span>            :     QMutexLocker locker(mutex());
+<span class="lineNum">     222 </span>            :     if (this-&gt;queryState(Canceled) || this-&gt;queryState(Finished)) {
+<span class="lineNum">     223 </span>            :         return;
+<span class="lineNum">     224 </span>            :     }
+<span class="lineNum">     225 </span>            : 
+<span class="lineNum">     226 </span>            :     QtConcurrent::ResultStore&lt;T&gt; &amp;store = resultStore();
+<span class="lineNum">     227 </span>            : 
+<span class="lineNum">     228 </span>            :     if (store.filterMode()) {
+<span class="lineNum">     229 </span>            :         const int resultCountBefore = store.count();
+<span class="lineNum">     230 </span>            :         store.addResults(beginIndex, &amp;_results, count);
+<span class="lineNum">     231 </span>            :         this-&gt;reportResultsReady(resultCountBefore, store.count());
+<span class="lineNum">     232 </span>            :     } else {
+<span class="lineNum">     233 </span>            :         const int insertIndex = store.addResults(beginIndex, &amp;_results, count);
+<span class="lineNum">     234 </span>            :         this-&gt;reportResultsReady(insertIndex, insertIndex + _results.count());    
+<span class="lineNum">     235 </span>            :     }
+<span class="lineNum">     236 </span>            : }
+<span class="lineNum">     237 </span>            : 
+<span class="lineNum">     238 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     239 </span>            : inline void QFutureInterface&lt;T&gt;::reportFinished(const T *result)
+<span class="lineNum">     240 </span>            : {
+<span class="lineNum">     241 </span>            :     if (result)
+<span class="lineNum">     242 </span>            :         reportResult(result);
+<span class="lineNum">     243 </span>            :     QFutureInterfaceBase::reportFinished();
+<span class="lineNum">     244 </span>            : }
+<span class="lineNum">     245 </span>            : 
+<span class="lineNum">     246 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     247 </span>            : inline const T &amp;QFutureInterface&lt;T&gt;::resultReference(int index) const
+<span class="lineNum">     248 </span>            : {
+<span class="lineNum">     249 </span>            :     QMutexLocker lock(mutex());
+<span class="lineNum">     250 </span>            :     return resultStore().resultAt(index).value();
+<span class="lineNum">     251 </span>            : }
+<span class="lineNum">     252 </span>            : 
+<span class="lineNum">     253 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     254 </span>            : inline const T *QFutureInterface&lt;T&gt;::resultPointer(int index) const
+<span class="lineNum">     255 </span>            : {
+<span class="lineNum">     256 </span>            :     QMutexLocker lock(mutex());
+<span class="lineNum">     257 </span>            :     return resultStore().resultAt(index).pointer();
+<span class="lineNum">     258 </span>            : }
+<span class="lineNum">     259 </span>            : 
+<span class="lineNum">     260 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     261 </span>            : inline QList&lt;T&gt; QFutureInterface&lt;T&gt;::results()
+<span class="lineNum">     262 </span>            : {
+<span class="lineNum">     263 </span>            :     if (this-&gt;isCanceled()) {
+<span class="lineNum">     264 </span>            :         exceptionStore().throwPossibleException();
+<span class="lineNum">     265 </span>            :         return QList&lt;T&gt;();
+<span class="lineNum">     266 </span>            :     }
+<span class="lineNum">     267 </span>            :     QFutureInterfaceBase::waitForResult(-1);
+<span class="lineNum">     268 </span>            : 
+<span class="lineNum">     269 </span>            :     QList&lt;T&gt; res;
+<span class="lineNum">     270 </span>            :     QMutexLocker lock(mutex());
+<span class="lineNum">     271 </span>            : 
+<span class="lineNum">     272 </span>            :     QtConcurrent::ResultIterator&lt;T&gt; it = resultStore().begin();
+<span class="lineNum">     273 </span>            :     while (it != resultStore().end()) {
+<span class="lineNum">     274 </span>            :         res.append(it.value());
+<span class="lineNum">     275 </span>            :         ++it;
+<span class="lineNum">     276 </span>            :     }
+<span class="lineNum">     277 </span>            : 
+<span class="lineNum">     278 </span>            :     return res;
+<span class="lineNum">     279 </span>            : }
+<a name="280"><span class="lineNum">     280 </span>            : </a>
+<span class="lineNum">     281 </span>            : template &lt;&gt;
+<span class="lineNum">     282 </span><span class="lineNoCov">          0 : class QFutureInterface&lt;void&gt; : public QFutureInterfaceBase</span>
+<span class="lineNum">     283 </span>            : {
+<span class="lineNum">     284 </span>            : public:
+<span class="lineNum">     285 </span>            :     QFutureInterface&lt;void&gt;(State initialState = NoState)
+<span class="lineNum">     286 </span>            :         : QFutureInterfaceBase(initialState)
+<span class="lineNum">     287 </span>            :     { }
+<span class="lineNum">     288 </span>            :     QFutureInterface&lt;void&gt;(const QFutureInterface&lt;void&gt; &amp;other)
+<span class="lineNum">     289 </span>            :         : QFutureInterfaceBase(other)
+<span class="lineNum">     290 </span>            :     { }
+<span class="lineNum">     291 </span>            : 
+<span class="lineNum">     292 </span>            :     static QFutureInterface&lt;void&gt; canceledResult()
+<span class="lineNum">     293 </span>            :     { return QFutureInterface(State(Started | Finished | Canceled)); }
+<span class="lineNum">     294 </span>            : 
+<span class="lineNum">     295 </span>            :     QFutureInterface&lt;void&gt; &amp;operator=(const QFutureInterface&lt;void&gt; &amp;other)
+<span class="lineNum">     296 </span>            :     {
+<span class="lineNum">     297 </span>            :         QFutureInterfaceBase::operator=(other);
+<span class="lineNum">     298 </span>            :         return *this;
+<span class="lineNum">     299 </span>            :     }
+<span class="lineNum">     300 </span>            : 
+<span class="lineNum">     301 </span>            :     inline QFuture&lt;void&gt; future(); // implemented in qfuture.h
+<span class="lineNum">     302 </span>            : 
+<span class="lineNum">     303 </span>            :     void reportResult(const void *, int) { }
+<span class="lineNum">     304 </span>            :     void reportResults(const QVector&lt;void&gt; &amp;, int) { }
+<span class="lineNum">     305 </span><span class="lineNoCov">          0 :     void reportFinished(void * = 0) { QFutureInterfaceBase::reportFinished(); }</span>
+<span class="lineNum">     306 </span>            : };
+<span class="lineNum">     307 </span>            : 
+<span class="lineNum">     308 </span>            : QT_END_NAMESPACE
+<span class="lineNum">     309 </span>            : QT_END_HEADER
+<span class="lineNum">     310 </span>            : 
+<span class="lineNum">     311 </span>            : #endif // QT_NO_CONCURRENT
+<span class="lineNum">     312 </span>            : 
+<span class="lineNum">     313 </span>            : #endif // QFUTUREINTERFACE_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

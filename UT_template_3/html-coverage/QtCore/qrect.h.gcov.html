@@ -1,0 +1,934 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - QtCore/qrect.h</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">QtCore</a> - qrect.h<span style="font-size: 80%;"> (source / <a href="qrect.h.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-05-04</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">-</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /****************************************************************************</a>
+<span class="lineNum">       2 </span>            : **
+<span class="lineNum">       3 </span>            : ** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
+<span class="lineNum">       4 </span>            : ** Contact: http://www.qt-project.org/legal
+<span class="lineNum">       5 </span>            : **
+<span class="lineNum">       6 </span>            : ** This file is part of the QtCore module of the Qt Toolkit.
+<span class="lineNum">       7 </span>            : **
+<span class="lineNum">       8 </span>            : ** $QT_BEGIN_LICENSE:LGPL$
+<span class="lineNum">       9 </span>            : ** Commercial License Usage
+<span class="lineNum">      10 </span>            : ** Licensees holding valid commercial Qt licenses may use this file in
+<span class="lineNum">      11 </span>            : ** accordance with the commercial license agreement provided with the
+<span class="lineNum">      12 </span>            : ** Software or, alternatively, in accordance with the terms contained in
+<span class="lineNum">      13 </span>            : ** a written agreement between you and Digia.  For licensing terms and
+<span class="lineNum">      14 </span>            : ** conditions see http://qt.digia.com/licensing.  For further information
+<span class="lineNum">      15 </span>            : ** use the contact form at http://qt.digia.com/contact-us.
+<span class="lineNum">      16 </span>            : **
+<span class="lineNum">      17 </span>            : ** GNU Lesser General Public License Usage
+<span class="lineNum">      18 </span>            : ** Alternatively, this file may be used under the terms of the GNU Lesser
+<span class="lineNum">      19 </span>            : ** General Public License version 2.1 as published by the Free Software
+<span class="lineNum">      20 </span>            : ** Foundation and appearing in the file LICENSE.LGPL included in the
+<span class="lineNum">      21 </span>            : ** packaging of this file.  Please review the following information to
+<span class="lineNum">      22 </span>            : ** ensure the GNU Lesser General Public License version 2.1 requirements
+<span class="lineNum">      23 </span>            : ** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+<span class="lineNum">      24 </span>            : **
+<span class="lineNum">      25 </span>            : ** In addition, as a special exception, Digia gives you certain additional
+<span class="lineNum">      26 </span>            : ** rights.  These rights are described in the Digia Qt LGPL Exception
+<span class="lineNum">      27 </span>            : ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+<span class="lineNum">      28 </span>            : **
+<span class="lineNum">      29 </span>            : ** GNU General Public License Usage
+<span class="lineNum">      30 </span>            : ** Alternatively, this file may be used under the terms of the GNU
+<span class="lineNum">      31 </span>            : ** General Public License version 3.0 as published by the Free Software
+<span class="lineNum">      32 </span>            : ** Foundation and appearing in the file LICENSE.GPL included in the
+<span class="lineNum">      33 </span>            : ** packaging of this file.  Please review the following information to
+<span class="lineNum">      34 </span>            : ** ensure the GNU General Public License version 3.0 requirements will be
+<span class="lineNum">      35 </span>            : ** met: http://www.gnu.org/copyleft/gpl.html.
+<span class="lineNum">      36 </span>            : **
+<span class="lineNum">      37 </span>            : **
+<span class="lineNum">      38 </span>            : ** $QT_END_LICENSE$
+<span class="lineNum">      39 </span>            : **
+<span class="lineNum">      40 </span>            : ****************************************************************************/
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : #ifndef QRECT_H
+<span class="lineNum">      43 </span>            : #define QRECT_H
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : #include &lt;QtCore/qsize.h&gt;
+<span class="lineNum">      46 </span>            : #include &lt;QtCore/qpoint.h&gt;
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span>            : #ifdef topLeft
+<span class="lineNum">      49 </span>            : #error qrect.h must be included before any header file that defines topLeft
+<span class="lineNum">      50 </span>            : #endif
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : QT_BEGIN_HEADER
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            : QT_BEGIN_NAMESPACE
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            : QT_MODULE(Core)
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : class Q_CORE_EXPORT QRect
+<span class="lineNum">      59 </span>            : {
+<span class="lineNum">      60 </span>            : public:
+<span class="lineNum">      61 </span>            :     QRect() { x1 = y1 = 0; x2 = y2 = -1; }
+<span class="lineNum">      62 </span>            :     QRect(const QPoint &amp;topleft, const QPoint &amp;bottomright);
+<span class="lineNum">      63 </span>            :     QRect(const QPoint &amp;topleft, const QSize &amp;size);
+<span class="lineNum">      64 </span>            :     QRect(int left, int top, int width, int height);
+<span class="lineNum">      65 </span>            : 
+<span class="lineNum">      66 </span>            :     bool isNull() const;
+<span class="lineNum">      67 </span>            :     bool isEmpty() const;
+<span class="lineNum">      68 </span>            :     bool isValid() const;
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span>            :     int left() const;
+<span class="lineNum">      71 </span>            :     int top() const;
+<span class="lineNum">      72 </span>            :     int right() const;
+<span class="lineNum">      73 </span>            :     int bottom() const;
+<span class="lineNum">      74 </span>            :     QRect normalized() const;
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">      77 </span>            :     QT3_SUPPORT int &amp;rLeft() { return x1; }
+<span class="lineNum">      78 </span>            :     QT3_SUPPORT int &amp;rTop() { return y1; }
+<span class="lineNum">      79 </span>            :     QT3_SUPPORT int &amp;rRight() { return x2; }
+<span class="lineNum">      80 </span>            :     QT3_SUPPORT int &amp;rBottom() { return y2; }
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span>            :     QT3_SUPPORT QRect normalize() const { return normalized(); }
+<span class="lineNum">      83 </span>            : #endif
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span>            :     int x() const;
+<span class="lineNum">      86 </span>            :     int y() const;
+<span class="lineNum">      87 </span>            :     void setLeft(int pos);
+<span class="lineNum">      88 </span>            :     void setTop(int pos);
+<span class="lineNum">      89 </span>            :     void setRight(int pos);
+<span class="lineNum">      90 </span>            :     void setBottom(int pos);
+<span class="lineNum">      91 </span>            :     void setX(int x);
+<span class="lineNum">      92 </span>            :     void setY(int y);
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span>            :     void setTopLeft(const QPoint &amp;p);
+<span class="lineNum">      95 </span>            :     void setBottomRight(const QPoint &amp;p);
+<span class="lineNum">      96 </span>            :     void setTopRight(const QPoint &amp;p);
+<span class="lineNum">      97 </span>            :     void setBottomLeft(const QPoint &amp;p);
+<span class="lineNum">      98 </span>            : 
+<span class="lineNum">      99 </span>            :     QPoint topLeft() const;
+<span class="lineNum">     100 </span>            :     QPoint bottomRight() const;
+<span class="lineNum">     101 </span>            :     QPoint topRight() const;
+<span class="lineNum">     102 </span>            :     QPoint bottomLeft() const;
+<span class="lineNum">     103 </span>            :     QPoint center() const;
+<span class="lineNum">     104 </span>            : 
+<span class="lineNum">     105 </span>            :     void moveLeft(int pos);
+<span class="lineNum">     106 </span>            :     void moveTop(int pos);
+<span class="lineNum">     107 </span>            :     void moveRight(int pos);
+<span class="lineNum">     108 </span>            :     void moveBottom(int pos);
+<span class="lineNum">     109 </span>            :     void moveTopLeft(const QPoint &amp;p);
+<span class="lineNum">     110 </span>            :     void moveBottomRight(const QPoint &amp;p);
+<span class="lineNum">     111 </span>            :     void moveTopRight(const QPoint &amp;p);
+<span class="lineNum">     112 </span>            :     void moveBottomLeft(const QPoint &amp;p);
+<span class="lineNum">     113 </span>            :     void moveCenter(const QPoint &amp;p);
+<span class="lineNum">     114 </span>            : 
+<span class="lineNum">     115 </span>            :     inline void translate(int dx, int dy);
+<span class="lineNum">     116 </span>            :     inline void translate(const QPoint &amp;p);
+<span class="lineNum">     117 </span>            :     inline QRect translated(int dx, int dy) const;
+<span class="lineNum">     118 </span>            :     inline QRect translated(const QPoint &amp;p) const;
+<span class="lineNum">     119 </span>            : 
+<span class="lineNum">     120 </span>            :     void moveTo(int x, int t);
+<span class="lineNum">     121 </span>            :     void moveTo(const QPoint &amp;p);
+<span class="lineNum">     122 </span>            : 
+<span class="lineNum">     123 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     124 </span>            :     QT3_SUPPORT void moveBy(int dx, int dy) { translate(dx, dy); }
+<span class="lineNum">     125 </span>            :     QT3_SUPPORT void moveBy(const QPoint &amp;p) { translate(p); }
+<span class="lineNum">     126 </span>            : #endif
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span>            :     void setRect(int x, int y, int w, int h);
+<span class="lineNum">     129 </span>            :     inline void getRect(int *x, int *y, int *w, int *h) const;
+<span class="lineNum">     130 </span>            : 
+<span class="lineNum">     131 </span>            :     void setCoords(int x1, int y1, int x2, int y2);
+<span class="lineNum">     132 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     133 </span>            :     QT3_SUPPORT void addCoords(int x1, int y1, int x2, int y2);
+<span class="lineNum">     134 </span>            : #endif
+<span class="lineNum">     135 </span>            :     inline void getCoords(int *x1, int *y1, int *x2, int *y2) const;
+<span class="lineNum">     136 </span>            : 
+<span class="lineNum">     137 </span>            :     inline void adjust(int x1, int y1, int x2, int y2);
+<span class="lineNum">     138 </span>            :     inline QRect adjusted(int x1, int y1, int x2, int y2) const;
+<span class="lineNum">     139 </span>            : 
+<span class="lineNum">     140 </span>            :     QSize size() const;
+<span class="lineNum">     141 </span>            :     int width() const;
+<span class="lineNum">     142 </span>            :     int height() const;
+<span class="lineNum">     143 </span>            :     void setWidth(int w);
+<span class="lineNum">     144 </span>            :     void setHeight(int h);
+<span class="lineNum">     145 </span>            :     void setSize(const QSize &amp;s);
+<span class="lineNum">     146 </span>            : 
+<span class="lineNum">     147 </span>            :     QRect operator|(const QRect &amp;r) const;
+<span class="lineNum">     148 </span>            :     QRect operator&amp;(const QRect &amp;r) const;
+<span class="lineNum">     149 </span>            :     QRect&amp; operator|=(const QRect &amp;r);
+<span class="lineNum">     150 </span>            :     QRect&amp; operator&amp;=(const QRect &amp;r);
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span>            :     bool contains(const QPoint &amp;p, bool proper=false) const;
+<span class="lineNum">     153 </span>            :     bool contains(int x, int y) const; // inline methods, _don't_ merge these
+<span class="lineNum">     154 </span>            :     bool contains(int x, int y, bool proper) const;
+<span class="lineNum">     155 </span>            :     bool contains(const QRect &amp;r, bool proper = false) const;
+<span class="lineNum">     156 </span>            :     QRect unite(const QRect &amp;r) const;  // ### Qt 5: make QT4_SUPPORT
+<span class="lineNum">     157 </span>            :     QRect united(const QRect &amp;other) const;
+<span class="lineNum">     158 </span>            :     QRect intersect(const QRect &amp;r) const;  // ### Qt 5: make QT4_SUPPORT
+<span class="lineNum">     159 </span>            :     QRect intersected(const QRect &amp;other) const;
+<span class="lineNum">     160 </span>            :     bool intersects(const QRect &amp;r) const;
+<span class="lineNum">     161 </span>            : 
+<span class="lineNum">     162 </span>            :     friend Q_CORE_EXPORT_INLINE bool operator==(const QRect &amp;, const QRect &amp;);
+<span class="lineNum">     163 </span>            :     friend Q_CORE_EXPORT_INLINE bool operator!=(const QRect &amp;, const QRect &amp;);
+<span class="lineNum">     164 </span>            : 
+<span class="lineNum">     165 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     166 </span>            :     inline QT3_SUPPORT void rect(int *x, int *y, int *w, int *h) const { getRect(x, y, w, h); }
+<span class="lineNum">     167 </span>            :     inline QT3_SUPPORT void coords(int *ax1, int *ay1, int *ax2, int *ay2) const
+<span class="lineNum">     168 </span>            :     { getCoords(ax1, ay1, ax2, ay2); }
+<span class="lineNum">     169 </span>            : #endif
+<span class="lineNum">     170 </span>            : 
+<span class="lineNum">     171 </span>            : private:
+<span class="lineNum">     172 </span>            : #if defined(Q_WS_X11)
+<span class="lineNum">     173 </span>            :     friend void qt_setCoords(QRect *r, int xp1, int yp1, int xp2, int yp2);
+<span class="lineNum">     174 </span>            : #endif
+<span class="lineNum">     175 </span>            :     // ### Qt 5;  remove the ifdef and just have the same order on all platforms.
+<span class="lineNum">     176 </span>            : #if defined(Q_OS_MAC)
+<span class="lineNum">     177 </span>            :     int y1;
+<span class="lineNum">     178 </span>            :     int x1;
+<span class="lineNum">     179 </span>            :     int y2;
+<span class="lineNum">     180 </span>            :     int x2;
+<span class="lineNum">     181 </span>            : #else
+<span class="lineNum">     182 </span>            :     int x1;
+<span class="lineNum">     183 </span>            :     int y1;
+<span class="lineNum">     184 </span>            :     int x2;
+<span class="lineNum">     185 </span>            :     int y2;
+<span class="lineNum">     186 </span>            : #endif
+<span class="lineNum">     187 </span>            : 
+<span class="lineNum">     188 </span>            : };
+<span class="lineNum">     189 </span>            : Q_DECLARE_TYPEINFO(QRect, Q_MOVABLE_TYPE);
+<span class="lineNum">     190 </span>            : 
+<span class="lineNum">     191 </span>            : Q_CORE_EXPORT_INLINE bool operator==(const QRect &amp;, const QRect &amp;);
+<span class="lineNum">     192 </span>            : Q_CORE_EXPORT_INLINE bool operator!=(const QRect &amp;, const QRect &amp;);
+<span class="lineNum">     193 </span>            : 
+<span class="lineNum">     194 </span>            : 
+<span class="lineNum">     195 </span>            : /*****************************************************************************
+<span class="lineNum">     196 </span>            :   QRect stream functions
+<span class="lineNum">     197 </span>            :  *****************************************************************************/
+<span class="lineNum">     198 </span>            : #ifndef QT_NO_DATASTREAM
+<span class="lineNum">     199 </span>            : Q_CORE_EXPORT QDataStream &amp;operator&lt;&lt;(QDataStream &amp;, const QRect &amp;);
+<span class="lineNum">     200 </span>            : Q_CORE_EXPORT QDataStream &amp;operator&gt;&gt;(QDataStream &amp;, QRect &amp;);
+<span class="lineNum">     201 </span>            : #endif
+<span class="lineNum">     202 </span>            : 
+<span class="lineNum">     203 </span>            : /*****************************************************************************
+<span class="lineNum">     204 </span>            :   QRect inline member functions
+<span class="lineNum">     205 </span>            :  *****************************************************************************/
+<span class="lineNum">     206 </span>            : 
+<span class="lineNum">     207 </span>            : inline QRect::QRect(int aleft, int atop, int awidth, int aheight)
+<span class="lineNum">     208 </span>            : {
+<span class="lineNum">     209 </span>            :     x1 = aleft;
+<span class="lineNum">     210 </span>            :     y1 = atop;
+<span class="lineNum">     211 </span>            :     x2 = (aleft + awidth - 1);
+<span class="lineNum">     212 </span>            :     y2 = (atop + aheight - 1);
+<span class="lineNum">     213 </span>            : }
+<span class="lineNum">     214 </span>            : 
+<span class="lineNum">     215 </span>            : inline QRect::QRect(const QPoint &amp;atopLeft, const QPoint &amp;abottomRight)
+<span class="lineNum">     216 </span>            : {
+<span class="lineNum">     217 </span>            :     x1 = atopLeft.x();
+<span class="lineNum">     218 </span>            :     y1 = atopLeft.y();
+<span class="lineNum">     219 </span>            :     x2 = abottomRight.x();
+<span class="lineNum">     220 </span>            :     y2 = abottomRight.y();
+<span class="lineNum">     221 </span>            : }
+<span class="lineNum">     222 </span>            : 
+<span class="lineNum">     223 </span>            : inline QRect::QRect(const QPoint &amp;atopLeft, const QSize &amp;asize)
+<span class="lineNum">     224 </span>            : {
+<span class="lineNum">     225 </span>            :     x1 = atopLeft.x();
+<span class="lineNum">     226 </span>            :     y1 = atopLeft.y();
+<span class="lineNum">     227 </span>            :     x2 = (x1+asize.width() - 1);
+<span class="lineNum">     228 </span>            :     y2 = (y1+asize.height() - 1);
+<span class="lineNum">     229 </span>            : }
+<span class="lineNum">     230 </span>            : 
+<span class="lineNum">     231 </span>            : inline bool QRect::isNull() const
+<span class="lineNum">     232 </span>            : { return x2 == x1 - 1 &amp;&amp; y2 == y1 - 1; }
+<span class="lineNum">     233 </span>            : 
+<span class="lineNum">     234 </span>            : inline bool QRect::isEmpty() const
+<span class="lineNum">     235 </span>            : { return x1 &gt; x2 || y1 &gt; y2; }
+<span class="lineNum">     236 </span>            : 
+<span class="lineNum">     237 </span>            : inline bool QRect::isValid() const
+<span class="lineNum">     238 </span>            : { return x1 &lt;= x2 &amp;&amp; y1 &lt;= y2; }
+<span class="lineNum">     239 </span>            : 
+<span class="lineNum">     240 </span>            : inline int QRect::left() const
+<span class="lineNum">     241 </span>            : { return x1; }
+<span class="lineNum">     242 </span>            : 
+<span class="lineNum">     243 </span>            : inline int QRect::top() const
+<span class="lineNum">     244 </span>            : { return y1; }
+<span class="lineNum">     245 </span>            : 
+<span class="lineNum">     246 </span>            : inline int QRect::right() const
+<span class="lineNum">     247 </span>            : { return x2; }
+<span class="lineNum">     248 </span>            : 
+<span class="lineNum">     249 </span>            : inline int QRect::bottom() const
+<span class="lineNum">     250 </span>            : { return y2; }
+<span class="lineNum">     251 </span>            : 
+<span class="lineNum">     252 </span>            : inline int QRect::x() const
+<span class="lineNum">     253 </span>            : { return x1; }
+<span class="lineNum">     254 </span>            : 
+<span class="lineNum">     255 </span>            : inline int QRect::y() const
+<span class="lineNum">     256 </span>            : { return y1; }
+<span class="lineNum">     257 </span>            : 
+<span class="lineNum">     258 </span>            : inline void QRect::setLeft(int pos)
+<span class="lineNum">     259 </span>            : { x1 = pos; }
+<span class="lineNum">     260 </span>            : 
+<span class="lineNum">     261 </span>            : inline void QRect::setTop(int pos)
+<span class="lineNum">     262 </span>            : { y1 = pos; }
+<span class="lineNum">     263 </span>            : 
+<span class="lineNum">     264 </span>            : inline void QRect::setRight(int pos)
+<span class="lineNum">     265 </span>            : { x2 = pos; }
+<span class="lineNum">     266 </span>            : 
+<span class="lineNum">     267 </span>            : inline void QRect::setBottom(int pos)
+<span class="lineNum">     268 </span>            : { y2 = pos; }
+<span class="lineNum">     269 </span>            : 
+<span class="lineNum">     270 </span>            : inline void QRect::setTopLeft(const QPoint &amp;p)
+<span class="lineNum">     271 </span>            : { x1 = p.x(); y1 = p.y(); }
+<span class="lineNum">     272 </span>            : 
+<span class="lineNum">     273 </span>            : inline void QRect::setBottomRight(const QPoint &amp;p)
+<span class="lineNum">     274 </span>            : { x2 = p.x(); y2 = p.y(); }
+<span class="lineNum">     275 </span>            : 
+<span class="lineNum">     276 </span>            : inline void QRect::setTopRight(const QPoint &amp;p)
+<span class="lineNum">     277 </span>            : { x2 = p.x(); y1 = p.y(); }
+<span class="lineNum">     278 </span>            : 
+<span class="lineNum">     279 </span>            : inline void QRect::setBottomLeft(const QPoint &amp;p)
+<span class="lineNum">     280 </span>            : { x1 = p.x(); y2 = p.y(); }
+<span class="lineNum">     281 </span>            : 
+<span class="lineNum">     282 </span>            : inline void QRect::setX(int ax)
+<span class="lineNum">     283 </span>            : { x1 = ax; }
+<span class="lineNum">     284 </span>            : 
+<span class="lineNum">     285 </span>            : inline void QRect::setY(int ay)
+<span class="lineNum">     286 </span>            : { y1 = ay; }
+<span class="lineNum">     287 </span>            : 
+<span class="lineNum">     288 </span>            : inline QPoint QRect::topLeft() const
+<span class="lineNum">     289 </span>            : { return QPoint(x1, y1); }
+<span class="lineNum">     290 </span>            : 
+<span class="lineNum">     291 </span>            : inline QPoint QRect::bottomRight() const
+<span class="lineNum">     292 </span>            : { return QPoint(x2, y2); }
+<span class="lineNum">     293 </span>            : 
+<span class="lineNum">     294 </span>            : inline QPoint QRect::topRight() const
+<span class="lineNum">     295 </span>            : { return QPoint(x2, y1); }
+<span class="lineNum">     296 </span>            : 
+<span class="lineNum">     297 </span>            : inline QPoint QRect::bottomLeft() const
+<span class="lineNum">     298 </span>            : { return QPoint(x1, y2); }
+<span class="lineNum">     299 </span>            : 
+<span class="lineNum">     300 </span>            : inline QPoint QRect::center() const
+<span class="lineNum">     301 </span><span class="lineNoCov">          0 : { return QPoint((x1+x2)/2, (y1+y2)/2); }</span>
+<span class="lineNum">     302 </span>            : 
+<span class="lineNum">     303 </span>            : inline int QRect::width() const
+<span class="lineNum">     304 </span><span class="lineNoCov">          0 : { return  x2 - x1 + 1; }</span>
+<span class="lineNum">     305 </span>            : 
+<span class="lineNum">     306 </span>            : inline int QRect::height() const
+<span class="lineNum">     307 </span><span class="lineNoCov">          0 : { return  y2 - y1 + 1; }</span>
+<span class="lineNum">     308 </span>            : 
+<span class="lineNum">     309 </span>            : inline QSize QRect::size() const
+<span class="lineNum">     310 </span>            : { return QSize(width(), height()); }
+<span class="lineNum">     311 </span>            : 
+<span class="lineNum">     312 </span>            : inline void QRect::translate(int dx, int dy)
+<span class="lineNum">     313 </span>            : {
+<span class="lineNum">     314 </span>            :     x1 += dx;
+<span class="lineNum">     315 </span>            :     y1 += dy;
+<span class="lineNum">     316 </span>            :     x2 += dx;
+<span class="lineNum">     317 </span>            :     y2 += dy;
+<span class="lineNum">     318 </span>            : }
+<span class="lineNum">     319 </span>            : 
+<span class="lineNum">     320 </span>            : inline void QRect::translate(const QPoint &amp;p)
+<span class="lineNum">     321 </span>            : {
+<span class="lineNum">     322 </span>            :     x1 += p.x();
+<span class="lineNum">     323 </span>            :     y1 += p.y();
+<span class="lineNum">     324 </span>            :     x2 += p.x();
+<span class="lineNum">     325 </span>            :     y2 += p.y();
+<span class="lineNum">     326 </span>            : }
+<span class="lineNum">     327 </span>            : 
+<span class="lineNum">     328 </span>            : inline QRect QRect::translated(int dx, int dy) const
+<span class="lineNum">     329 </span>            : { return QRect(QPoint(x1 + dx, y1 + dy), QPoint(x2 + dx, y2 + dy)); }
+<span class="lineNum">     330 </span>            : 
+<span class="lineNum">     331 </span>            : inline QRect QRect::translated(const QPoint &amp;p) const
+<span class="lineNum">     332 </span>            : { return QRect(QPoint(x1 + p.x(), y1 + p.y()), QPoint(x2 + p.x(), y2 + p.y())); }
+<span class="lineNum">     333 </span>            : 
+<span class="lineNum">     334 </span>            : inline void QRect::moveTo(int ax, int ay)
+<span class="lineNum">     335 </span>            : {
+<span class="lineNum">     336 </span>            :     x2 += ax - x1;
+<span class="lineNum">     337 </span>            :     y2 += ay - y1;
+<span class="lineNum">     338 </span>            :     x1 = ax;
+<span class="lineNum">     339 </span>            :     y1 = ay;
+<span class="lineNum">     340 </span>            : }
+<span class="lineNum">     341 </span>            : 
+<span class="lineNum">     342 </span>            : inline void QRect::moveTo(const QPoint &amp;p)
+<span class="lineNum">     343 </span>            : {
+<span class="lineNum">     344 </span>            :     x2 += p.x() - x1;
+<span class="lineNum">     345 </span>            :     y2 += p.y() - y1;
+<span class="lineNum">     346 </span>            :     x1 = p.x();
+<span class="lineNum">     347 </span>            :     y1 = p.y();
+<span class="lineNum">     348 </span>            : }
+<span class="lineNum">     349 </span>            : 
+<span class="lineNum">     350 </span>            : inline void QRect::moveLeft(int pos)
+<span class="lineNum">     351 </span>            : { x2 += (pos - x1); x1 = pos; }
+<span class="lineNum">     352 </span>            : 
+<span class="lineNum">     353 </span>            : inline void QRect::moveTop(int pos)
+<span class="lineNum">     354 </span>            : { y2 += (pos - y1); y1 = pos; }
+<span class="lineNum">     355 </span>            : 
+<span class="lineNum">     356 </span>            : inline void QRect::moveRight(int pos)
+<span class="lineNum">     357 </span>            : {
+<span class="lineNum">     358 </span>            :     x1 += (pos - x2);
+<span class="lineNum">     359 </span>            :     x2 = pos;
+<span class="lineNum">     360 </span>            : }
+<span class="lineNum">     361 </span>            : 
+<span class="lineNum">     362 </span>            : inline void QRect::moveBottom(int pos)
+<span class="lineNum">     363 </span>            : {
+<span class="lineNum">     364 </span>            :     y1 += (pos - y2);
+<span class="lineNum">     365 </span>            :     y2 = pos;
+<span class="lineNum">     366 </span>            : }
+<span class="lineNum">     367 </span>            : 
+<span class="lineNum">     368 </span>            : inline void QRect::moveTopLeft(const QPoint &amp;p)
+<span class="lineNum">     369 </span>            : {
+<span class="lineNum">     370 </span>            :     moveLeft(p.x());
+<span class="lineNum">     371 </span>            :     moveTop(p.y());
+<span class="lineNum">     372 </span>            : }
+<span class="lineNum">     373 </span>            : 
+<span class="lineNum">     374 </span>            : inline void QRect::moveBottomRight(const QPoint &amp;p)
+<span class="lineNum">     375 </span>            : {
+<span class="lineNum">     376 </span>            :     moveRight(p.x());
+<span class="lineNum">     377 </span>            :     moveBottom(p.y());
+<span class="lineNum">     378 </span>            : }
+<span class="lineNum">     379 </span>            : 
+<span class="lineNum">     380 </span>            : inline void QRect::moveTopRight(const QPoint &amp;p)
+<span class="lineNum">     381 </span>            : {
+<span class="lineNum">     382 </span>            :     moveRight(p.x());
+<span class="lineNum">     383 </span>            :     moveTop(p.y());
+<span class="lineNum">     384 </span>            : }
+<span class="lineNum">     385 </span>            : 
+<span class="lineNum">     386 </span>            : inline void QRect::moveBottomLeft(const QPoint &amp;p)
+<span class="lineNum">     387 </span>            : {
+<span class="lineNum">     388 </span>            :     moveLeft(p.x());
+<span class="lineNum">     389 </span>            :     moveBottom(p.y());
+<span class="lineNum">     390 </span>            : }
+<span class="lineNum">     391 </span>            : 
+<span class="lineNum">     392 </span>            : inline void QRect::getRect(int *ax, int *ay, int *aw, int *ah) const
+<span class="lineNum">     393 </span>            : {
+<span class="lineNum">     394 </span>            :     *ax = x1;
+<span class="lineNum">     395 </span>            :     *ay = y1;
+<span class="lineNum">     396 </span>            :     *aw = x2 - x1 + 1;
+<span class="lineNum">     397 </span>            :     *ah = y2 - y1 + 1;
+<span class="lineNum">     398 </span>            : }
+<span class="lineNum">     399 </span>            : 
+<span class="lineNum">     400 </span>            : inline void QRect::setRect(int ax, int ay, int aw, int ah)
+<span class="lineNum">     401 </span>            : {
+<span class="lineNum">     402 </span>            :     x1 = ax;
+<span class="lineNum">     403 </span>            :     y1 = ay;
+<span class="lineNum">     404 </span>            :     x2 = (ax + aw - 1);
+<span class="lineNum">     405 </span>            :     y2 = (ay + ah - 1);
+<span class="lineNum">     406 </span>            : }
+<span class="lineNum">     407 </span>            : 
+<span class="lineNum">     408 </span>            : inline void QRect::getCoords(int *xp1, int *yp1, int *xp2, int *yp2) const
+<span class="lineNum">     409 </span>            : {
+<span class="lineNum">     410 </span>            :     *xp1 = x1;
+<span class="lineNum">     411 </span>            :     *yp1 = y1;
+<span class="lineNum">     412 </span>            :     *xp2 = x2;
+<span class="lineNum">     413 </span>            :     *yp2 = y2;
+<span class="lineNum">     414 </span>            : }
+<span class="lineNum">     415 </span>            : 
+<span class="lineNum">     416 </span>            : inline void QRect::setCoords(int xp1, int yp1, int xp2, int yp2)
+<span class="lineNum">     417 </span>            : {
+<span class="lineNum">     418 </span>            :     x1 = xp1;
+<span class="lineNum">     419 </span>            :     y1 = yp1;
+<span class="lineNum">     420 </span>            :     x2 = xp2;
+<span class="lineNum">     421 </span>            :     y2 = yp2;
+<span class="lineNum">     422 </span>            : }
+<span class="lineNum">     423 </span>            : 
+<span class="lineNum">     424 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     425 </span>            : inline void QRect::addCoords(int dx1, int dy1, int dx2, int dy2)
+<span class="lineNum">     426 </span>            : {
+<span class="lineNum">     427 </span>            :     adjust(dx1, dy1, dx2, dy2);
+<span class="lineNum">     428 </span>            : }
+<span class="lineNum">     429 </span>            : #endif
+<span class="lineNum">     430 </span>            : 
+<span class="lineNum">     431 </span>            : inline QRect QRect::adjusted(int xp1, int yp1, int xp2, int yp2) const
+<span class="lineNum">     432 </span>            : { return QRect(QPoint(x1 + xp1, y1 + yp1), QPoint(x2 + xp2, y2 + yp2)); }
+<span class="lineNum">     433 </span>            : 
+<span class="lineNum">     434 </span>            : inline void QRect::adjust(int dx1, int dy1, int dx2, int dy2)
+<span class="lineNum">     435 </span>            : {
+<span class="lineNum">     436 </span>            :     x1 += dx1;
+<span class="lineNum">     437 </span>            :     y1 += dy1;
+<span class="lineNum">     438 </span>            :     x2 += dx2;
+<span class="lineNum">     439 </span>            :     y2 += dy2;
+<span class="lineNum">     440 </span>            : }
+<span class="lineNum">     441 </span>            : 
+<span class="lineNum">     442 </span>            : inline void QRect::setWidth(int w)
+<span class="lineNum">     443 </span>            : { x2 = (x1 + w - 1); }
+<span class="lineNum">     444 </span>            : 
+<span class="lineNum">     445 </span>            : inline void QRect::setHeight(int h)
+<span class="lineNum">     446 </span>            : { y2 = (y1 + h - 1); }
+<span class="lineNum">     447 </span>            : 
+<span class="lineNum">     448 </span>            : inline void QRect::setSize(const QSize &amp;s)
+<span class="lineNum">     449 </span>            : {
+<span class="lineNum">     450 </span>            :     x2 = (s.width()  + x1 - 1);
+<span class="lineNum">     451 </span>            :     y2 = (s.height() + y1 - 1);
+<span class="lineNum">     452 </span>            : }
+<span class="lineNum">     453 </span>            : 
+<span class="lineNum">     454 </span>            : inline bool QRect::contains(int ax, int ay, bool aproper) const
+<span class="lineNum">     455 </span>            : {
+<span class="lineNum">     456 </span>            :     return contains(QPoint(ax, ay), aproper);
+<span class="lineNum">     457 </span>            : }
+<span class="lineNum">     458 </span>            : 
+<span class="lineNum">     459 </span>            : inline bool QRect::contains(int ax, int ay) const
+<span class="lineNum">     460 </span>            : {
+<span class="lineNum">     461 </span>            :     return contains(QPoint(ax, ay), false);
+<span class="lineNum">     462 </span>            : }
+<span class="lineNum">     463 </span>            : 
+<span class="lineNum">     464 </span>            : inline QRect&amp; QRect::operator|=(const QRect &amp;r)
+<span class="lineNum">     465 </span>            : {
+<span class="lineNum">     466 </span>            :     *this = *this | r;
+<span class="lineNum">     467 </span>            :     return *this;
+<span class="lineNum">     468 </span>            : }
+<span class="lineNum">     469 </span>            : 
+<span class="lineNum">     470 </span>            : inline QRect&amp; QRect::operator&amp;=(const QRect &amp;r)
+<span class="lineNum">     471 </span>            : {
+<span class="lineNum">     472 </span>            :     *this = *this &amp; r;
+<span class="lineNum">     473 </span>            :     return *this;
+<span class="lineNum">     474 </span>            : }
+<span class="lineNum">     475 </span>            : 
+<span class="lineNum">     476 </span>            : inline QRect QRect::intersect(const QRect &amp;r) const
+<span class="lineNum">     477 </span>            : {
+<span class="lineNum">     478 </span>            :     return *this &amp; r;
+<span class="lineNum">     479 </span>            : }
+<span class="lineNum">     480 </span>            : 
+<span class="lineNum">     481 </span>            : inline QRect QRect::intersected(const QRect &amp;other) const
+<span class="lineNum">     482 </span>            : {
+<span class="lineNum">     483 </span>            :     return intersect(other);
+<span class="lineNum">     484 </span>            : }
+<span class="lineNum">     485 </span>            : 
+<span class="lineNum">     486 </span>            : inline QRect QRect::unite(const QRect &amp;r) const
+<span class="lineNum">     487 </span>            : {
+<span class="lineNum">     488 </span>            :     return *this | r;
+<span class="lineNum">     489 </span>            : }
+<span class="lineNum">     490 </span>            : 
+<span class="lineNum">     491 </span>            : inline QRect QRect::united(const QRect &amp;r) const
+<span class="lineNum">     492 </span>            : {
+<span class="lineNum">     493 </span>            :      return unite(r);
+<span class="lineNum">     494 </span>            : }
+<span class="lineNum">     495 </span>            : 
+<span class="lineNum">     496 </span>            : inline bool operator==(const QRect &amp;r1, const QRect &amp;r2)
+<span class="lineNum">     497 </span>            : {
+<span class="lineNum">     498 </span>            :     return r1.x1==r2.x1 &amp;&amp; r1.x2==r2.x2 &amp;&amp; r1.y1==r2.y1 &amp;&amp; r1.y2==r2.y2;
+<span class="lineNum">     499 </span>            : }
+<span class="lineNum">     500 </span>            : 
+<span class="lineNum">     501 </span>            : inline bool operator!=(const QRect &amp;r1, const QRect &amp;r2)
+<span class="lineNum">     502 </span>            : {
+<span class="lineNum">     503 </span>            :     return r1.x1!=r2.x1 || r1.x2!=r2.x2 || r1.y1!=r2.y1 || r1.y2!=r2.y2;
+<span class="lineNum">     504 </span>            : }
+<span class="lineNum">     505 </span>            : 
+<span class="lineNum">     506 </span>            : #ifndef QT_NO_DEBUG_STREAM
+<span class="lineNum">     507 </span>            : Q_CORE_EXPORT QDebug operator&lt;&lt;(QDebug, const QRect &amp;);
+<span class="lineNum">     508 </span>            : #endif
+<span class="lineNum">     509 </span>            : 
+<span class="lineNum">     510 </span>            : 
+<span class="lineNum">     511 </span>            : class Q_CORE_EXPORT QRectF
+<span class="lineNum">     512 </span>            : {
+<span class="lineNum">     513 </span>            : public:
+<span class="lineNum">     514 </span>            :     QRectF() { xp = yp = 0.; w = h = 0.; }
+<span class="lineNum">     515 </span>            :     QRectF(const QPointF &amp;topleft, const QSizeF &amp;size);
+<span class="lineNum">     516 </span>            :     QRectF(const QPointF &amp;topleft, const QPointF &amp;bottomRight);
+<span class="lineNum">     517 </span>            :     QRectF(qreal left, qreal top, qreal width, qreal height);
+<span class="lineNum">     518 </span>            :     QRectF(const QRect &amp;rect);
+<span class="lineNum">     519 </span>            : 
+<span class="lineNum">     520 </span>            :     bool isNull() const;
+<span class="lineNum">     521 </span>            :     bool isEmpty() const;
+<span class="lineNum">     522 </span>            :     bool isValid() const;
+<span class="lineNum">     523 </span>            :     QRectF normalized() const;
+<span class="lineNum">     524 </span>            : 
+<span class="lineNum">     525 </span>            :     inline qreal left() const { return xp; }
+<span class="lineNum">     526 </span>            :     inline qreal top() const { return yp; }
+<span class="lineNum">     527 </span>            :     inline qreal right() const { return xp + w; }
+<span class="lineNum">     528 </span>            :     inline qreal bottom() const { return yp + h; }
+<span class="lineNum">     529 </span>            : 
+<span class="lineNum">     530 </span>            :     inline qreal x() const;
+<span class="lineNum">     531 </span>            :     inline qreal y() const;
+<span class="lineNum">     532 </span>            :     inline void setLeft(qreal pos);
+<span class="lineNum">     533 </span>            :     inline void setTop(qreal pos);
+<span class="lineNum">     534 </span>            :     inline void setRight(qreal pos);
+<span class="lineNum">     535 </span>            :     inline void setBottom(qreal pos);
+<span class="lineNum">     536 </span>            :     inline void setX(qreal pos) { setLeft(pos); }
+<span class="lineNum">     537 </span>            :     inline void setY(qreal pos) { setTop(pos); }
+<span class="lineNum">     538 </span>            : 
+<span class="lineNum">     539 </span>            :     inline QPointF topLeft() const { return QPointF(xp, yp); }
+<span class="lineNum">     540 </span>            :     inline QPointF bottomRight() const { return QPointF(xp+w, yp+h); }
+<span class="lineNum">     541 </span>            :     inline QPointF topRight() const { return QPointF(xp+w, yp); }
+<span class="lineNum">     542 </span>            :     inline QPointF bottomLeft() const { return QPointF(xp, yp+h); }
+<span class="lineNum">     543 </span>            :     inline QPointF center() const;
+<span class="lineNum">     544 </span>            : 
+<span class="lineNum">     545 </span>            :     void setTopLeft(const QPointF &amp;p);
+<span class="lineNum">     546 </span>            :     void setBottomRight(const QPointF &amp;p);
+<span class="lineNum">     547 </span>            :     void setTopRight(const QPointF &amp;p);
+<span class="lineNum">     548 </span>            :     void setBottomLeft(const QPointF &amp;p);
+<span class="lineNum">     549 </span>            : 
+<span class="lineNum">     550 </span>            :     void moveLeft(qreal pos);
+<span class="lineNum">     551 </span>            :     void moveTop(qreal pos);
+<span class="lineNum">     552 </span>            :     void moveRight(qreal pos);
+<span class="lineNum">     553 </span>            :     void moveBottom(qreal pos);
+<span class="lineNum">     554 </span>            :     void moveTopLeft(const QPointF &amp;p);
+<span class="lineNum">     555 </span>            :     void moveBottomRight(const QPointF &amp;p);
+<span class="lineNum">     556 </span>            :     void moveTopRight(const QPointF &amp;p);
+<span class="lineNum">     557 </span>            :     void moveBottomLeft(const QPointF &amp;p);
+<span class="lineNum">     558 </span>            :     void moveCenter(const QPointF &amp;p);
+<span class="lineNum">     559 </span>            : 
+<span class="lineNum">     560 </span>            :     void translate(qreal dx, qreal dy);
+<span class="lineNum">     561 </span>            :     void translate(const QPointF &amp;p);
+<span class="lineNum">     562 </span>            : 
+<span class="lineNum">     563 </span>            :     QRectF translated(qreal dx, qreal dy) const;
+<span class="lineNum">     564 </span>            :     QRectF translated(const QPointF &amp;p) const;
+<span class="lineNum">     565 </span>            : 
+<span class="lineNum">     566 </span>            :     void moveTo(qreal x, qreal t);
+<span class="lineNum">     567 </span>            :     void moveTo(const QPointF &amp;p);
+<span class="lineNum">     568 </span>            : 
+<span class="lineNum">     569 </span>            :     void setRect(qreal x, qreal y, qreal w, qreal h);
+<span class="lineNum">     570 </span>            :     void getRect(qreal *x, qreal *y, qreal *w, qreal *h) const;
+<span class="lineNum">     571 </span>            : 
+<span class="lineNum">     572 </span>            :     void setCoords(qreal x1, qreal y1, qreal x2, qreal y2);
+<span class="lineNum">     573 </span>            :     void getCoords(qreal *x1, qreal *y1, qreal *x2, qreal *y2) const;
+<span class="lineNum">     574 </span>            : 
+<span class="lineNum">     575 </span>            :     inline void adjust(qreal x1, qreal y1, qreal x2, qreal y2);
+<span class="lineNum">     576 </span>            :     inline QRectF adjusted(qreal x1, qreal y1, qreal x2, qreal y2) const;
+<span class="lineNum">     577 </span>            : 
+<span class="lineNum">     578 </span>            :     QSizeF size() const;
+<span class="lineNum">     579 </span>            :     qreal width() const;
+<span class="lineNum">     580 </span>            :     qreal height() const;
+<span class="lineNum">     581 </span>            :     void setWidth(qreal w);
+<span class="lineNum">     582 </span>            :     void setHeight(qreal h);
+<span class="lineNum">     583 </span>            :     void setSize(const QSizeF &amp;s);
+<span class="lineNum">     584 </span>            : 
+<span class="lineNum">     585 </span>            :     QRectF operator|(const QRectF &amp;r) const;
+<span class="lineNum">     586 </span>            :     QRectF operator&amp;(const QRectF &amp;r) const;
+<span class="lineNum">     587 </span>            :     QRectF&amp; operator|=(const QRectF &amp;r);
+<span class="lineNum">     588 </span>            :     QRectF&amp; operator&amp;=(const QRectF &amp;r);
+<span class="lineNum">     589 </span>            : 
+<span class="lineNum">     590 </span>            :     bool contains(const QPointF &amp;p) const;
+<span class="lineNum">     591 </span>            :     bool contains(qreal x, qreal y) const;
+<span class="lineNum">     592 </span>            :     bool contains(const QRectF &amp;r) const;
+<span class="lineNum">     593 </span>            :     QRectF unite(const QRectF &amp;r) const;  // ### Qt 5: make QT4_SUPPORT
+<span class="lineNum">     594 </span>            :     QRectF united(const QRectF &amp;other) const;
+<span class="lineNum">     595 </span>            :     QRectF intersect(const QRectF &amp;r) const;  // ### Qt 5: make QT4_SUPPORT
+<span class="lineNum">     596 </span>            :     QRectF intersected(const QRectF &amp;other) const;
+<span class="lineNum">     597 </span>            :     bool intersects(const QRectF &amp;r) const;
+<span class="lineNum">     598 </span>            : 
+<span class="lineNum">     599 </span>            :     friend Q_CORE_EXPORT_INLINE bool operator==(const QRectF &amp;, const QRectF &amp;);
+<span class="lineNum">     600 </span>            :     friend Q_CORE_EXPORT_INLINE bool operator!=(const QRectF &amp;, const QRectF &amp;);
+<span class="lineNum">     601 </span>            : 
+<span class="lineNum">     602 </span>            :     QRect toRect() const;
+<span class="lineNum">     603 </span>            :     QRect toAlignedRect() const;
+<span class="lineNum">     604 </span>            : 
+<span class="lineNum">     605 </span>            : private:
+<span class="lineNum">     606 </span>            :     qreal xp;
+<span class="lineNum">     607 </span>            :     qreal yp;
+<span class="lineNum">     608 </span>            :     qreal w;
+<span class="lineNum">     609 </span>            :     qreal h;
+<span class="lineNum">     610 </span>            : };
+<span class="lineNum">     611 </span>            : Q_DECLARE_TYPEINFO(QRectF, Q_MOVABLE_TYPE);
+<span class="lineNum">     612 </span>            : 
+<span class="lineNum">     613 </span>            : Q_CORE_EXPORT_INLINE bool operator==(const QRectF &amp;, const QRectF &amp;);
+<span class="lineNum">     614 </span>            : Q_CORE_EXPORT_INLINE bool operator!=(const QRectF &amp;, const QRectF &amp;);
+<span class="lineNum">     615 </span>            : 
+<span class="lineNum">     616 </span>            : 
+<span class="lineNum">     617 </span>            : /*****************************************************************************
+<span class="lineNum">     618 </span>            :   QRectF stream functions
+<span class="lineNum">     619 </span>            :  *****************************************************************************/
+<span class="lineNum">     620 </span>            : #ifndef QT_NO_DATASTREAM
+<span class="lineNum">     621 </span>            : Q_CORE_EXPORT QDataStream &amp;operator&lt;&lt;(QDataStream &amp;, const QRectF &amp;);
+<span class="lineNum">     622 </span>            : Q_CORE_EXPORT QDataStream &amp;operator&gt;&gt;(QDataStream &amp;, QRectF &amp;);
+<span class="lineNum">     623 </span>            : #endif
+<span class="lineNum">     624 </span>            : 
+<span class="lineNum">     625 </span>            : /*****************************************************************************
+<span class="lineNum">     626 </span>            :   QRectF inline member functions
+<span class="lineNum">     627 </span>            :  *****************************************************************************/
+<span class="lineNum">     628 </span>            : 
+<span class="lineNum">     629 </span>            : inline QRectF::QRectF(qreal aleft, qreal atop, qreal awidth, qreal aheight)
+<span class="lineNum">     630 </span>            :     : xp(aleft), yp(atop), w(awidth), h(aheight)
+<span class="lineNum">     631 </span>            : {
+<span class="lineNum">     632 </span>            : }
+<span class="lineNum">     633 </span>            : 
+<span class="lineNum">     634 </span>            : inline QRectF::QRectF(const QPointF &amp;atopLeft, const QSizeF &amp;asize)
+<span class="lineNum">     635 </span>            : {
+<span class="lineNum">     636 </span>            :     xp = atopLeft.x();
+<span class="lineNum">     637 </span>            :     yp = atopLeft.y();
+<span class="lineNum">     638 </span>            :     w = asize.width();
+<span class="lineNum">     639 </span>            :     h = asize.height();
+<span class="lineNum">     640 </span>            : }
+<span class="lineNum">     641 </span>            : 
+<span class="lineNum">     642 </span>            : inline QRectF::QRectF(const QPointF &amp;atopLeft, const QPointF &amp;abottomRight)
+<span class="lineNum">     643 </span>            : {
+<span class="lineNum">     644 </span>            :     xp = atopLeft.x();
+<span class="lineNum">     645 </span>            :     yp = atopLeft.y();
+<span class="lineNum">     646 </span>            :     w = abottomRight.x() - xp;
+<span class="lineNum">     647 </span>            :     h = abottomRight.y() - yp;
+<span class="lineNum">     648 </span>            : }
+<span class="lineNum">     649 </span>            : 
+<span class="lineNum">     650 </span>            : inline QRectF::QRectF(const QRect &amp;r)
+<span class="lineNum">     651 </span>            :     : xp(r.x()), yp(r.y()), w(r.width()), h(r.height())
+<span class="lineNum">     652 </span>            : {
+<span class="lineNum">     653 </span>            : }
+<span class="lineNum">     654 </span>            : 
+<span class="lineNum">     655 </span>            : inline bool QRectF::isNull() const
+<span class="lineNum">     656 </span>            : { return w == 0. &amp;&amp; h == 0.; }
+<span class="lineNum">     657 </span>            : 
+<span class="lineNum">     658 </span>            : inline bool QRectF::isEmpty() const
+<span class="lineNum">     659 </span>            : { return w &lt;= 0. || h &lt;= 0.; }
+<span class="lineNum">     660 </span>            : 
+<span class="lineNum">     661 </span>            : inline bool QRectF::isValid() const
+<span class="lineNum">     662 </span>            : { return w &gt; 0. &amp;&amp; h &gt; 0.; }
+<span class="lineNum">     663 </span>            : 
+<span class="lineNum">     664 </span>            : inline qreal QRectF::x() const
+<span class="lineNum">     665 </span>            : { return xp; }
+<span class="lineNum">     666 </span>            : 
+<span class="lineNum">     667 </span>            : inline qreal QRectF::y() const
+<span class="lineNum">     668 </span>            : { return yp; }
+<span class="lineNum">     669 </span>            : 
+<span class="lineNum">     670 </span>            : inline void QRectF::setLeft(qreal pos) { qreal diff = pos - xp; xp += diff; w -= diff; }
+<span class="lineNum">     671 </span>            : 
+<span class="lineNum">     672 </span>            : inline void QRectF::setRight(qreal pos) { w = pos - xp; }
+<span class="lineNum">     673 </span>            : 
+<span class="lineNum">     674 </span>            : inline void QRectF::setTop(qreal pos) { qreal diff = pos - yp; yp += diff; h -= diff; }
+<span class="lineNum">     675 </span>            : 
+<span class="lineNum">     676 </span>            : inline void QRectF::setBottom(qreal pos) { h = pos - yp; }
+<span class="lineNum">     677 </span>            : 
+<span class="lineNum">     678 </span>            : inline void QRectF::setTopLeft(const QPointF &amp;p) { setLeft(p.x()); setTop(p.y()); }
+<span class="lineNum">     679 </span>            : 
+<span class="lineNum">     680 </span>            : inline void QRectF::setTopRight(const QPointF &amp;p) { setRight(p.x()); setTop(p.y()); }
+<span class="lineNum">     681 </span>            : 
+<span class="lineNum">     682 </span>            : inline void QRectF::setBottomLeft(const QPointF &amp;p) { setLeft(p.x()); setBottom(p.y()); }
+<span class="lineNum">     683 </span>            : 
+<span class="lineNum">     684 </span>            : inline void QRectF::setBottomRight(const QPointF &amp;p) { setRight(p.x()); setBottom(p.y()); }
+<span class="lineNum">     685 </span>            : 
+<span class="lineNum">     686 </span>            : inline QPointF QRectF::center() const
+<span class="lineNum">     687 </span>            : { return QPointF(xp + w/2, yp + h/2); }
+<span class="lineNum">     688 </span>            : 
+<span class="lineNum">     689 </span>            : inline void QRectF::moveLeft(qreal pos) { xp = pos; }
+<span class="lineNum">     690 </span>            : 
+<span class="lineNum">     691 </span>            : inline void QRectF::moveTop(qreal pos) { yp = pos; }
+<span class="lineNum">     692 </span>            : 
+<span class="lineNum">     693 </span>            : inline void QRectF::moveRight(qreal pos) { xp = pos - w; }
+<span class="lineNum">     694 </span>            : 
+<span class="lineNum">     695 </span>            : inline void QRectF::moveBottom(qreal pos) { yp = pos - h; }
+<span class="lineNum">     696 </span>            : 
+<span class="lineNum">     697 </span>            : inline void QRectF::moveTopLeft(const QPointF &amp;p) { moveLeft(p.x()); moveTop(p.y()); }
+<span class="lineNum">     698 </span>            : 
+<span class="lineNum">     699 </span>            : inline void QRectF::moveTopRight(const QPointF &amp;p) { moveRight(p.x()); moveTop(p.y()); }
+<span class="lineNum">     700 </span>            : 
+<span class="lineNum">     701 </span>            : inline void QRectF::moveBottomLeft(const QPointF &amp;p) { moveLeft(p.x()); moveBottom(p.y()); }
+<span class="lineNum">     702 </span>            : 
+<span class="lineNum">     703 </span>            : inline void QRectF::moveBottomRight(const QPointF &amp;p) { moveRight(p.x()); moveBottom(p.y()); }
+<span class="lineNum">     704 </span>            : 
+<span class="lineNum">     705 </span>            : inline void QRectF::moveCenter(const QPointF &amp;p) { xp = p.x() - w/2; yp = p.y() - h/2; }
+<span class="lineNum">     706 </span>            : 
+<span class="lineNum">     707 </span>            : inline qreal QRectF::width() const
+<span class="lineNum">     708 </span>            : { return w; }
+<span class="lineNum">     709 </span>            : 
+<span class="lineNum">     710 </span>            : inline qreal QRectF::height() const
+<span class="lineNum">     711 </span>            : { return h; }
+<span class="lineNum">     712 </span>            : 
+<span class="lineNum">     713 </span>            : inline QSizeF QRectF::size() const
+<span class="lineNum">     714 </span>            : { return QSizeF(w, h); }
+<span class="lineNum">     715 </span>            : 
+<span class="lineNum">     716 </span>            : inline void QRectF::translate(qreal dx, qreal dy)
+<span class="lineNum">     717 </span>            : {
+<span class="lineNum">     718 </span>            :     xp += dx;
+<span class="lineNum">     719 </span>            :     yp += dy;
+<span class="lineNum">     720 </span>            : }
+<span class="lineNum">     721 </span>            : 
+<span class="lineNum">     722 </span>            : inline void QRectF::translate(const QPointF &amp;p)
+<span class="lineNum">     723 </span>            : {
+<span class="lineNum">     724 </span>            :     xp += p.x();
+<span class="lineNum">     725 </span>            :     yp += p.y();
+<span class="lineNum">     726 </span>            : }
+<span class="lineNum">     727 </span>            : 
+<span class="lineNum">     728 </span>            : inline void QRectF::moveTo(qreal ax, qreal ay)
+<span class="lineNum">     729 </span>            : {
+<span class="lineNum">     730 </span>            :     xp = ax;
+<span class="lineNum">     731 </span>            :     yp = ay;
+<span class="lineNum">     732 </span>            : }
+<span class="lineNum">     733 </span>            : 
+<span class="lineNum">     734 </span>            : inline void QRectF::moveTo(const QPointF &amp;p)
+<span class="lineNum">     735 </span>            : {
+<span class="lineNum">     736 </span>            :     xp = p.x();
+<span class="lineNum">     737 </span>            :     yp = p.y();
+<span class="lineNum">     738 </span>            : }
+<span class="lineNum">     739 </span>            : 
+<span class="lineNum">     740 </span>            : inline QRectF QRectF::translated(qreal dx, qreal dy) const
+<span class="lineNum">     741 </span>            : { return QRectF(xp + dx, yp + dy, w, h); }
+<span class="lineNum">     742 </span>            : 
+<span class="lineNum">     743 </span>            : inline QRectF QRectF::translated(const QPointF &amp;p) const
+<span class="lineNum">     744 </span>            : { return QRectF(xp + p.x(), yp + p.y(), w, h); }
+<span class="lineNum">     745 </span>            : 
+<span class="lineNum">     746 </span>            : inline void QRectF::getRect(qreal *ax, qreal *ay, qreal *aaw, qreal *aah) const
+<span class="lineNum">     747 </span>            : {
+<span class="lineNum">     748 </span>            :     *ax = this-&gt;xp;
+<span class="lineNum">     749 </span>            :     *ay = this-&gt;yp;
+<span class="lineNum">     750 </span>            :     *aaw = this-&gt;w;
+<span class="lineNum">     751 </span>            :     *aah = this-&gt;h;
+<span class="lineNum">     752 </span>            : }
+<span class="lineNum">     753 </span>            : 
+<span class="lineNum">     754 </span>            : inline void QRectF::setRect(qreal ax, qreal ay, qreal aaw, qreal aah)
+<span class="lineNum">     755 </span>            : {
+<span class="lineNum">     756 </span>            :     this-&gt;xp = ax;
+<span class="lineNum">     757 </span>            :     this-&gt;yp = ay;
+<span class="lineNum">     758 </span>            :     this-&gt;w = aaw;
+<span class="lineNum">     759 </span>            :     this-&gt;h = aah;
+<span class="lineNum">     760 </span>            : }
+<span class="lineNum">     761 </span>            : 
+<span class="lineNum">     762 </span>            : inline void QRectF::getCoords(qreal *xp1, qreal *yp1, qreal *xp2, qreal *yp2) const
+<span class="lineNum">     763 </span>            : {
+<span class="lineNum">     764 </span>            :     *xp1 = xp;
+<span class="lineNum">     765 </span>            :     *yp1 = yp;
+<span class="lineNum">     766 </span>            :     *xp2 = xp + w;
+<span class="lineNum">     767 </span>            :     *yp2 = yp + h;
+<span class="lineNum">     768 </span>            : }
+<span class="lineNum">     769 </span>            : 
+<span class="lineNum">     770 </span>            : inline void QRectF::setCoords(qreal xp1, qreal yp1, qreal xp2, qreal yp2)
+<span class="lineNum">     771 </span>            : {
+<span class="lineNum">     772 </span>            :     xp = xp1;
+<span class="lineNum">     773 </span>            :     yp = yp1;
+<span class="lineNum">     774 </span>            :     w = xp2 - xp1;
+<span class="lineNum">     775 </span>            :     h = yp2 - yp1;
+<span class="lineNum">     776 </span>            : }
+<span class="lineNum">     777 </span>            : 
+<span class="lineNum">     778 </span>            : inline void QRectF::adjust(qreal xp1, qreal yp1, qreal xp2, qreal yp2)
+<span class="lineNum">     779 </span>            : { xp += xp1; yp += yp1; w += xp2 - xp1; h += yp2 - yp1; }
+<span class="lineNum">     780 </span>            : 
+<span class="lineNum">     781 </span>            : inline QRectF QRectF::adjusted(qreal xp1, qreal yp1, qreal xp2, qreal yp2) const
+<span class="lineNum">     782 </span>            : { return QRectF(xp + xp1, yp + yp1, w + xp2 - xp1, h + yp2 - yp1); }
+<span class="lineNum">     783 </span>            : 
+<span class="lineNum">     784 </span>            : inline void QRectF::setWidth(qreal aw)
+<span class="lineNum">     785 </span>            : { this-&gt;w = aw; }
+<span class="lineNum">     786 </span>            : 
+<span class="lineNum">     787 </span>            : inline void QRectF::setHeight(qreal ah)
+<span class="lineNum">     788 </span>            : { this-&gt;h = ah; }
+<span class="lineNum">     789 </span>            : 
+<span class="lineNum">     790 </span>            : inline void QRectF::setSize(const QSizeF &amp;s)
+<span class="lineNum">     791 </span>            : {
+<span class="lineNum">     792 </span>            :     w = s.width();
+<span class="lineNum">     793 </span>            :     h = s.height();
+<span class="lineNum">     794 </span>            : }
+<span class="lineNum">     795 </span>            : 
+<span class="lineNum">     796 </span>            : inline bool QRectF::contains(qreal ax, qreal ay) const
+<span class="lineNum">     797 </span>            : {
+<span class="lineNum">     798 </span>            :     return contains(QPointF(ax, ay));
+<span class="lineNum">     799 </span>            : }
+<span class="lineNum">     800 </span>            : 
+<span class="lineNum">     801 </span>            : inline QRectF&amp; QRectF::operator|=(const QRectF &amp;r)
+<span class="lineNum">     802 </span>            : {
+<span class="lineNum">     803 </span>            :     *this = *this | r;
+<span class="lineNum">     804 </span>            :     return *this;
+<span class="lineNum">     805 </span>            : }
+<span class="lineNum">     806 </span>            : 
+<span class="lineNum">     807 </span>            : inline QRectF&amp; QRectF::operator&amp;=(const QRectF &amp;r)
+<span class="lineNum">     808 </span>            : {
+<span class="lineNum">     809 </span>            :     *this = *this &amp; r;
+<span class="lineNum">     810 </span>            :     return *this;
+<span class="lineNum">     811 </span>            : }
+<span class="lineNum">     812 </span>            : 
+<span class="lineNum">     813 </span>            : inline QRectF QRectF::intersect(const QRectF &amp;r) const
+<span class="lineNum">     814 </span>            : {
+<span class="lineNum">     815 </span>            :     return *this &amp; r;
+<span class="lineNum">     816 </span>            : }
+<span class="lineNum">     817 </span>            : 
+<span class="lineNum">     818 </span>            : inline QRectF QRectF::intersected(const QRectF &amp;r) const
+<span class="lineNum">     819 </span>            : {
+<span class="lineNum">     820 </span>            :     return intersect(r);
+<span class="lineNum">     821 </span>            : }
+<span class="lineNum">     822 </span>            : 
+<span class="lineNum">     823 </span>            : inline QRectF QRectF::unite(const QRectF &amp;r) const
+<span class="lineNum">     824 </span>            : {
+<span class="lineNum">     825 </span>            :     return *this | r;
+<span class="lineNum">     826 </span>            : }
+<span class="lineNum">     827 </span>            : 
+<span class="lineNum">     828 </span>            : inline QRectF QRectF::united(const QRectF &amp;r) const
+<span class="lineNum">     829 </span>            : {
+<span class="lineNum">     830 </span>            :     return unite(r);
+<span class="lineNum">     831 </span>            : }
+<span class="lineNum">     832 </span>            : 
+<span class="lineNum">     833 </span>            : inline bool operator==(const QRectF &amp;r1, const QRectF &amp;r2)
+<span class="lineNum">     834 </span>            : {
+<span class="lineNum">     835 </span>            :     return qFuzzyCompare(r1.xp, r2.xp) &amp;&amp; qFuzzyCompare(r1.yp, r2.yp)
+<span class="lineNum">     836 </span>            :            &amp;&amp; qFuzzyCompare(r1.w, r2.w) &amp;&amp; qFuzzyCompare(r1.h, r2.h);
+<span class="lineNum">     837 </span>            : }
+<span class="lineNum">     838 </span>            : 
+<span class="lineNum">     839 </span>            : inline bool operator!=(const QRectF &amp;r1, const QRectF &amp;r2)
+<span class="lineNum">     840 </span>            : {
+<span class="lineNum">     841 </span>            :     return !qFuzzyCompare(r1.xp, r2.xp) || !qFuzzyCompare(r1.yp, r2.yp)
+<span class="lineNum">     842 </span>            :            || !qFuzzyCompare(r1.w, r2.w) || !qFuzzyCompare(r1.h, r2.h);
+<span class="lineNum">     843 </span>            : }
+<span class="lineNum">     844 </span>            : 
+<span class="lineNum">     845 </span>            : inline QRect QRectF::toRect() const
+<span class="lineNum">     846 </span>            : {
+<span class="lineNum">     847 </span>            :     return QRect(qRound(xp), qRound(yp), qRound(w), qRound(h));
+<span class="lineNum">     848 </span>            : }
+<span class="lineNum">     849 </span>            : 
+<span class="lineNum">     850 </span>            : #ifndef QT_NO_DEBUG_STREAM
+<span class="lineNum">     851 </span>            : Q_CORE_EXPORT QDebug operator&lt;&lt;(QDebug, const QRectF &amp;);
+<span class="lineNum">     852 </span>            : #endif
+<span class="lineNum">     853 </span>            : 
+<span class="lineNum">     854 </span>            : QT_END_NAMESPACE
+<span class="lineNum">     855 </span>            : 
+<span class="lineNum">     856 </span>            : QT_END_HEADER
+<span class="lineNum">     857 </span>            : 
+<span class="lineNum">     858 </span>            : #endif // QRECT_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

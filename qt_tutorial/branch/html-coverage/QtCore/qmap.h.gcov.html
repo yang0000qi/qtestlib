@@ -1,0 +1,1167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - QtCore/qmap.h</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">QtCore</a> - qmap.h<span style="font-size: 80%;"> (source / <a href="qmap.h.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-05-04</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /****************************************************************************</a>
+<span class="lineNum">       2 </span>            : **
+<span class="lineNum">       3 </span>            : ** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
+<span class="lineNum">       4 </span>            : ** Contact: http://www.qt-project.org/legal
+<span class="lineNum">       5 </span>            : **
+<span class="lineNum">       6 </span>            : ** This file is part of the QtCore module of the Qt Toolkit.
+<span class="lineNum">       7 </span>            : **
+<span class="lineNum">       8 </span>            : ** $QT_BEGIN_LICENSE:LGPL$
+<span class="lineNum">       9 </span>            : ** Commercial License Usage
+<span class="lineNum">      10 </span>            : ** Licensees holding valid commercial Qt licenses may use this file in
+<span class="lineNum">      11 </span>            : ** accordance with the commercial license agreement provided with the
+<span class="lineNum">      12 </span>            : ** Software or, alternatively, in accordance with the terms contained in
+<span class="lineNum">      13 </span>            : ** a written agreement between you and Digia.  For licensing terms and
+<span class="lineNum">      14 </span>            : ** conditions see http://qt.digia.com/licensing.  For further information
+<span class="lineNum">      15 </span>            : ** use the contact form at http://qt.digia.com/contact-us.
+<span class="lineNum">      16 </span>            : **
+<span class="lineNum">      17 </span>            : ** GNU Lesser General Public License Usage
+<span class="lineNum">      18 </span>            : ** Alternatively, this file may be used under the terms of the GNU Lesser
+<span class="lineNum">      19 </span>            : ** General Public License version 2.1 as published by the Free Software
+<span class="lineNum">      20 </span>            : ** Foundation and appearing in the file LICENSE.LGPL included in the
+<span class="lineNum">      21 </span>            : ** packaging of this file.  Please review the following information to
+<span class="lineNum">      22 </span>            : ** ensure the GNU Lesser General Public License version 2.1 requirements
+<span class="lineNum">      23 </span>            : ** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+<span class="lineNum">      24 </span>            : **
+<span class="lineNum">      25 </span>            : ** In addition, as a special exception, Digia gives you certain additional
+<span class="lineNum">      26 </span>            : ** rights.  These rights are described in the Digia Qt LGPL Exception
+<span class="lineNum">      27 </span>            : ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+<span class="lineNum">      28 </span>            : **
+<span class="lineNum">      29 </span>            : ** GNU General Public License Usage
+<span class="lineNum">      30 </span>            : ** Alternatively, this file may be used under the terms of the GNU
+<span class="lineNum">      31 </span>            : ** General Public License version 3.0 as published by the Free Software
+<span class="lineNum">      32 </span>            : ** Foundation and appearing in the file LICENSE.GPL included in the
+<span class="lineNum">      33 </span>            : ** packaging of this file.  Please review the following information to
+<span class="lineNum">      34 </span>            : ** ensure the GNU General Public License version 3.0 requirements will be
+<span class="lineNum">      35 </span>            : ** met: http://www.gnu.org/copyleft/gpl.html.
+<span class="lineNum">      36 </span>            : **
+<span class="lineNum">      37 </span>            : **
+<span class="lineNum">      38 </span>            : ** $QT_END_LICENSE$
+<span class="lineNum">      39 </span>            : **
+<span class="lineNum">      40 </span>            : ****************************************************************************/
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : #ifndef QMAP_H
+<span class="lineNum">      43 </span>            : #define QMAP_H
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : #include &lt;QtCore/qatomic.h&gt;
+<span class="lineNum">      46 </span>            : #include &lt;QtCore/qiterator.h&gt;
+<span class="lineNum">      47 </span>            : #include &lt;QtCore/qlist.h&gt;
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            : #ifndef QT_NO_STL
+<span class="lineNum">      50 </span>            : #include &lt;map&gt;
+<span class="lineNum">      51 </span>            : #endif
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            : #include &lt;new&gt;
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            : QT_BEGIN_HEADER
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            : QT_BEGIN_NAMESPACE
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : QT_MODULE(Core)
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span>            : struct Q_CORE_EXPORT QMapData
+<span class="lineNum">      62 </span>            : {
+<span class="lineNum">      63 </span>            :     struct Node {
+<span class="lineNum">      64 </span>            :         Node *backward;
+<span class="lineNum">      65 </span>            :         Node *forward[1];
+<span class="lineNum">      66 </span>            :     };
+<span class="lineNum">      67 </span>            :     enum { LastLevel = 11, Sparseness = 3 };
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span>            :     QMapData *backward;
+<span class="lineNum">      70 </span>            :     QMapData *forward[QMapData::LastLevel + 1];
+<span class="lineNum">      71 </span>            :     QBasicAtomicInt ref;
+<span class="lineNum">      72 </span>            :     int topLevel;
+<span class="lineNum">      73 </span>            :     int size;
+<span class="lineNum">      74 </span>            :     uint randomBits;
+<span class="lineNum">      75 </span>            :     uint insertInOrder : 1;
+<span class="lineNum">      76 </span>            :     uint sharable : 1;
+<span class="lineNum">      77 </span>            :     uint strictAlignment : 1;
+<span class="lineNum">      78 </span>            :     uint reserved : 29;
+<span class="lineNum">      79 </span>            : 
+<span class="lineNum">      80 </span>            :     static QMapData *createData(); // ### Qt5 remove me
+<span class="lineNum">      81 </span>            :     static QMapData *createData(int alignment);
+<span class="lineNum">      82 </span>            :     void continueFreeData(int offset);
+<span class="lineNum">      83 </span>            :     Node *node_create(Node *update[], int offset); // ### Qt5 remove me
+<span class="lineNum">      84 </span>            :     Node *node_create(Node *update[], int offset, int alignment);
+<span class="lineNum">      85 </span>            :     void node_delete(Node *update[], int offset, Node *node);
+<span class="lineNum">      86 </span>            : #ifdef QT_QMAP_DEBUG
+<span class="lineNum">      87 </span>            :     uint adjust_ptr(Node *node);
+<span class="lineNum">      88 </span>            :     void dump();
+<span class="lineNum">      89 </span>            : #endif
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span>            :     static QMapData shared_null;
+<span class="lineNum">      92 </span>            : };
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span>            : 
+<span class="lineNum">      95 </span>            : /*
+<span class="lineNum">      96 </span>            :     QMap uses qMapLessThanKey() to compare keys. The default
+<span class="lineNum">      97 </span>            :     implementation uses operator&lt;(). For pointer types,
+<span class="lineNum">      98 </span>            :     qMapLessThanKey() casts the pointers to integers before it
+<span class="lineNum">      99 </span>            :     compares them, because operator&lt;() is undefined on pointers
+<span class="lineNum">     100 </span>            :     that come from different memory blocks. (In practice, this
+<span class="lineNum">     101 </span>            :     is only a problem when running a program such as
+<span class="lineNum">     102 </span>            :     BoundsChecker.)
+<span class="lineNum">     103 </span>            : */
+<span class="lineNum">     104 </span>            : 
+<span class="lineNum">     105 </span>            : template &lt;class Key&gt; inline bool qMapLessThanKey(const Key &amp;key1, const Key &amp;key2)
+<span class="lineNum">     106 </span>            : {
+<span class="lineNum">     107 </span>            :     return key1 &lt; key2;
+<span class="lineNum">     108 </span>            : }
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span>            : template &lt;class Ptr&gt; inline bool qMapLessThanKey(Ptr *key1, Ptr *key2)
+<span class="lineNum">     111 </span>            : {
+<span class="lineNum">     112 </span>            :     Q_ASSERT(sizeof(quintptr) == sizeof(Ptr *));
+<span class="lineNum">     113 </span>            :     return quintptr(key1) &lt; quintptr(key2);
+<span class="lineNum">     114 </span>            : }
+<span class="lineNum">     115 </span>            : 
+<span class="lineNum">     116 </span>            : template &lt;class Ptr&gt; inline bool qMapLessThanKey(const Ptr *key1, const Ptr *key2)
+<span class="lineNum">     117 </span>            : {
+<span class="lineNum">     118 </span>            :     Q_ASSERT(sizeof(quintptr) == sizeof(const Ptr *));
+<span class="lineNum">     119 </span>            :     return quintptr(key1) &lt; quintptr(key2);
+<span class="lineNum">     120 </span>            : }
+<span class="lineNum">     121 </span>            : 
+<span class="lineNum">     122 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     123 </span>            : struct QMapNode {
+<span class="lineNum">     124 </span>            :     Key key;
+<span class="lineNum">     125 </span>            :     T value;
+<span class="lineNum">     126 </span>            : 
+<span class="lineNum">     127 </span>            : private:
+<span class="lineNum">     128 </span>            :     // never access these members through this structure.
+<span class="lineNum">     129 </span>            :     // see below
+<span class="lineNum">     130 </span>            :     QMapData::Node *backward;
+<span class="lineNum">     131 </span>            :     QMapData::Node *forward[1];
+<span class="lineNum">     132 </span>            : };
+<span class="lineNum">     133 </span>            : 
+<span class="lineNum">     134 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     135 </span>            : struct QMapPayloadNode
+<span class="lineNum">     136 </span>            : {
+<span class="lineNum">     137 </span>            :     Key key;
+<span class="lineNum">     138 </span>            :     T value;
+<span class="lineNum">     139 </span>            : 
+<span class="lineNum">     140 </span>            : private:
+<span class="lineNum">     141 </span>            :     // QMap::e is a pointer to QMapData::Node, which matches the member
+<span class="lineNum">     142 </span>            :     // below. However, the memory allocation node in QMapData::node_create
+<span class="lineNum">     143 </span>            :     // allocates sizeof(QMapPayloNode) and incorrectly calculates the offset
+<span class="lineNum">     144 </span>            :     // of 'backward' below. If the alignment of QMapPayloadNode is larger
+<span class="lineNum">     145 </span>            :     // than the alignment of a pointer, the 'backward' member is aligned to
+<span class="lineNum">     146 </span>            :     // the end of this structure, not to 'value' above, and will occupy the
+<span class="lineNum">     147 </span>            :     // tail-padding area.
+<span class="lineNum">     148 </span>            :     //
+<span class="lineNum">     149 </span>            :     //  e.g., on a 32-bit archictecture with Key = int and
+<span class="lineNum">     150 </span>            :     //        sizeof(T) = alignof(T) = 8
+<span class="lineNum">     151 </span>            :     //   0        4        8        12       16       20       24  byte
+<span class="lineNum">     152 </span>            :     //   |   key  |   PAD  |      value      |backward|  PAD   |   correct layout
+<span class="lineNum">     153 </span>            :     //   |   key  |   PAD  |      value      |        |backward|   how it's actually used
+<span class="lineNum">     154 </span>            :     //   |&lt;-----  value of QMap::payload() = 20 -----&gt;|
+<span class="lineNum">     155 </span>            :     QMapData::Node *backward;
+<span class="lineNum">     156 </span>            : };
+<span class="lineNum">     157 </span>            : 
+<span class="lineNum">     158 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     159 </span>            : class QMap
+<span class="lineNum">     160 </span>            : {
+<span class="lineNum">     161 </span>            :     typedef QMapNode&lt;Key, T&gt; Node;
+<span class="lineNum">     162 </span>            :     typedef QMapPayloadNode&lt;Key, T&gt; PayloadNode;
+<span class="lineNum">     163 </span>            : 
+<span class="lineNum">     164 </span>            :     union {
+<span class="lineNum">     165 </span>            :         QMapData *d;
+<span class="lineNum">     166 </span>            :         QMapData::Node *e;
+<span class="lineNum">     167 </span>            :     };
+<span class="lineNum">     168 </span>            : 
+<span class="lineNum">     169 </span>            :     static inline int payload() { return sizeof(PayloadNode) - sizeof(QMapData::Node *); }
+<span class="lineNum">     170 </span>            :     static inline int alignment() {
+<span class="lineNum">     171 </span>            : #ifdef Q_ALIGNOF
+<span class="lineNum">     172 </span>            :         return int(qMax(sizeof(void*), Q_ALIGNOF(Node)));
+<span class="lineNum">     173 </span>            : #else
+<span class="lineNum">     174 </span>            :         return 0;
+<span class="lineNum">     175 </span>            : #endif
+<span class="lineNum">     176 </span>            :     }
+<span class="lineNum">     177 </span>            :     static inline Node *concrete(QMapData::Node *node) {
+<span class="lineNum">     178 </span>            :         return reinterpret_cast&lt;Node *&gt;(reinterpret_cast&lt;char *&gt;(node) - payload());
+<span class="lineNum">     179 </span>            :     }
+<span class="lineNum">     180 </span>            : 
+<span class="lineNum">     181 </span>            : public:
+<span class="lineNum">     182 </span>            :     inline QMap() : d(&amp;QMapData::shared_null) { d-&gt;ref.ref(); }
+<a name="183"><span class="lineNum">     183 </span>            :     inline QMap(const QMap&lt;Key, T&gt; &amp;other) : d(other.d)</a>
+<span class="lineNum">     184 </span>            :     { d-&gt;ref.ref(); if (!d-&gt;sharable) detach(); }
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 :     inline ~QMap() { if (!d) return; if (!d-&gt;ref.deref()) freeData(d); }</span>
+<span class="lineNum">     186 </span>            : 
+<span class="lineNum">     187 </span>            :     QMap&lt;Key, T&gt; &amp;operator=(const QMap&lt;Key, T&gt; &amp;other);
+<span class="lineNum">     188 </span>            : #ifdef Q_COMPILER_RVALUE_REFS
+<span class="lineNum">     189 </span>            :     inline QMap&lt;Key, T&gt; &amp;operator=(QMap&lt;Key, T&gt; &amp;&amp;other)
+<span class="lineNum">     190 </span>            :     { qSwap(d, other.d); return *this; }
+<span class="lineNum">     191 </span>            : #endif
+<span class="lineNum">     192 </span>            :     inline void swap(QMap&lt;Key, T&gt; &amp;other) { qSwap(d, other.d); }
+<span class="lineNum">     193 </span>            : #ifndef QT_NO_STL
+<span class="lineNum">     194 </span>            :     explicit QMap(const typename std::map&lt;Key, T&gt; &amp;other);
+<span class="lineNum">     195 </span>            :     std::map&lt;Key, T&gt; toStdMap() const;
+<span class="lineNum">     196 </span>            : #endif
+<span class="lineNum">     197 </span>            : 
+<span class="lineNum">     198 </span>            :     bool operator==(const QMap&lt;Key, T&gt; &amp;other) const;
+<span class="lineNum">     199 </span>            :     inline bool operator!=(const QMap&lt;Key, T&gt; &amp;other) const { return !(*this == other); }
+<span class="lineNum">     200 </span>            : 
+<span class="lineNum">     201 </span>            :     inline int size() const { return d-&gt;size; }
+<span class="lineNum">     202 </span>            : 
+<span class="lineNum">     203 </span>            :     inline bool isEmpty() const { return d-&gt;size == 0; }
+<span class="lineNum">     204 </span>            : 
+<span class="lineNum">     205 </span>            :     inline void detach() { if (d-&gt;ref != 1) detach_helper(); }
+<span class="lineNum">     206 </span>            :     inline bool isDetached() const { return d-&gt;ref == 1; }
+<span class="lineNum">     207 </span>            :     inline void setSharable(bool sharable) { if (!sharable) detach(); d-&gt;sharable = sharable; }
+<span class="lineNum">     208 </span>            :     inline bool isSharedWith(const QMap&lt;Key, T&gt; &amp;other) const { return d == other.d; }
+<span class="lineNum">     209 </span>            :     inline void setInsertInOrder(bool ordered) { d-&gt;insertInOrder = ordered; }
+<span class="lineNum">     210 </span>            : 
+<span class="lineNum">     211 </span>            :     void clear();
+<span class="lineNum">     212 </span>            : 
+<span class="lineNum">     213 </span>            :     int remove(const Key &amp;key);
+<span class="lineNum">     214 </span>            :     T take(const Key &amp;key);
+<span class="lineNum">     215 </span>            : 
+<span class="lineNum">     216 </span>            :     bool contains(const Key &amp;key) const;
+<span class="lineNum">     217 </span>            :     const Key key(const T &amp;value) const;
+<span class="lineNum">     218 </span>            :     const Key key(const T &amp;value, const Key &amp;defaultKey) const;
+<span class="lineNum">     219 </span>            :     const T value(const Key &amp;key) const;
+<span class="lineNum">     220 </span>            :     const T value(const Key &amp;key, const T &amp;defaultValue) const;
+<span class="lineNum">     221 </span>            :     T &amp;operator[](const Key &amp;key);
+<span class="lineNum">     222 </span>            :     const T operator[](const Key &amp;key) const;
+<span class="lineNum">     223 </span>            : 
+<span class="lineNum">     224 </span>            :     QList&lt;Key&gt; uniqueKeys() const;
+<span class="lineNum">     225 </span>            :     QList&lt;Key&gt; keys() const;
+<span class="lineNum">     226 </span>            :     QList&lt;Key&gt; keys(const T &amp;value) const;
+<span class="lineNum">     227 </span>            :     QList&lt;T&gt; values() const;
+<span class="lineNum">     228 </span>            :     QList&lt;T&gt; values(const Key &amp;key) const;
+<span class="lineNum">     229 </span>            :     int count(const Key &amp;key) const;
+<span class="lineNum">     230 </span>            : 
+<span class="lineNum">     231 </span>            :     class const_iterator;
+<span class="lineNum">     232 </span>            : 
+<span class="lineNum">     233 </span>            :     class iterator
+<span class="lineNum">     234 </span>            :     {
+<span class="lineNum">     235 </span>            :         friend class const_iterator;
+<span class="lineNum">     236 </span>            :         QMapData::Node *i;
+<span class="lineNum">     237 </span>            : 
+<span class="lineNum">     238 </span>            :     public:
+<span class="lineNum">     239 </span>            :         typedef std::bidirectional_iterator_tag iterator_category;
+<span class="lineNum">     240 </span>            :         typedef qptrdiff difference_type;
+<span class="lineNum">     241 </span>            :         typedef T value_type;
+<span class="lineNum">     242 </span>            :         typedef T *pointer;
+<span class="lineNum">     243 </span>            :         typedef T &amp;reference;
+<span class="lineNum">     244 </span>            : 
+<span class="lineNum">     245 </span>            :         // ### Qt 5: get rid of 'operator Node *'
+<span class="lineNum">     246 </span>            :         inline operator QMapData::Node *() const { return i; }
+<span class="lineNum">     247 </span>            :         inline iterator() : i(0) { }
+<span class="lineNum">     248 </span>            :         inline iterator(QMapData::Node *node) : i(node) { }
+<span class="lineNum">     249 </span>            : 
+<span class="lineNum">     250 </span>            :         inline const Key &amp;key() const { return concrete(i)-&gt;key; }
+<span class="lineNum">     251 </span>            :         inline T &amp;value() const { return concrete(i)-&gt;value; }
+<span class="lineNum">     252 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     253 </span>            :         inline QT3_SUPPORT T &amp;data() const { return concrete(i)-&gt;value; }
+<span class="lineNum">     254 </span>            : #endif
+<span class="lineNum">     255 </span>            :         inline T &amp;operator*() const { return concrete(i)-&gt;value; }
+<span class="lineNum">     256 </span>            :         inline T *operator-&gt;() const { return &amp;concrete(i)-&gt;value; }
+<span class="lineNum">     257 </span>            :         inline bool operator==(const iterator &amp;o) const { return i == o.i; }
+<span class="lineNum">     258 </span>            :         inline bool operator!=(const iterator &amp;o) const { return i != o.i; }
+<span class="lineNum">     259 </span>            : 
+<span class="lineNum">     260 </span>            :         inline iterator &amp;operator++() {
+<span class="lineNum">     261 </span>            :             i = i-&gt;forward[0];
+<span class="lineNum">     262 </span>            :             return *this;
+<span class="lineNum">     263 </span>            :         }
+<span class="lineNum">     264 </span>            :         inline iterator operator++(int) {
+<span class="lineNum">     265 </span>            :             iterator r = *this;
+<span class="lineNum">     266 </span>            :             i = i-&gt;forward[0];
+<span class="lineNum">     267 </span>            :             return r;
+<span class="lineNum">     268 </span>            :         }
+<span class="lineNum">     269 </span>            :         inline iterator &amp;operator--() {
+<span class="lineNum">     270 </span>            :             i = i-&gt;backward;
+<span class="lineNum">     271 </span>            :             return *this;
+<span class="lineNum">     272 </span>            :         }
+<span class="lineNum">     273 </span>            :         inline iterator operator--(int) {
+<span class="lineNum">     274 </span>            :             iterator r = *this;
+<span class="lineNum">     275 </span>            :             i = i-&gt;backward;
+<span class="lineNum">     276 </span>            :             return r;
+<span class="lineNum">     277 </span>            :         }
+<span class="lineNum">     278 </span>            :         inline iterator operator+(int j) const
+<span class="lineNum">     279 </span>            :         { iterator r = *this; if (j &gt; 0) while (j--) ++r; else while (j++) --r; return r; }
+<span class="lineNum">     280 </span>            :         inline iterator operator-(int j) const { return operator+(-j); }
+<span class="lineNum">     281 </span>            :         inline iterator &amp;operator+=(int j) { return *this = *this + j; }
+<span class="lineNum">     282 </span>            :         inline iterator &amp;operator-=(int j) { return *this = *this - j; }
+<span class="lineNum">     283 </span>            : 
+<span class="lineNum">     284 </span>            :         // ### Qt 5: not sure this is necessary anymore
+<span class="lineNum">     285 </span>            : #ifdef QT_STRICT_ITERATORS
+<span class="lineNum">     286 </span>            :     private:
+<span class="lineNum">     287 </span>            : #else
+<span class="lineNum">     288 </span>            :     public:
+<span class="lineNum">     289 </span>            : #endif
+<span class="lineNum">     290 </span>            :         inline bool operator==(const const_iterator &amp;o) const
+<span class="lineNum">     291 </span>            :             { return i == o.i; }
+<span class="lineNum">     292 </span>            :         inline bool operator!=(const const_iterator &amp;o) const
+<span class="lineNum">     293 </span>            :             { return i != o.i; }
+<span class="lineNum">     294 </span>            : 
+<span class="lineNum">     295 </span>            :     private:
+<span class="lineNum">     296 </span>            :         // ### Qt 5: remove
+<span class="lineNum">     297 </span>            :         inline operator bool() const { return false; }
+<span class="lineNum">     298 </span>            :     };
+<span class="lineNum">     299 </span>            :     friend class iterator;
+<span class="lineNum">     300 </span>            : 
+<span class="lineNum">     301 </span>            :     class const_iterator
+<span class="lineNum">     302 </span>            :     {
+<span class="lineNum">     303 </span>            :         friend class iterator;
+<span class="lineNum">     304 </span>            :         QMapData::Node *i;
+<span class="lineNum">     305 </span>            : 
+<span class="lineNum">     306 </span>            :     public:
+<span class="lineNum">     307 </span>            :         typedef std::bidirectional_iterator_tag iterator_category;
+<span class="lineNum">     308 </span>            :         typedef qptrdiff difference_type;
+<span class="lineNum">     309 </span>            :         typedef T value_type;
+<span class="lineNum">     310 </span>            :         typedef const T *pointer;
+<span class="lineNum">     311 </span>            :         typedef const T &amp;reference;
+<span class="lineNum">     312 </span>            : 
+<span class="lineNum">     313 </span>            :         // ### Qt 5: get rid of 'operator Node *'
+<span class="lineNum">     314 </span>            :         inline operator QMapData::Node *() const { return i; }
+<span class="lineNum">     315 </span>            :         inline const_iterator() : i(0) { }
+<span class="lineNum">     316 </span>            :         inline const_iterator(QMapData::Node *node) : i(node) { }
+<span class="lineNum">     317 </span>            : #ifdef QT_STRICT_ITERATORS
+<span class="lineNum">     318 </span>            :         explicit inline const_iterator(const iterator &amp;o)
+<span class="lineNum">     319 </span>            : #else
+<span class="lineNum">     320 </span>            :         inline const_iterator(const iterator &amp;o)
+<span class="lineNum">     321 </span>            : #endif
+<span class="lineNum">     322 </span>            :         { i = o.i; }
+<span class="lineNum">     323 </span>            : 
+<span class="lineNum">     324 </span>            :         inline const Key &amp;key() const { return concrete(i)-&gt;key; }
+<span class="lineNum">     325 </span>            :         inline const T &amp;value() const { return concrete(i)-&gt;value; }
+<span class="lineNum">     326 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     327 </span>            :         inline QT3_SUPPORT const T &amp;data() const { return concrete(i)-&gt;value; }
+<span class="lineNum">     328 </span>            : #endif
+<span class="lineNum">     329 </span>            :         inline const T &amp;operator*() const { return concrete(i)-&gt;value; }
+<span class="lineNum">     330 </span>            :         inline const T *operator-&gt;() const { return &amp;concrete(i)-&gt;value; }
+<span class="lineNum">     331 </span>            :         inline bool operator==(const const_iterator &amp;o) const { return i == o.i; }
+<span class="lineNum">     332 </span>            :         inline bool operator!=(const const_iterator &amp;o) const { return i != o.i; }
+<span class="lineNum">     333 </span>            : 
+<span class="lineNum">     334 </span>            :         inline const_iterator &amp;operator++() {
+<span class="lineNum">     335 </span>            :             i = i-&gt;forward[0];
+<span class="lineNum">     336 </span>            :             return *this;
+<span class="lineNum">     337 </span>            :         }
+<span class="lineNum">     338 </span>            :         inline const_iterator operator++(int) {
+<span class="lineNum">     339 </span>            :             const_iterator r = *this;
+<span class="lineNum">     340 </span>            :             i = i-&gt;forward[0];
+<span class="lineNum">     341 </span>            :             return r;
+<span class="lineNum">     342 </span>            :         }
+<span class="lineNum">     343 </span>            :         inline const_iterator &amp;operator--() {
+<span class="lineNum">     344 </span>            :             i = i-&gt;backward;
+<span class="lineNum">     345 </span>            :             return *this;
+<span class="lineNum">     346 </span>            :         }
+<span class="lineNum">     347 </span>            :         inline const_iterator operator--(int) {
+<span class="lineNum">     348 </span>            :             const_iterator r = *this;
+<span class="lineNum">     349 </span>            :             i = i-&gt;backward;
+<span class="lineNum">     350 </span>            :             return r;
+<span class="lineNum">     351 </span>            :         }
+<span class="lineNum">     352 </span>            :         inline const_iterator operator+(int j) const
+<span class="lineNum">     353 </span>            :         { const_iterator r = *this; if (j &gt; 0) while (j--) ++r; else while (j++) --r; return r; }
+<span class="lineNum">     354 </span>            :         inline const_iterator operator-(int j) const { return operator+(-j); }
+<span class="lineNum">     355 </span>            :         inline const_iterator &amp;operator+=(int j) { return *this = *this + j; }
+<span class="lineNum">     356 </span>            :         inline const_iterator &amp;operator-=(int j) { return *this = *this - j; }
+<span class="lineNum">     357 </span>            : 
+<span class="lineNum">     358 </span>            :         // ### Qt 5: not sure this is necessary anymore
+<span class="lineNum">     359 </span>            : #ifdef QT_STRICT_ITERATORS
+<span class="lineNum">     360 </span>            :     private:
+<span class="lineNum">     361 </span>            :         inline bool operator==(const iterator &amp;o) { return operator==(const_iterator(o)); }
+<span class="lineNum">     362 </span>            :         inline bool operator!=(const iterator &amp;o) { return operator!=(const_iterator(o)); }
+<span class="lineNum">     363 </span>            : #endif
+<span class="lineNum">     364 </span>            : 
+<span class="lineNum">     365 </span>            :     private:
+<span class="lineNum">     366 </span>            :         // ### Qt 5: remove
+<span class="lineNum">     367 </span>            :         inline operator bool() const { return false; }
+<span class="lineNum">     368 </span>            :     };
+<span class="lineNum">     369 </span>            :     friend class const_iterator;
+<span class="lineNum">     370 </span>            : 
+<span class="lineNum">     371 </span>            :     // STL style
+<span class="lineNum">     372 </span>            :     inline iterator begin() { detach(); return iterator(e-&gt;forward[0]); }
+<span class="lineNum">     373 </span>            :     inline const_iterator begin() const { return const_iterator(e-&gt;forward[0]); }
+<span class="lineNum">     374 </span>            :     inline const_iterator constBegin() const { return const_iterator(e-&gt;forward[0]); }
+<span class="lineNum">     375 </span>            :     inline iterator end() {
+<span class="lineNum">     376 </span>            :         detach();
+<span class="lineNum">     377 </span>            :         return iterator(e);
+<span class="lineNum">     378 </span>            :     }
+<span class="lineNum">     379 </span>            :     inline const_iterator end() const { return const_iterator(e); }
+<span class="lineNum">     380 </span>            :     inline const_iterator constEnd() const { return const_iterator(e); }
+<span class="lineNum">     381 </span>            :     iterator erase(iterator it);
+<span class="lineNum">     382 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     383 </span>            :     inline QT3_SUPPORT iterator remove(iterator it) { return erase(it); }
+<span class="lineNum">     384 </span>            :     inline QT3_SUPPORT void erase(const Key &amp;aKey) { remove(aKey); }
+<span class="lineNum">     385 </span>            : #endif
+<span class="lineNum">     386 </span>            : 
+<span class="lineNum">     387 </span>            :     // more Qt
+<span class="lineNum">     388 </span>            :     typedef iterator Iterator;
+<span class="lineNum">     389 </span>            :     typedef const_iterator ConstIterator;
+<span class="lineNum">     390 </span>            :     inline int count() const { return d-&gt;size; }
+<span class="lineNum">     391 </span>            :     iterator find(const Key &amp;key);
+<span class="lineNum">     392 </span>            :     const_iterator find(const Key &amp;key) const;
+<span class="lineNum">     393 </span>            :     const_iterator constFind(const Key &amp;key) const;
+<span class="lineNum">     394 </span>            :     iterator lowerBound(const Key &amp;key);
+<span class="lineNum">     395 </span>            :     const_iterator lowerBound(const Key &amp;key) const;
+<span class="lineNum">     396 </span>            :     iterator upperBound(const Key &amp;key);
+<span class="lineNum">     397 </span>            :     const_iterator upperBound(const Key &amp;key) const;
+<span class="lineNum">     398 </span>            :     iterator insert(const Key &amp;key, const T &amp;value);
+<span class="lineNum">     399 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     400 </span>            :     QT3_SUPPORT iterator insert(const Key &amp;key, const T &amp;value, bool overwrite);
+<span class="lineNum">     401 </span>            : #endif
+<span class="lineNum">     402 </span>            :     iterator insertMulti(const Key &amp;key, const T &amp;value);
+<span class="lineNum">     403 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     404 </span>            :     inline QT3_SUPPORT iterator replace(const Key &amp;aKey, const T &amp;aValue) { return insert(aKey, aValue); }
+<span class="lineNum">     405 </span>            : #endif
+<span class="lineNum">     406 </span>            :     QMap&lt;Key, T&gt; &amp;unite(const QMap&lt;Key, T&gt; &amp;other);
+<span class="lineNum">     407 </span>            : 
+<span class="lineNum">     408 </span>            :     // STL compatibility
+<span class="lineNum">     409 </span>            :     typedef Key key_type;
+<span class="lineNum">     410 </span>            :     typedef T mapped_type;
+<span class="lineNum">     411 </span>            :     typedef qptrdiff difference_type;
+<span class="lineNum">     412 </span>            :     typedef int size_type;
+<span class="lineNum">     413 </span>            :     inline bool empty() const { return isEmpty(); }
+<span class="lineNum">     414 </span>            : 
+<span class="lineNum">     415 </span>            : #ifdef QT_QMAP_DEBUG
+<span class="lineNum">     416 </span>            :     inline void dump() const { d-&gt;dump(); }
+<span class="lineNum">     417 </span>            : #endif
+<span class="lineNum">     418 </span>            : 
+<span class="lineNum">     419 </span>            : private:
+<span class="lineNum">     420 </span>            :     void detach_helper();
+<span class="lineNum">     421 </span>            :     void freeData(QMapData *d);
+<span class="lineNum">     422 </span>            :     QMapData::Node *findNode(const Key &amp;key) const;
+<span class="lineNum">     423 </span>            :     QMapData::Node *mutableFindNode(QMapData::Node *update[], const Key &amp;key) const;
+<span class="lineNum">     424 </span>            :     QMapData::Node *node_create(QMapData *d, QMapData::Node *update[], const Key &amp;key,
+<span class="lineNum">     425 </span>            :                                 const T &amp;value);
+<span class="lineNum">     426 </span>            : };
+<span class="lineNum">     427 </span>            : 
+<span class="lineNum">     428 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     429 </span>            : Q_INLINE_TEMPLATE QMap&lt;Key, T&gt; &amp;QMap&lt;Key, T&gt;::operator=(const QMap&lt;Key, T&gt; &amp;other)
+<span class="lineNum">     430 </span>            : {
+<span class="lineNum">     431 </span>            :     if (d != other.d) {
+<span class="lineNum">     432 </span>            :         QMapData* o = other.d;
+<span class="lineNum">     433 </span>            :         o-&gt;ref.ref();
+<span class="lineNum">     434 </span>            :         if (!d-&gt;ref.deref())
+<span class="lineNum">     435 </span>            :             freeData(d);
+<span class="lineNum">     436 </span>            :         d = o;
+<span class="lineNum">     437 </span>            :         if (!d-&gt;sharable)
+<span class="lineNum">     438 </span>            :             detach_helper();
+<span class="lineNum">     439 </span>            :     }
+<span class="lineNum">     440 </span>            :     return *this;
+<span class="lineNum">     441 </span>            : }
+<span class="lineNum">     442 </span>            : 
+<span class="lineNum">     443 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     444 </span>            : Q_INLINE_TEMPLATE void QMap&lt;Key, T&gt;::clear()
+<span class="lineNum">     445 </span>            : {
+<span class="lineNum">     446 </span>            :     *this = QMap&lt;Key, T&gt;();
+<span class="lineNum">     447 </span>            : }
+<span class="lineNum">     448 </span>            : 
+<span class="lineNum">     449 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     450 </span>            : Q_INLINE_TEMPLATE typename QMapData::Node *
+<span class="lineNum">     451 </span>            : QMap&lt;Key, T&gt;::node_create(QMapData *adt, QMapData::Node *aupdate[], const Key &amp;akey, const T &amp;avalue)
+<span class="lineNum">     452 </span>            : {
+<span class="lineNum">     453 </span>            :     QMapData::Node *abstractNode = adt-&gt;node_create(aupdate, payload(), alignment());
+<span class="lineNum">     454 </span>            :     QT_TRY {
+<span class="lineNum">     455 </span>            :         Node *concreteNode = concrete(abstractNode);
+<span class="lineNum">     456 </span>            :         new (&amp;concreteNode-&gt;key) Key(akey);
+<span class="lineNum">     457 </span>            :         QT_TRY {
+<span class="lineNum">     458 </span>            :             new (&amp;concreteNode-&gt;value) T(avalue);
+<span class="lineNum">     459 </span>            :         } QT_CATCH(...) {
+<span class="lineNum">     460 </span>            :             concreteNode-&gt;key.~Key();
+<span class="lineNum">     461 </span>            :             QT_RETHROW;
+<span class="lineNum">     462 </span>            :         }
+<span class="lineNum">     463 </span>            :     } QT_CATCH(...) {
+<span class="lineNum">     464 </span>            :         adt-&gt;node_delete(aupdate, payload(), abstractNode);
+<span class="lineNum">     465 </span>            :         QT_RETHROW;
+<span class="lineNum">     466 </span>            :     }
+<span class="lineNum">     467 </span>            : 
+<span class="lineNum">     468 </span>            :     // clean up the update array for further insertions
+<span class="lineNum">     469 </span>            :     /*
+<span class="lineNum">     470 </span>            :     for (int i = 0; i &lt;= d-&gt;topLevel; ++i) {
+<span class="lineNum">     471 </span>            :         if ( aupdate[i]==reinterpret_cast&lt;QMapData::Node *&gt;(adt) || aupdate[i]-&gt;forward[i] != abstractNode)
+<span class="lineNum">     472 </span>            :             break;
+<span class="lineNum">     473 </span>            :         aupdate[i] = abstractNode;
+<span class="lineNum">     474 </span>            :     }
+<span class="lineNum">     475 </span>            : */
+<span class="lineNum">     476 </span>            : 
+<span class="lineNum">     477 </span>            :     return abstractNode;
+<span class="lineNum">     478 </span>            : }
+<span class="lineNum">     479 </span>            : 
+<span class="lineNum">     480 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     481 </span>            : Q_INLINE_TEMPLATE QMapData::Node *QMap&lt;Key, T&gt;::findNode(const Key &amp;akey) const
+<span class="lineNum">     482 </span>            : {
+<span class="lineNum">     483 </span>            :     QMapData::Node *cur = e;
+<span class="lineNum">     484 </span>            :     QMapData::Node *next = e;
+<span class="lineNum">     485 </span>            : 
+<span class="lineNum">     486 </span>            :     for (int i = d-&gt;topLevel; i &gt;= 0; i--) {
+<span class="lineNum">     487 </span>            :         while ((next = cur-&gt;forward[i]) != e &amp;&amp; qMapLessThanKey&lt;Key&gt;(concrete(next)-&gt;key, akey))
+<span class="lineNum">     488 </span>            :             cur = next;
+<span class="lineNum">     489 </span>            :     }
+<span class="lineNum">     490 </span>            : 
+<span class="lineNum">     491 </span>            :     if (next != e &amp;&amp; !qMapLessThanKey&lt;Key&gt;(akey, concrete(next)-&gt;key)) {
+<span class="lineNum">     492 </span>            :         return next;
+<span class="lineNum">     493 </span>            :     } else {
+<span class="lineNum">     494 </span>            :         return e;
+<span class="lineNum">     495 </span>            :     }
+<span class="lineNum">     496 </span>            : }
+<span class="lineNum">     497 </span>            : 
+<span class="lineNum">     498 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     499 </span>            : Q_INLINE_TEMPLATE const T QMap&lt;Key, T&gt;::value(const Key &amp;akey) const
+<span class="lineNum">     500 </span>            : {
+<span class="lineNum">     501 </span>            :     QMapData::Node *node;
+<span class="lineNum">     502 </span>            :     if (d-&gt;size == 0 || (node = findNode(akey)) == e) {
+<span class="lineNum">     503 </span>            :         return T();
+<span class="lineNum">     504 </span>            :     } else {
+<span class="lineNum">     505 </span>            :         return concrete(node)-&gt;value;
+<span class="lineNum">     506 </span>            :     }
+<span class="lineNum">     507 </span>            : }
+<span class="lineNum">     508 </span>            : 
+<span class="lineNum">     509 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     510 </span>            : Q_INLINE_TEMPLATE const T QMap&lt;Key, T&gt;::value(const Key &amp;akey, const T &amp;adefaultValue) const
+<span class="lineNum">     511 </span>            : {
+<span class="lineNum">     512 </span>            :     QMapData::Node *node;
+<span class="lineNum">     513 </span>            :     if (d-&gt;size == 0 || (node = findNode(akey)) == e) {
+<span class="lineNum">     514 </span>            :         return adefaultValue;
+<span class="lineNum">     515 </span>            :     } else {
+<span class="lineNum">     516 </span>            :         return concrete(node)-&gt;value;
+<span class="lineNum">     517 </span>            :     }
+<span class="lineNum">     518 </span>            : }
+<span class="lineNum">     519 </span>            : 
+<span class="lineNum">     520 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     521 </span>            : Q_INLINE_TEMPLATE const T QMap&lt;Key, T&gt;::operator[](const Key &amp;akey) const
+<span class="lineNum">     522 </span>            : {
+<span class="lineNum">     523 </span>            :     return value(akey);
+<span class="lineNum">     524 </span>            : }
+<span class="lineNum">     525 </span>            : 
+<span class="lineNum">     526 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     527 </span>            : Q_INLINE_TEMPLATE T &amp;QMap&lt;Key, T&gt;::operator[](const Key &amp;akey)
+<span class="lineNum">     528 </span>            : {
+<span class="lineNum">     529 </span>            :     detach();
+<span class="lineNum">     530 </span>            : 
+<span class="lineNum">     531 </span>            :     QMapData::Node *update[QMapData::LastLevel + 1];
+<span class="lineNum">     532 </span>            :     QMapData::Node *node = mutableFindNode(update, akey);
+<span class="lineNum">     533 </span>            :     if (node == e)
+<span class="lineNum">     534 </span>            :         node = node_create(d, update, akey, T());
+<span class="lineNum">     535 </span>            :     return concrete(node)-&gt;value;
+<span class="lineNum">     536 </span>            : }
+<span class="lineNum">     537 </span>            : 
+<span class="lineNum">     538 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     539 </span>            : Q_INLINE_TEMPLATE int QMap&lt;Key, T&gt;::count(const Key &amp;akey) const
+<span class="lineNum">     540 </span>            : {
+<span class="lineNum">     541 </span>            :     int cnt = 0;
+<span class="lineNum">     542 </span>            :     QMapData::Node *node = findNode(akey);
+<span class="lineNum">     543 </span>            :     if (node != e) {
+<span class="lineNum">     544 </span>            :         do {
+<span class="lineNum">     545 </span>            :             ++cnt;
+<span class="lineNum">     546 </span>            :             node = node-&gt;forward[0];
+<span class="lineNum">     547 </span>            :         } while (node != e &amp;&amp; !qMapLessThanKey&lt;Key&gt;(akey, concrete(node)-&gt;key));
+<span class="lineNum">     548 </span>            :     }
+<span class="lineNum">     549 </span>            :     return cnt;
+<span class="lineNum">     550 </span>            : }
+<span class="lineNum">     551 </span>            : 
+<span class="lineNum">     552 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     553 </span>            : Q_INLINE_TEMPLATE bool QMap&lt;Key, T&gt;::contains(const Key &amp;akey) const
+<span class="lineNum">     554 </span>            : {
+<span class="lineNum">     555 </span>            :     return findNode(akey) != e;
+<span class="lineNum">     556 </span>            : }
+<span class="lineNum">     557 </span>            : 
+<span class="lineNum">     558 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     559 </span>            : Q_INLINE_TEMPLATE typename QMap&lt;Key, T&gt;::iterator QMap&lt;Key, T&gt;::insert(const Key &amp;akey,
+<span class="lineNum">     560 </span>            :                                                                        const T &amp;avalue)
+<span class="lineNum">     561 </span>            : {
+<span class="lineNum">     562 </span>            :     detach();
+<span class="lineNum">     563 </span>            : 
+<span class="lineNum">     564 </span>            :     QMapData::Node *update[QMapData::LastLevel + 1];
+<span class="lineNum">     565 </span>            :     QMapData::Node *node = mutableFindNode(update, akey);
+<span class="lineNum">     566 </span>            :     if (node == e) {
+<span class="lineNum">     567 </span>            :         node = node_create(d, update, akey, avalue);
+<span class="lineNum">     568 </span>            :     } else {
+<span class="lineNum">     569 </span>            :         concrete(node)-&gt;value = avalue;
+<span class="lineNum">     570 </span>            :     }
+<span class="lineNum">     571 </span>            :     return iterator(node);
+<span class="lineNum">     572 </span>            : }
+<span class="lineNum">     573 </span>            : 
+<span class="lineNum">     574 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     575 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     576 </span>            : Q_INLINE_TEMPLATE typename QMap&lt;Key, T&gt;::iterator QMap&lt;Key, T&gt;::insert(const Key &amp;akey,
+<span class="lineNum">     577 </span>            :                                                                        const T &amp;avalue,
+<span class="lineNum">     578 </span>            :                                                                        bool aoverwrite)
+<span class="lineNum">     579 </span>            : {
+<span class="lineNum">     580 </span>            :     detach();
+<span class="lineNum">     581 </span>            : 
+<span class="lineNum">     582 </span>            :     QMapData::Node *update[QMapData::LastLevel + 1];
+<span class="lineNum">     583 </span>            :     QMapData::Node *node = mutableFindNode(update, akey);
+<span class="lineNum">     584 </span>            :     if (node == e) {
+<span class="lineNum">     585 </span>            :         node = node_create(d, update, akey, avalue);
+<span class="lineNum">     586 </span>            :     } else {
+<span class="lineNum">     587 </span>            :         if (aoverwrite)
+<span class="lineNum">     588 </span>            :             concrete(node)-&gt;value = avalue;
+<span class="lineNum">     589 </span>            :     }
+<span class="lineNum">     590 </span>            :     return iterator(node);
+<span class="lineNum">     591 </span>            : }
+<span class="lineNum">     592 </span>            : #endif
+<span class="lineNum">     593 </span>            : 
+<span class="lineNum">     594 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     595 </span>            : Q_INLINE_TEMPLATE typename QMap&lt;Key, T&gt;::iterator QMap&lt;Key, T&gt;::insertMulti(const Key &amp;akey,
+<span class="lineNum">     596 </span>            :                                                                             const T &amp;avalue)
+<span class="lineNum">     597 </span>            : {
+<span class="lineNum">     598 </span>            :     detach();
+<span class="lineNum">     599 </span>            : 
+<span class="lineNum">     600 </span>            :     QMapData::Node *update[QMapData::LastLevel + 1];
+<span class="lineNum">     601 </span>            :     mutableFindNode(update, akey);
+<span class="lineNum">     602 </span>            :     return iterator(node_create(d, update, akey, avalue));
+<span class="lineNum">     603 </span>            : }
+<span class="lineNum">     604 </span>            : 
+<span class="lineNum">     605 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     606 </span>            : Q_INLINE_TEMPLATE typename QMap&lt;Key, T&gt;::const_iterator QMap&lt;Key, T&gt;::find(const Key &amp;akey) const
+<span class="lineNum">     607 </span>            : {
+<span class="lineNum">     608 </span>            :     return const_iterator(findNode(akey));
+<span class="lineNum">     609 </span>            : }
+<span class="lineNum">     610 </span>            : 
+<span class="lineNum">     611 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     612 </span>            : Q_INLINE_TEMPLATE typename QMap&lt;Key, T&gt;::const_iterator QMap&lt;Key, T&gt;::constFind(const Key &amp;akey) const
+<span class="lineNum">     613 </span>            : {
+<span class="lineNum">     614 </span>            :     return const_iterator(findNode(akey));
+<span class="lineNum">     615 </span>            : }
+<span class="lineNum">     616 </span>            : 
+<span class="lineNum">     617 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     618 </span>            : Q_INLINE_TEMPLATE typename QMap&lt;Key, T&gt;::iterator QMap&lt;Key, T&gt;::find(const Key &amp;akey)
+<span class="lineNum">     619 </span>            : {
+<span class="lineNum">     620 </span>            :     detach();
+<span class="lineNum">     621 </span>            :     return iterator(findNode(akey));
+<span class="lineNum">     622 </span>            : }
+<span class="lineNum">     623 </span>            : 
+<span class="lineNum">     624 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     625 </span>            : Q_INLINE_TEMPLATE QMap&lt;Key, T&gt; &amp;QMap&lt;Key, T&gt;::unite(const QMap&lt;Key, T&gt; &amp;other)
+<span class="lineNum">     626 </span>            : {
+<span class="lineNum">     627 </span>            :     QMap&lt;Key, T&gt; copy(other);
+<span class="lineNum">     628 </span>            :     const_iterator it = copy.constEnd();
+<span class="lineNum">     629 </span>            :     const const_iterator b = copy.constBegin();
+<span class="lineNum">     630 </span>            :     while (it != b) {
+<span class="lineNum">     631 </span>            :         --it;
+<span class="lineNum">     632 </span>            :         insertMulti(it.key(), it.value());
+<span class="lineNum">     633 </span>            :     }
+<span class="lineNum">     634 </span>            :     return *this;
+<span class="lineNum">     635 </span>            : }
+<span class="lineNum">     636 </span>            : 
+<span class="lineNum">     637 </span>            : #if defined(_MSC_VER)
+<span class="lineNum">     638 </span>            : #pragma warning(push)
+<span class="lineNum">     639 </span>            : #pragma warning(disable:4189)
+<span class="lineNum">     640 </span>            : #endif
+<span class="lineNum">     641 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     642 </span>            : Q_OUTOFLINE_TEMPLATE void QMap&lt;Key, T&gt;::freeData(QMapData *x)
+<span class="lineNum">     643 </span>            : {
+<span class="lineNum">     644 </span>            :     if (QTypeInfo&lt;Key&gt;::isComplex || QTypeInfo&lt;T&gt;::isComplex) {
+<span class="lineNum">     645 </span><span class="lineNoCov">          0 :         QMapData *cur = x;</span>
+<span class="lineNum">     646 </span><span class="lineNoCov">          0 :         QMapData *next = cur-&gt;forward[0];</span>
+<span class="lineNum">     647 </span><span class="lineNoCov">          0 :         while (next != x) {</span>
+<span class="lineNum">     648 </span><span class="lineNoCov">          0 :             cur = next;</span>
+<span class="lineNum">     649 </span><span class="lineNoCov">          0 :             next = cur-&gt;forward[0];</span>
+<span class="lineNum">     650 </span><span class="lineNoCov">          0 :             Node *concreteNode = concrete(reinterpret_cast&lt;QMapData::Node *&gt;(cur));</span>
+<span class="lineNum">     651 </span>            :             concreteNode-&gt;key.~Key();
+<span class="lineNum">     652 </span>            :             concreteNode-&gt;value.~T();
+<span class="lineNum">     653 </span>            :         }
+<span class="lineNum">     654 </span>            :     }
+<span class="lineNum">     655 </span><span class="lineNoCov">          0 :     x-&gt;continueFreeData(payload());</span>
+<span class="lineNum">     656 </span>            : }
+<span class="lineNum">     657 </span>            : #if defined(_MSC_VER)
+<span class="lineNum">     658 </span>            : #pragma warning(pop)
+<span class="lineNum">     659 </span>            : #endif
+<span class="lineNum">     660 </span>            : 
+<span class="lineNum">     661 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     662 </span>            : Q_OUTOFLINE_TEMPLATE int QMap&lt;Key, T&gt;::remove(const Key &amp;akey)
+<span class="lineNum">     663 </span>            : {
+<span class="lineNum">     664 </span>            :     detach();
+<span class="lineNum">     665 </span>            : 
+<span class="lineNum">     666 </span>            :     QMapData::Node *update[QMapData::LastLevel + 1];
+<span class="lineNum">     667 </span>            :     QMapData::Node *cur = e;
+<span class="lineNum">     668 </span>            :     QMapData::Node *next = e;
+<span class="lineNum">     669 </span>            :     int oldSize = d-&gt;size;
+<span class="lineNum">     670 </span>            : 
+<span class="lineNum">     671 </span>            :     for (int i = d-&gt;topLevel; i &gt;= 0; i--) {
+<span class="lineNum">     672 </span>            :         while ((next = cur-&gt;forward[i]) != e &amp;&amp; qMapLessThanKey&lt;Key&gt;(concrete(next)-&gt;key, akey))
+<span class="lineNum">     673 </span>            :             cur = next;
+<span class="lineNum">     674 </span>            :         update[i] = cur;
+<span class="lineNum">     675 </span>            :     }
+<span class="lineNum">     676 </span>            : 
+<span class="lineNum">     677 </span>            :     if (next != e &amp;&amp; !qMapLessThanKey&lt;Key&gt;(akey, concrete(next)-&gt;key)) {
+<span class="lineNum">     678 </span>            :         bool deleteNext = true;
+<span class="lineNum">     679 </span>            :         do {
+<span class="lineNum">     680 </span>            :             cur = next;
+<span class="lineNum">     681 </span>            :             next = cur-&gt;forward[0];
+<span class="lineNum">     682 </span>            :             deleteNext = (next != e &amp;&amp; !qMapLessThanKey&lt;Key&gt;(concrete(cur)-&gt;key, concrete(next)-&gt;key));
+<span class="lineNum">     683 </span>            :             concrete(cur)-&gt;key.~Key();
+<span class="lineNum">     684 </span>            :             concrete(cur)-&gt;value.~T();
+<span class="lineNum">     685 </span>            :             d-&gt;node_delete(update, payload(), cur);
+<span class="lineNum">     686 </span>            :         } while (deleteNext);
+<span class="lineNum">     687 </span>            :     }
+<span class="lineNum">     688 </span>            :     return oldSize - d-&gt;size;
+<span class="lineNum">     689 </span>            : }
+<span class="lineNum">     690 </span>            : 
+<span class="lineNum">     691 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     692 </span>            : Q_OUTOFLINE_TEMPLATE T QMap&lt;Key, T&gt;::take(const Key &amp;akey)
+<span class="lineNum">     693 </span>            : {
+<span class="lineNum">     694 </span>            :     detach();
+<span class="lineNum">     695 </span>            : 
+<span class="lineNum">     696 </span>            :     QMapData::Node *update[QMapData::LastLevel + 1];
+<span class="lineNum">     697 </span>            :     QMapData::Node *cur = e;
+<span class="lineNum">     698 </span>            :     QMapData::Node *next = e;
+<span class="lineNum">     699 </span>            : 
+<span class="lineNum">     700 </span>            :     for (int i = d-&gt;topLevel; i &gt;= 0; i--) {
+<span class="lineNum">     701 </span>            :         while ((next = cur-&gt;forward[i]) != e &amp;&amp; qMapLessThanKey&lt;Key&gt;(concrete(next)-&gt;key, akey))
+<span class="lineNum">     702 </span>            :             cur = next;
+<span class="lineNum">     703 </span>            :         update[i] = cur;
+<span class="lineNum">     704 </span>            :     }
+<span class="lineNum">     705 </span>            : 
+<span class="lineNum">     706 </span>            :     if (next != e &amp;&amp; !qMapLessThanKey&lt;Key&gt;(akey, concrete(next)-&gt;key)) {
+<span class="lineNum">     707 </span>            :         T t = concrete(next)-&gt;value;
+<span class="lineNum">     708 </span>            :         concrete(next)-&gt;key.~Key();
+<span class="lineNum">     709 </span>            :         concrete(next)-&gt;value.~T();
+<span class="lineNum">     710 </span>            :         d-&gt;node_delete(update, payload(), next);
+<span class="lineNum">     711 </span>            :         return t;
+<span class="lineNum">     712 </span>            :     }
+<span class="lineNum">     713 </span>            :     return T();
+<span class="lineNum">     714 </span>            : }
+<span class="lineNum">     715 </span>            : 
+<span class="lineNum">     716 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     717 </span>            : Q_OUTOFLINE_TEMPLATE typename QMap&lt;Key, T&gt;::iterator QMap&lt;Key, T&gt;::erase(iterator it)
+<span class="lineNum">     718 </span>            : {
+<span class="lineNum">     719 </span>            :     QMapData::Node *update[QMapData::LastLevel + 1];
+<span class="lineNum">     720 </span>            :     QMapData::Node *cur = e;
+<span class="lineNum">     721 </span>            :     QMapData::Node *next = e;
+<span class="lineNum">     722 </span>            : 
+<span class="lineNum">     723 </span>            :     if (it == iterator(e))
+<span class="lineNum">     724 </span>            :         return it;
+<span class="lineNum">     725 </span>            : 
+<span class="lineNum">     726 </span>            :     for (int i = d-&gt;topLevel; i &gt;= 0; i--) {
+<span class="lineNum">     727 </span>            :         while ((next = cur-&gt;forward[i]) != e &amp;&amp; qMapLessThanKey&lt;Key&gt;(concrete(next)-&gt;key, it.key()))
+<span class="lineNum">     728 </span>            :             cur = next;
+<span class="lineNum">     729 </span>            :         update[i] = cur;
+<span class="lineNum">     730 </span>            :     }
+<span class="lineNum">     731 </span>            : 
+<span class="lineNum">     732 </span>            :     while (next != e) {
+<span class="lineNum">     733 </span>            :         cur = next;
+<span class="lineNum">     734 </span>            :         next = cur-&gt;forward[0];
+<span class="lineNum">     735 </span>            :         if (cur == it) {
+<span class="lineNum">     736 </span>            :             concrete(cur)-&gt;key.~Key();
+<span class="lineNum">     737 </span>            :             concrete(cur)-&gt;value.~T();
+<span class="lineNum">     738 </span>            :             d-&gt;node_delete(update, payload(), cur);
+<span class="lineNum">     739 </span>            :             return iterator(next);
+<span class="lineNum">     740 </span>            :         }
+<span class="lineNum">     741 </span>            : 
+<span class="lineNum">     742 </span>            :         for (int i = 0; i &lt;= d-&gt;topLevel; ++i) {
+<span class="lineNum">     743 </span>            :             if (update[i]-&gt;forward[i] != cur)
+<span class="lineNum">     744 </span>            :                 break;
+<span class="lineNum">     745 </span>            :             update[i] = cur;
+<span class="lineNum">     746 </span>            :         }
+<span class="lineNum">     747 </span>            :     }
+<span class="lineNum">     748 </span>            :     return end();
+<span class="lineNum">     749 </span>            : }
+<span class="lineNum">     750 </span>            : 
+<span class="lineNum">     751 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     752 </span>            : Q_OUTOFLINE_TEMPLATE void QMap&lt;Key, T&gt;::detach_helper()
+<span class="lineNum">     753 </span>            : {
+<span class="lineNum">     754 </span>            :     union { QMapData *d; QMapData::Node *e; } x;
+<span class="lineNum">     755 </span>            :     x.d = QMapData::createData(alignment());
+<span class="lineNum">     756 </span>            :     if (d-&gt;size) {
+<span class="lineNum">     757 </span>            :         x.d-&gt;insertInOrder = true;
+<span class="lineNum">     758 </span>            :         QMapData::Node *update[QMapData::LastLevel + 1];
+<span class="lineNum">     759 </span>            :         QMapData::Node *cur = e-&gt;forward[0];
+<span class="lineNum">     760 </span>            :         update[0] = x.e;
+<span class="lineNum">     761 </span>            :         while (cur != e) {
+<span class="lineNum">     762 </span>            :             QT_TRY {
+<span class="lineNum">     763 </span>            :                 Node *concreteNode = concrete(cur);
+<span class="lineNum">     764 </span>            :                 node_create(x.d, update, concreteNode-&gt;key, concreteNode-&gt;value);
+<span class="lineNum">     765 </span>            :             } QT_CATCH(...) {
+<span class="lineNum">     766 </span>            :                 freeData(x.d);
+<span class="lineNum">     767 </span>            :                 QT_RETHROW;
+<span class="lineNum">     768 </span>            :             }
+<span class="lineNum">     769 </span>            :             cur = cur-&gt;forward[0];
+<span class="lineNum">     770 </span>            :         }
+<span class="lineNum">     771 </span>            :         x.d-&gt;insertInOrder = false;
+<span class="lineNum">     772 </span>            :     }
+<span class="lineNum">     773 </span>            :     if (!d-&gt;ref.deref())
+<span class="lineNum">     774 </span>            :         freeData(d);
+<span class="lineNum">     775 </span>            :     d = x.d;
+<span class="lineNum">     776 </span>            : }
+<span class="lineNum">     777 </span>            : 
+<span class="lineNum">     778 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     779 </span>            : Q_OUTOFLINE_TEMPLATE QMapData::Node *QMap&lt;Key, T&gt;::mutableFindNode(QMapData::Node *aupdate[],
+<span class="lineNum">     780 </span>            :                                                                    const Key &amp;akey) const
+<span class="lineNum">     781 </span>            : {
+<span class="lineNum">     782 </span>            :     QMapData::Node *cur = e;
+<span class="lineNum">     783 </span>            :     QMapData::Node *next = e;
+<span class="lineNum">     784 </span>            : 
+<span class="lineNum">     785 </span>            :     for (int i = d-&gt;topLevel; i &gt;= 0; i--) {
+<span class="lineNum">     786 </span>            :         while ((next = cur-&gt;forward[i]) != e &amp;&amp; qMapLessThanKey&lt;Key&gt;(concrete(next)-&gt;key, akey))
+<span class="lineNum">     787 </span>            :             cur = next;
+<span class="lineNum">     788 </span>            :         aupdate[i] = cur;
+<span class="lineNum">     789 </span>            :     }
+<span class="lineNum">     790 </span>            :     if (next != e &amp;&amp; !qMapLessThanKey&lt;Key&gt;(akey, concrete(next)-&gt;key)) {
+<span class="lineNum">     791 </span>            :         return next;
+<span class="lineNum">     792 </span>            :     } else {
+<span class="lineNum">     793 </span>            :         return e;
+<span class="lineNum">     794 </span>            :     }
+<span class="lineNum">     795 </span>            : }
+<span class="lineNum">     796 </span>            : 
+<span class="lineNum">     797 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     798 </span>            : Q_OUTOFLINE_TEMPLATE QList&lt;Key&gt; QMap&lt;Key, T&gt;::uniqueKeys() const
+<span class="lineNum">     799 </span>            : {
+<span class="lineNum">     800 </span>            :     QList&lt;Key&gt; res;
+<span class="lineNum">     801 </span>            :     res.reserve(size()); // May be too much, but assume short lifetime
+<span class="lineNum">     802 </span>            :     const_iterator i = begin();
+<span class="lineNum">     803 </span>            :     if (i != end()) {
+<span class="lineNum">     804 </span>            :         for (;;) {
+<span class="lineNum">     805 </span>            :             const Key &amp;aKey = i.key();
+<span class="lineNum">     806 </span>            :             res.append(aKey);
+<span class="lineNum">     807 </span>            :             do {
+<span class="lineNum">     808 </span>            :                 if (++i == end())
+<span class="lineNum">     809 </span>            :                     goto break_out_of_outer_loop;
+<span class="lineNum">     810 </span>            :             } while (!(aKey &lt; i.key()));   // loop while (key == i.key())
+<span class="lineNum">     811 </span>            :         }
+<span class="lineNum">     812 </span>            :     }
+<span class="lineNum">     813 </span>            : break_out_of_outer_loop:
+<span class="lineNum">     814 </span>            :     return res;
+<span class="lineNum">     815 </span>            : }
+<span class="lineNum">     816 </span>            : 
+<span class="lineNum">     817 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     818 </span>            : Q_OUTOFLINE_TEMPLATE QList&lt;Key&gt; QMap&lt;Key, T&gt;::keys() const
+<span class="lineNum">     819 </span>            : {
+<span class="lineNum">     820 </span>            :     QList&lt;Key&gt; res;
+<span class="lineNum">     821 </span>            :     res.reserve(size());
+<span class="lineNum">     822 </span>            :     const_iterator i = begin();
+<span class="lineNum">     823 </span>            :     while (i != end()) {
+<span class="lineNum">     824 </span>            :         res.append(i.key());
+<span class="lineNum">     825 </span>            :         ++i;
+<span class="lineNum">     826 </span>            :     }
+<span class="lineNum">     827 </span>            :     return res;
+<span class="lineNum">     828 </span>            : }
+<span class="lineNum">     829 </span>            : 
+<span class="lineNum">     830 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     831 </span>            : Q_OUTOFLINE_TEMPLATE QList&lt;Key&gt; QMap&lt;Key, T&gt;::keys(const T &amp;avalue) const
+<span class="lineNum">     832 </span>            : {
+<span class="lineNum">     833 </span>            :     QList&lt;Key&gt; res;
+<span class="lineNum">     834 </span>            :     const_iterator i = begin();
+<span class="lineNum">     835 </span>            :     while (i != end()) {
+<span class="lineNum">     836 </span>            :         if (i.value() == avalue)
+<span class="lineNum">     837 </span>            :             res.append(i.key());
+<span class="lineNum">     838 </span>            :         ++i;
+<span class="lineNum">     839 </span>            :     }
+<span class="lineNum">     840 </span>            :     return res;
+<span class="lineNum">     841 </span>            : }
+<span class="lineNum">     842 </span>            : 
+<span class="lineNum">     843 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     844 </span>            : Q_OUTOFLINE_TEMPLATE const Key QMap&lt;Key, T&gt;::key(const T &amp;avalue) const
+<span class="lineNum">     845 </span>            : {
+<span class="lineNum">     846 </span>            :     return key(avalue, Key());
+<span class="lineNum">     847 </span>            : }
+<span class="lineNum">     848 </span>            : 
+<span class="lineNum">     849 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     850 </span>            : Q_OUTOFLINE_TEMPLATE const Key QMap&lt;Key, T&gt;::key(const T &amp;avalue, const Key &amp;defaultKey) const
+<span class="lineNum">     851 </span>            : {
+<span class="lineNum">     852 </span>            :     const_iterator i = begin();
+<span class="lineNum">     853 </span>            :     while (i != end()) {
+<span class="lineNum">     854 </span>            :         if (i.value() == avalue)
+<span class="lineNum">     855 </span>            :             return i.key();
+<span class="lineNum">     856 </span>            :         ++i;
+<span class="lineNum">     857 </span>            :     }
+<span class="lineNum">     858 </span>            : 
+<span class="lineNum">     859 </span>            :     return defaultKey;
+<span class="lineNum">     860 </span>            : }
+<span class="lineNum">     861 </span>            : 
+<span class="lineNum">     862 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     863 </span>            : Q_OUTOFLINE_TEMPLATE QList&lt;T&gt; QMap&lt;Key, T&gt;::values() const
+<span class="lineNum">     864 </span>            : {
+<span class="lineNum">     865 </span>            :     QList&lt;T&gt; res;
+<span class="lineNum">     866 </span>            :     res.reserve(size());
+<span class="lineNum">     867 </span>            :     const_iterator i = begin();
+<span class="lineNum">     868 </span>            :     while (i != end()) {
+<span class="lineNum">     869 </span>            :         res.append(i.value());
+<span class="lineNum">     870 </span>            :         ++i;
+<span class="lineNum">     871 </span>            :     }
+<span class="lineNum">     872 </span>            :     return res;
+<span class="lineNum">     873 </span>            : }
+<span class="lineNum">     874 </span>            : 
+<span class="lineNum">     875 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     876 </span>            : Q_OUTOFLINE_TEMPLATE QList&lt;T&gt; QMap&lt;Key, T&gt;::values(const Key &amp;akey) const
+<span class="lineNum">     877 </span>            : {
+<span class="lineNum">     878 </span>            :     QList&lt;T&gt; res;
+<span class="lineNum">     879 </span>            :     QMapData::Node *node = findNode(akey);
+<span class="lineNum">     880 </span>            :     if (node != e) {
+<span class="lineNum">     881 </span>            :         do {
+<span class="lineNum">     882 </span>            :             res.append(concrete(node)-&gt;value);
+<span class="lineNum">     883 </span>            :             node = node-&gt;forward[0];
+<span class="lineNum">     884 </span>            :         } while (node != e &amp;&amp; !qMapLessThanKey&lt;Key&gt;(akey, concrete(node)-&gt;key));
+<span class="lineNum">     885 </span>            :     }
+<span class="lineNum">     886 </span>            :     return res;
+<span class="lineNum">     887 </span>            : }
+<span class="lineNum">     888 </span>            : 
+<span class="lineNum">     889 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     890 </span>            : Q_INLINE_TEMPLATE typename QMap&lt;Key, T&gt;::const_iterator
+<span class="lineNum">     891 </span>            : QMap&lt;Key, T&gt;::lowerBound(const Key &amp;akey) const
+<span class="lineNum">     892 </span>            : {
+<span class="lineNum">     893 </span>            :     QMapData::Node *update[QMapData::LastLevel + 1];
+<span class="lineNum">     894 </span>            :     mutableFindNode(update, akey);
+<span class="lineNum">     895 </span>            :     return const_iterator(update[0]-&gt;forward[0]);
+<span class="lineNum">     896 </span>            : }
+<span class="lineNum">     897 </span>            : 
+<span class="lineNum">     898 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     899 </span>            : Q_INLINE_TEMPLATE typename QMap&lt;Key, T&gt;::iterator QMap&lt;Key, T&gt;::lowerBound(const Key &amp;akey)
+<span class="lineNum">     900 </span>            : {
+<span class="lineNum">     901 </span>            :     detach();
+<span class="lineNum">     902 </span>            :     return static_cast&lt;QMapData::Node *&gt;(const_cast&lt;const QMap *&gt;(this)-&gt;lowerBound(akey));
+<span class="lineNum">     903 </span>            : }
+<span class="lineNum">     904 </span>            : 
+<span class="lineNum">     905 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     906 </span>            : Q_INLINE_TEMPLATE typename QMap&lt;Key, T&gt;::const_iterator
+<span class="lineNum">     907 </span>            : QMap&lt;Key, T&gt;::upperBound(const Key &amp;akey) const
+<span class="lineNum">     908 </span>            : {
+<span class="lineNum">     909 </span>            :     QMapData::Node *update[QMapData::LastLevel + 1];
+<span class="lineNum">     910 </span>            :     mutableFindNode(update, akey);
+<span class="lineNum">     911 </span>            :     QMapData::Node *node = update[0]-&gt;forward[0];
+<span class="lineNum">     912 </span>            :     while (node != e &amp;&amp; !qMapLessThanKey&lt;Key&gt;(akey, concrete(node)-&gt;key))
+<span class="lineNum">     913 </span>            :         node = node-&gt;forward[0];
+<span class="lineNum">     914 </span>            :     return const_iterator(node);
+<span class="lineNum">     915 </span>            : }
+<span class="lineNum">     916 </span>            : 
+<span class="lineNum">     917 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     918 </span>            : Q_INLINE_TEMPLATE typename QMap&lt;Key, T&gt;::iterator QMap&lt;Key, T&gt;::upperBound(const Key &amp;akey)
+<span class="lineNum">     919 </span>            : {
+<span class="lineNum">     920 </span>            :     detach();
+<span class="lineNum">     921 </span>            :     return static_cast&lt;QMapData::Node *&gt;(const_cast&lt;const QMap *&gt;(this)-&gt;upperBound(akey));
+<span class="lineNum">     922 </span>            : }
+<span class="lineNum">     923 </span>            : 
+<span class="lineNum">     924 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     925 </span>            : Q_OUTOFLINE_TEMPLATE bool QMap&lt;Key, T&gt;::operator==(const QMap&lt;Key, T&gt; &amp;other) const
+<span class="lineNum">     926 </span>            : {
+<span class="lineNum">     927 </span>            :     if (size() != other.size())
+<span class="lineNum">     928 </span>            :         return false;
+<span class="lineNum">     929 </span>            :     if (d == other.d)
+<span class="lineNum">     930 </span>            :         return true;
+<span class="lineNum">     931 </span>            : 
+<span class="lineNum">     932 </span>            :     const_iterator it1 = begin();
+<span class="lineNum">     933 </span>            :     const_iterator it2 = other.begin();
+<span class="lineNum">     934 </span>            : 
+<span class="lineNum">     935 </span>            :     while (it1 != end()) {
+<span class="lineNum">     936 </span>            :         if (!(it1.value() == it2.value()) || qMapLessThanKey(it1.key(), it2.key()) || qMapLessThanKey(it2.key(), it1.key()))
+<span class="lineNum">     937 </span>            :             return false;
+<span class="lineNum">     938 </span>            :         ++it2;
+<span class="lineNum">     939 </span>            :         ++it1;
+<span class="lineNum">     940 </span>            :     }
+<span class="lineNum">     941 </span>            :     return true;
+<span class="lineNum">     942 </span>            : }
+<span class="lineNum">     943 </span>            : 
+<span class="lineNum">     944 </span>            : #ifndef QT_NO_STL
+<span class="lineNum">     945 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     946 </span>            : Q_OUTOFLINE_TEMPLATE QMap&lt;Key, T&gt;::QMap(const std::map&lt;Key, T&gt; &amp;other)
+<span class="lineNum">     947 </span>            : {
+<span class="lineNum">     948 </span>            :     d = QMapData::createData(alignment());
+<span class="lineNum">     949 </span>            :     d-&gt;insertInOrder = true;
+<span class="lineNum">     950 </span>            :     typename std::map&lt;Key,T&gt;::const_iterator it = other.end();
+<span class="lineNum">     951 </span>            :     while (it != other.begin()) {
+<span class="lineNum">     952 </span>            :         --it;
+<span class="lineNum">     953 </span>            :         insert((*it).first, (*it).second);
+<span class="lineNum">     954 </span>            :     }
+<span class="lineNum">     955 </span>            :     d-&gt;insertInOrder = false;
+<span class="lineNum">     956 </span>            : }
+<span class="lineNum">     957 </span>            : 
+<span class="lineNum">     958 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     959 </span>            : Q_OUTOFLINE_TEMPLATE std::map&lt;Key, T&gt; QMap&lt;Key, T&gt;::toStdMap() const
+<span class="lineNum">     960 </span>            : {
+<span class="lineNum">     961 </span>            :     std::map&lt;Key, T&gt; map;
+<span class="lineNum">     962 </span>            :     const_iterator it = end();
+<span class="lineNum">     963 </span>            :     while (it != begin()) {
+<span class="lineNum">     964 </span>            :         --it;
+<span class="lineNum">     965 </span>            :         map.insert(std::pair&lt;Key, T&gt;(it.key(), it.value()));
+<span class="lineNum">     966 </span>            :     }
+<span class="lineNum">     967 </span>            :     return map;
+<span class="lineNum">     968 </span>            : }
+<span class="lineNum">     969 </span>            : 
+<span class="lineNum">     970 </span>            : #endif // QT_NO_STL
+<span class="lineNum">     971 </span>            : 
+<span class="lineNum">     972 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">     973 </span>            : class QMultiMap : public QMap&lt;Key, T&gt;
+<span class="lineNum">     974 </span>            : {
+<span class="lineNum">     975 </span>            : public:
+<span class="lineNum">     976 </span>            :     QMultiMap() {}
+<span class="lineNum">     977 </span>            :     QMultiMap(const QMap&lt;Key, T&gt; &amp;other) : QMap&lt;Key, T&gt;(other) {}
+<span class="lineNum">     978 </span>            :     inline void swap(QMultiMap&lt;Key, T&gt; &amp;other) { QMap&lt;Key, T&gt;::swap(other); }
+<span class="lineNum">     979 </span>            : 
+<span class="lineNum">     980 </span>            :     inline typename QMap&lt;Key, T&gt;::iterator replace(const Key &amp;key, const T &amp;value)
+<span class="lineNum">     981 </span>            :     { return QMap&lt;Key, T&gt;::insert(key, value); }
+<span class="lineNum">     982 </span>            :     inline typename QMap&lt;Key, T&gt;::iterator insert(const Key &amp;key, const T &amp;value)
+<span class="lineNum">     983 </span>            :     { return QMap&lt;Key, T&gt;::insertMulti(key, value); }
+<span class="lineNum">     984 </span>            : 
+<span class="lineNum">     985 </span>            :     inline QMultiMap &amp;operator+=(const QMultiMap &amp;other)
+<span class="lineNum">     986 </span>            :     { this-&gt;unite(other); return *this; }
+<span class="lineNum">     987 </span>            :     inline QMultiMap operator+(const QMultiMap &amp;other) const
+<span class="lineNum">     988 </span>            :     { QMultiMap result = *this; result += other; return result; }
+<span class="lineNum">     989 </span>            : 
+<span class="lineNum">     990 </span>            : #if !defined(Q_NO_USING_KEYWORD) &amp;&amp; !defined(Q_CC_RVCT)
+<span class="lineNum">     991 </span>            :     // RVCT compiler doesn't handle using-keyword right when used functions are overloaded in child class
+<span class="lineNum">     992 </span>            :     using QMap&lt;Key, T&gt;::contains;
+<span class="lineNum">     993 </span>            :     using QMap&lt;Key, T&gt;::remove;
+<span class="lineNum">     994 </span>            :     using QMap&lt;Key, T&gt;::count;
+<span class="lineNum">     995 </span>            :     using QMap&lt;Key, T&gt;::find;
+<span class="lineNum">     996 </span>            :     using QMap&lt;Key, T&gt;::constFind;
+<span class="lineNum">     997 </span>            : #else
+<span class="lineNum">     998 </span>            :     inline bool contains(const Key &amp;key) const
+<span class="lineNum">     999 </span>            :     { return QMap&lt;Key, T&gt;::contains(key); }
+<span class="lineNum">    1000 </span>            :     inline int remove(const Key &amp;key)
+<span class="lineNum">    1001 </span>            :     { return QMap&lt;Key, T&gt;::remove(key); }
+<span class="lineNum">    1002 </span>            :     inline int count(const Key &amp;key) const
+<span class="lineNum">    1003 </span>            :     { return QMap&lt;Key, T&gt;::count(key); }
+<span class="lineNum">    1004 </span>            :     inline int count() const
+<span class="lineNum">    1005 </span>            :     { return QMap&lt;Key, T&gt;::count(); }
+<span class="lineNum">    1006 </span>            :     inline typename QMap&lt;Key, T&gt;::iterator find(const Key &amp;key)
+<span class="lineNum">    1007 </span>            :     { return QMap&lt;Key, T&gt;::find(key); }
+<span class="lineNum">    1008 </span>            :     inline typename QMap&lt;Key, T&gt;::const_iterator find(const Key &amp;key) const
+<span class="lineNum">    1009 </span>            :     { return QMap&lt;Key, T&gt;::find(key); }
+<span class="lineNum">    1010 </span>            :     inline typename QMap&lt;Key, T&gt;::const_iterator constFind(const Key &amp;key) const
+<span class="lineNum">    1011 </span>            :     { return QMap&lt;Key, T&gt;::constFind(key); }
+<span class="lineNum">    1012 </span>            : #endif
+<span class="lineNum">    1013 </span>            : 
+<span class="lineNum">    1014 </span>            :     bool contains(const Key &amp;key, const T &amp;value) const;
+<span class="lineNum">    1015 </span>            : 
+<span class="lineNum">    1016 </span>            :     int remove(const Key &amp;key, const T &amp;value);
+<span class="lineNum">    1017 </span>            : 
+<span class="lineNum">    1018 </span>            :     int count(const Key &amp;key, const T &amp;value) const;
+<span class="lineNum">    1019 </span>            : 
+<span class="lineNum">    1020 </span>            :     typename QMap&lt;Key, T&gt;::iterator find(const Key &amp;key, const T &amp;value) {
+<span class="lineNum">    1021 </span>            :         typename QMap&lt;Key, T&gt;::iterator i(find(key));
+<span class="lineNum">    1022 </span>            :         typename QMap&lt;Key, T&gt;::iterator end(this-&gt;end());
+<span class="lineNum">    1023 </span>            :         while (i != end &amp;&amp; !qMapLessThanKey&lt;Key&gt;(key, i.key())) {
+<span class="lineNum">    1024 </span>            :             if (i.value() == value)
+<span class="lineNum">    1025 </span>            :                 return i;
+<span class="lineNum">    1026 </span>            :             ++i;
+<span class="lineNum">    1027 </span>            :         }
+<span class="lineNum">    1028 </span>            :         return end;
+<span class="lineNum">    1029 </span>            :     }
+<span class="lineNum">    1030 </span>            :     typename QMap&lt;Key, T&gt;::const_iterator find(const Key &amp;key, const T &amp;value) const {
+<span class="lineNum">    1031 </span>            :         typename QMap&lt;Key, T&gt;::const_iterator i(constFind(key));
+<span class="lineNum">    1032 </span>            :         typename QMap&lt;Key, T&gt;::const_iterator end(QMap&lt;Key, T&gt;::constEnd());
+<span class="lineNum">    1033 </span>            :         while (i != end &amp;&amp; !qMapLessThanKey&lt;Key&gt;(key, i.key())) {
+<span class="lineNum">    1034 </span>            :             if (i.value() == value)
+<span class="lineNum">    1035 </span>            :                 return i;
+<span class="lineNum">    1036 </span>            :             ++i;
+<span class="lineNum">    1037 </span>            :         }
+<span class="lineNum">    1038 </span>            :         return end;
+<span class="lineNum">    1039 </span>            :     }
+<span class="lineNum">    1040 </span>            :     typename QMap&lt;Key, T&gt;::const_iterator constFind(const Key &amp;key, const T &amp;value) const
+<span class="lineNum">    1041 </span>            :         { return find(key, value); }
+<span class="lineNum">    1042 </span>            : private:
+<span class="lineNum">    1043 </span>            :     T &amp;operator[](const Key &amp;key);
+<span class="lineNum">    1044 </span>            :     const T operator[](const Key &amp;key) const;
+<span class="lineNum">    1045 </span>            : };
+<span class="lineNum">    1046 </span>            : 
+<span class="lineNum">    1047 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">    1048 </span>            : Q_INLINE_TEMPLATE bool QMultiMap&lt;Key, T&gt;::contains(const Key &amp;key, const T &amp;value) const
+<span class="lineNum">    1049 </span>            : {
+<span class="lineNum">    1050 </span>            :     return constFind(key, value) != QMap&lt;Key, T&gt;::constEnd();
+<span class="lineNum">    1051 </span>            : }
+<span class="lineNum">    1052 </span>            : 
+<span class="lineNum">    1053 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">    1054 </span>            : Q_INLINE_TEMPLATE int QMultiMap&lt;Key, T&gt;::remove(const Key &amp;key, const T &amp;value)
+<span class="lineNum">    1055 </span>            : {
+<span class="lineNum">    1056 </span>            :     int n = 0;
+<span class="lineNum">    1057 </span>            :     typename QMap&lt;Key, T&gt;::iterator i(find(key));
+<span class="lineNum">    1058 </span>            :     typename QMap&lt;Key, T&gt;::iterator end(QMap&lt;Key, T&gt;::end());
+<span class="lineNum">    1059 </span>            :     while (i != end &amp;&amp; !qMapLessThanKey&lt;Key&gt;(key, i.key())) {
+<span class="lineNum">    1060 </span>            :         if (i.value() == value) {
+<span class="lineNum">    1061 </span>            :             i = this-&gt;erase(i);
+<span class="lineNum">    1062 </span>            :             ++n;
+<span class="lineNum">    1063 </span>            :         } else {
+<span class="lineNum">    1064 </span>            :             ++i;
+<span class="lineNum">    1065 </span>            :         }
+<span class="lineNum">    1066 </span>            :     }
+<span class="lineNum">    1067 </span>            :     return n;
+<span class="lineNum">    1068 </span>            : }
+<span class="lineNum">    1069 </span>            : 
+<span class="lineNum">    1070 </span>            : template &lt;class Key, class T&gt;
+<span class="lineNum">    1071 </span>            : Q_INLINE_TEMPLATE int QMultiMap&lt;Key, T&gt;::count(const Key &amp;key, const T &amp;value) const
+<span class="lineNum">    1072 </span>            : {
+<span class="lineNum">    1073 </span>            :     int n = 0;
+<span class="lineNum">    1074 </span>            :     typename QMap&lt;Key, T&gt;::const_iterator i(constFind(key));
+<span class="lineNum">    1075 </span>            :     typename QMap&lt;Key, T&gt;::const_iterator end(QMap&lt;Key, T&gt;::constEnd());
+<span class="lineNum">    1076 </span>            :     while (i != end &amp;&amp; !qMapLessThanKey&lt;Key&gt;(key, i.key())) {
+<span class="lineNum">    1077 </span>            :         if (i.value() == value)
+<span class="lineNum">    1078 </span>            :             ++n;
+<span class="lineNum">    1079 </span>            :         ++i;
+<span class="lineNum">    1080 </span>            :     }
+<span class="lineNum">    1081 </span>            :     return n;
+<span class="lineNum">    1082 </span>            : }
+<span class="lineNum">    1083 </span>            : 
+<span class="lineNum">    1084 </span>            : Q_DECLARE_ASSOCIATIVE_ITERATOR(Map)
+<span class="lineNum">    1085 </span>            : Q_DECLARE_MUTABLE_ASSOCIATIVE_ITERATOR(Map)
+<span class="lineNum">    1086 </span>            : 
+<span class="lineNum">    1087 </span>            : QT_END_NAMESPACE
+<span class="lineNum">    1088 </span>            : 
+<span class="lineNum">    1089 </span>            : QT_END_HEADER
+<span class="lineNum">    1090 </span>            : 
+<span class="lineNum">    1091 </span>            : #endif // QMAP_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

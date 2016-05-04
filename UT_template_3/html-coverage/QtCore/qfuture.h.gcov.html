@@ -1,0 +1,354 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - QtCore/qfuture.h</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">QtCore</a> - qfuture.h<span style="font-size: 80%;"> (source / <a href="qfuture.h.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-05-04</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">-</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /****************************************************************************</a>
+<span class="lineNum">       2 </span>            : **
+<span class="lineNum">       3 </span>            : ** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
+<span class="lineNum">       4 </span>            : ** Contact: http://www.qt-project.org/legal
+<span class="lineNum">       5 </span>            : **
+<span class="lineNum">       6 </span>            : ** This file is part of the QtCore module of the Qt Toolkit.
+<span class="lineNum">       7 </span>            : **
+<span class="lineNum">       8 </span>            : ** $QT_BEGIN_LICENSE:LGPL$
+<span class="lineNum">       9 </span>            : ** Commercial License Usage
+<span class="lineNum">      10 </span>            : ** Licensees holding valid commercial Qt licenses may use this file in
+<span class="lineNum">      11 </span>            : ** accordance with the commercial license agreement provided with the
+<span class="lineNum">      12 </span>            : ** Software or, alternatively, in accordance with the terms contained in
+<span class="lineNum">      13 </span>            : ** a written agreement between you and Digia.  For licensing terms and
+<span class="lineNum">      14 </span>            : ** conditions see http://qt.digia.com/licensing.  For further information
+<span class="lineNum">      15 </span>            : ** use the contact form at http://qt.digia.com/contact-us.
+<span class="lineNum">      16 </span>            : **
+<span class="lineNum">      17 </span>            : ** GNU Lesser General Public License Usage
+<span class="lineNum">      18 </span>            : ** Alternatively, this file may be used under the terms of the GNU Lesser
+<span class="lineNum">      19 </span>            : ** General Public License version 2.1 as published by the Free Software
+<span class="lineNum">      20 </span>            : ** Foundation and appearing in the file LICENSE.LGPL included in the
+<span class="lineNum">      21 </span>            : ** packaging of this file.  Please review the following information to
+<span class="lineNum">      22 </span>            : ** ensure the GNU Lesser General Public License version 2.1 requirements
+<span class="lineNum">      23 </span>            : ** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+<span class="lineNum">      24 </span>            : **
+<span class="lineNum">      25 </span>            : ** In addition, as a special exception, Digia gives you certain additional
+<span class="lineNum">      26 </span>            : ** rights.  These rights are described in the Digia Qt LGPL Exception
+<span class="lineNum">      27 </span>            : ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+<span class="lineNum">      28 </span>            : **
+<span class="lineNum">      29 </span>            : ** GNU General Public License Usage
+<span class="lineNum">      30 </span>            : ** Alternatively, this file may be used under the terms of the GNU
+<span class="lineNum">      31 </span>            : ** General Public License version 3.0 as published by the Free Software
+<span class="lineNum">      32 </span>            : ** Foundation and appearing in the file LICENSE.GPL included in the
+<span class="lineNum">      33 </span>            : ** packaging of this file.  Please review the following information to
+<span class="lineNum">      34 </span>            : ** ensure the GNU General Public License version 3.0 requirements will be
+<span class="lineNum">      35 </span>            : ** met: http://www.gnu.org/copyleft/gpl.html.
+<span class="lineNum">      36 </span>            : **
+<span class="lineNum">      37 </span>            : **
+<span class="lineNum">      38 </span>            : ** $QT_END_LICENSE$
+<span class="lineNum">      39 </span>            : **
+<span class="lineNum">      40 </span>            : ****************************************************************************/
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : #ifndef QFUTURE_H
+<span class="lineNum">      43 </span>            : #define QFUTURE_H
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : #include &lt;QtCore/qglobal.h&gt;
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span>            : #ifndef QT_NO_QFUTURE
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            : #include &lt;QtCore/qfutureinterface.h&gt;
+<span class="lineNum">      50 </span>            : #include &lt;QtCore/qstring.h&gt;
+<span class="lineNum">      51 </span>            : #include &lt;QtCore/qtconcurrentcompilertest.h&gt;
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            : QT_BEGIN_HEADER
+<span class="lineNum">      54 </span>            : QT_BEGIN_NAMESPACE
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            : QT_MODULE(Core)
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : template &lt;typename T&gt;
+<span class="lineNum">      59 </span>            : class QFutureWatcher;
+<span class="lineNum">      60 </span>            : template &lt;&gt;
+<span class="lineNum">      61 </span>            : class QFutureWatcher&lt;void&gt;;
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            : template &lt;typename T&gt;
+<span class="lineNum">      64 </span>            : class QFuture
+<span class="lineNum">      65 </span>            : {
+<span class="lineNum">      66 </span>            : public:
+<span class="lineNum">      67 </span>            :     QFuture()
+<span class="lineNum">      68 </span>            :         : d(QFutureInterface&lt;T&gt;::canceledResult())
+<span class="lineNum">      69 </span>            :     { }
+<span class="lineNum">      70 </span>            :     explicit QFuture(QFutureInterface&lt;T&gt; *p) // internal
+<span class="lineNum">      71 </span>            :         : d(*p)
+<span class="lineNum">      72 </span>            :     { }
+<span class="lineNum">      73 </span>            :     QFuture(const QFuture &amp;other)
+<span class="lineNum">      74 </span>            :         : d(other.d)
+<span class="lineNum">      75 </span>            :     { }
+<span class="lineNum">      76 </span>            :     ~QFuture()
+<span class="lineNum">      77 </span>            :     { }
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span>            :     inline QFuture &amp;operator=(const QFuture &amp;other);
+<span class="lineNum">      80 </span>            :     bool operator==(const QFuture &amp;other) const { return (d == other.d); }
+<span class="lineNum">      81 </span>            :     bool operator!=(const QFuture &amp;other) const { return (d != other.d); }
+<span class="lineNum">      82 </span>            : 
+<span class="lineNum">      83 </span>            :     void cancel() { d.cancel(); }
+<span class="lineNum">      84 </span>            :     bool isCanceled() const { return d.isCanceled(); }
+<span class="lineNum">      85 </span>            : 
+<span class="lineNum">      86 </span>            :     void setPaused(bool paused) { d.setPaused(paused); }
+<span class="lineNum">      87 </span>            :     bool isPaused() const { return d.isPaused(); }
+<span class="lineNum">      88 </span>            :     void pause() { setPaused(true); }
+<span class="lineNum">      89 </span>            :     void resume() { setPaused(false); }
+<span class="lineNum">      90 </span>            :     void togglePaused() { d.togglePaused(); }
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span>            :     bool isStarted() const { return d.isStarted(); }
+<span class="lineNum">      93 </span>            :     bool isFinished() const { return d.isFinished(); }
+<span class="lineNum">      94 </span>            :     bool isRunning() const { return d.isRunning(); }
+<span class="lineNum">      95 </span>            : 
+<span class="lineNum">      96 </span>            :     int resultCount() const { return d.resultCount(); }
+<span class="lineNum">      97 </span>            :     int progressValue() const { return d.progressValue(); }
+<span class="lineNum">      98 </span>            :     int progressMinimum() const { return d.progressMinimum(); }
+<span class="lineNum">      99 </span>            :     int progressMaximum() const { return d.progressMaximum(); }
+<span class="lineNum">     100 </span>            :     QString progressText() const { return d.progressText(); }
+<span class="lineNum">     101 </span>            :     void waitForFinished() { d.waitForFinished(); }
+<span class="lineNum">     102 </span>            : 
+<span class="lineNum">     103 </span>            :     inline T result() const;
+<span class="lineNum">     104 </span>            :     inline T resultAt(int index) const;
+<span class="lineNum">     105 </span>            :     bool isResultReadyAt(int resultIndex) const { return d.isResultReadyAt(resultIndex); }
+<span class="lineNum">     106 </span>            : 
+<span class="lineNum">     107 </span>            :     operator T() const { return result(); }
+<span class="lineNum">     108 </span>            :     QList&lt;T&gt; results() const { return d.results(); }
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span>            :     class const_iterator
+<span class="lineNum">     111 </span>            :     {
+<span class="lineNum">     112 </span>            :     public:
+<span class="lineNum">     113 </span>            :         typedef std::bidirectional_iterator_tag iterator_category;
+<span class="lineNum">     114 </span>            :         typedef qptrdiff difference_type;
+<span class="lineNum">     115 </span>            :         typedef T value_type;
+<span class="lineNum">     116 </span>            :         typedef const T *pointer;
+<span class="lineNum">     117 </span>            :         typedef const T &amp;reference;
+<span class="lineNum">     118 </span>            : 
+<span class="lineNum">     119 </span>            :         inline const_iterator() {}
+<span class="lineNum">     120 </span>            :         inline const_iterator(QFuture const * const _future, int _index) : future(_future), index(_index) {}
+<span class="lineNum">     121 </span>            :         inline const_iterator(const const_iterator &amp;o) : future(o.future), index(o.index)  {}
+<span class="lineNum">     122 </span>            :         inline const_iterator &amp;operator=(const const_iterator &amp;o)
+<span class="lineNum">     123 </span>            :         { future = o.future; index = o.index; return *this; }
+<span class="lineNum">     124 </span>            :         inline const T &amp;operator*() const { return future-&gt;d.resultReference(index); }
+<span class="lineNum">     125 </span>            :         inline const T *operator-&gt;() const { return future-&gt;d.resultPointer(index); }
+<span class="lineNum">     126 </span>            : 
+<span class="lineNum">     127 </span>            :         inline bool operator!=(const const_iterator &amp;other) const
+<span class="lineNum">     128 </span>            :         {
+<span class="lineNum">     129 </span>            :             if (index == -1 &amp;&amp; other.index == -1) // comparing end != end?
+<span class="lineNum">     130 </span>            :                 return false;
+<span class="lineNum">     131 </span>            :             if (other.index == -1)
+<span class="lineNum">     132 </span>            :                 return (future-&gt;isRunning() || (index &lt; future-&gt;resultCount()));
+<span class="lineNum">     133 </span>            :             return (index != other.index);
+<span class="lineNum">     134 </span>            :         }
+<span class="lineNum">     135 </span>            : 
+<span class="lineNum">     136 </span>            :         inline bool operator==(const const_iterator &amp;o) const { return !operator!=(o); }
+<span class="lineNum">     137 </span>            :         inline const_iterator &amp;operator++() { ++index; return *this; }
+<span class="lineNum">     138 </span>            :         inline const_iterator operator++(int) { const_iterator r = *this; ++index; return r; }
+<span class="lineNum">     139 </span>            :         inline const_iterator &amp;operator--() { --index; return *this; }
+<span class="lineNum">     140 </span>            :         inline const_iterator operator--(int) { const_iterator r = *this; --index; return r; }
+<span class="lineNum">     141 </span>            :         inline const_iterator operator+(int j) const { return const_iterator(future, index + j); }
+<span class="lineNum">     142 </span>            :         inline const_iterator operator-(int j) const { return const_iterator(future, index - j); }
+<span class="lineNum">     143 </span>            :         inline const_iterator &amp;operator+=(int j) { index += j; return *this; }
+<span class="lineNum">     144 </span>            :         inline const_iterator &amp;operator-=(int j) { index -= j; return *this; }
+<span class="lineNum">     145 </span>            :     private:
+<span class="lineNum">     146 </span>            :         QFuture const * future;
+<span class="lineNum">     147 </span>            :         int index;
+<span class="lineNum">     148 </span>            :     };
+<span class="lineNum">     149 </span>            :     friend class const_iterator;
+<span class="lineNum">     150 </span>            :     typedef const_iterator ConstIterator;
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span>            :     const_iterator begin() const { return  const_iterator(this, 0); }
+<span class="lineNum">     153 </span>            :     const_iterator constBegin() const { return  const_iterator(this, 0); }
+<span class="lineNum">     154 </span>            :     const_iterator end() const { return const_iterator(this, -1); }
+<span class="lineNum">     155 </span>            :     const_iterator constEnd() const { return const_iterator(this, -1); }
+<span class="lineNum">     156 </span>            : 
+<span class="lineNum">     157 </span>            : private:
+<span class="lineNum">     158 </span>            :     friend class QFutureWatcher&lt;T&gt;;
+<span class="lineNum">     159 </span>            : 
+<span class="lineNum">     160 </span>            : public: // Warning: the d pointer is not documented and is considered private.
+<span class="lineNum">     161 </span>            :     mutable QFutureInterface&lt;T&gt; d;
+<span class="lineNum">     162 </span>            : };
+<span class="lineNum">     163 </span>            : 
+<span class="lineNum">     164 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     165 </span>            : inline QFuture&lt;T&gt; &amp;QFuture&lt;T&gt;::operator=(const QFuture&lt;T&gt; &amp;other)
+<span class="lineNum">     166 </span>            : {
+<span class="lineNum">     167 </span>            :     d = other.d;
+<span class="lineNum">     168 </span>            :     return *this;
+<span class="lineNum">     169 </span>            : }
+<span class="lineNum">     170 </span>            : 
+<span class="lineNum">     171 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     172 </span>            : inline T QFuture&lt;T&gt;::result() const
+<span class="lineNum">     173 </span>            : {
+<span class="lineNum">     174 </span>            :     d.waitForResult(0);
+<span class="lineNum">     175 </span>            :     return d.resultReference(0);
+<span class="lineNum">     176 </span>            : }
+<span class="lineNum">     177 </span>            : 
+<span class="lineNum">     178 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     179 </span>            : inline T QFuture&lt;T&gt;::resultAt(int index) const
+<span class="lineNum">     180 </span>            : {
+<span class="lineNum">     181 </span>            :     d.waitForResult(index);
+<span class="lineNum">     182 </span>            :     return d.resultReference(index);
+<span class="lineNum">     183 </span>            : }
+<span class="lineNum">     184 </span>            : 
+<span class="lineNum">     185 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     186 </span>            : inline QFuture&lt;T&gt; QFutureInterface&lt;T&gt;::future()
+<span class="lineNum">     187 </span>            : {
+<span class="lineNum">     188 </span>            :     return QFuture&lt;T&gt;(this);
+<span class="lineNum">     189 </span>            : }
+<span class="lineNum">     190 </span>            : 
+<span class="lineNum">     191 </span>            : Q_DECLARE_SEQUENTIAL_ITERATOR(Future)
+<span class="lineNum">     192 </span>            : 
+<span class="lineNum">     193 </span>            : template &lt;&gt;
+<span class="lineNum">     194 </span>            : class QFuture&lt;void&gt;
+<span class="lineNum">     195 </span>            : {
+<span class="lineNum">     196 </span>            : public:
+<span class="lineNum">     197 </span>            :     QFuture()
+<span class="lineNum">     198 </span>            :         : d(QFutureInterface&lt;void&gt;::canceledResult())
+<span class="lineNum">     199 </span>            :     { }
+<span class="lineNum">     200 </span>            :     explicit QFuture(QFutureInterfaceBase *p) // internal
+<span class="lineNum">     201 </span>            :         : d(*p)
+<span class="lineNum">     202 </span>            :     { }
+<span class="lineNum">     203 </span>            :     QFuture(const QFuture &amp;other)
+<span class="lineNum">     204 </span>            :         : d(other.d)
+<span class="lineNum">     205 </span>            :     { }
+<span class="lineNum">     206 </span>            :     ~QFuture()
+<span class="lineNum">     207 </span><span class="lineNoCov">          0 :     { }</span>
+<span class="lineNum">     208 </span>            : 
+<span class="lineNum">     209 </span>            :     QFuture &amp;operator=(const QFuture &amp;other);
+<span class="lineNum">     210 </span>            :     bool operator==(const QFuture &amp;other) const { return (d == other.d); }
+<span class="lineNum">     211 </span>            :     bool operator!=(const QFuture &amp;other) const { return (d != other.d); }
+<span class="lineNum">     212 </span>            : 
+<span class="lineNum">     213 </span>            : #if !defined(Q_CC_XLC)
+<span class="lineNum">     214 </span>            :     template &lt;typename T&gt;
+<span class="lineNum">     215 </span>            :     QFuture(const QFuture&lt;T&gt; &amp;other)
+<span class="lineNum">     216 </span>            :         : d(other.d)
+<span class="lineNum">     217 </span>            :     { }
+<span class="lineNum">     218 </span>            : 
+<span class="lineNum">     219 </span>            :     template &lt;typename T&gt;
+<span class="lineNum">     220 </span>            :     QFuture&lt;void&gt; &amp;operator=(const QFuture&lt;T&gt; &amp;other)
+<span class="lineNum">     221 </span>            :     {
+<span class="lineNum">     222 </span>            :         d = other.d;
+<span class="lineNum">     223 </span>            :         return *this;
+<span class="lineNum">     224 </span>            :     }
+<span class="lineNum">     225 </span>            : #endif
+<span class="lineNum">     226 </span>            : 
+<span class="lineNum">     227 </span>            :     void cancel() { d.cancel(); }
+<span class="lineNum">     228 </span>            :     bool isCanceled() const { return d.isCanceled(); }
+<span class="lineNum">     229 </span>            : 
+<span class="lineNum">     230 </span>            :     void setPaused(bool paused) { d.setPaused(paused); }
+<span class="lineNum">     231 </span>            :     bool isPaused() const { return d.isPaused(); }
+<span class="lineNum">     232 </span>            :     void pause() { setPaused(true); }
+<span class="lineNum">     233 </span>            :     void resume() { setPaused(false); }
+<span class="lineNum">     234 </span>            :     void togglePaused() { d.togglePaused(); }
+<span class="lineNum">     235 </span>            : 
+<span class="lineNum">     236 </span>            :     bool isStarted() const { return d.isStarted(); }
+<span class="lineNum">     237 </span>            :     bool isFinished() const { return d.isFinished(); }
+<span class="lineNum">     238 </span>            :     bool isRunning() const { return d.isRunning(); }
+<span class="lineNum">     239 </span>            : 
+<span class="lineNum">     240 </span>            :     int resultCount() const { return d.resultCount(); }
+<span class="lineNum">     241 </span>            :     int progressValue() const { return d.progressValue(); }
+<span class="lineNum">     242 </span>            :     int progressMinimum() const { return d.progressMinimum(); }
+<span class="lineNum">     243 </span>            :     int progressMaximum() const { return d.progressMaximum(); }
+<span class="lineNum">     244 </span>            :     QString progressText() const { return d.progressText(); }
+<span class="lineNum">     245 </span>            :     void waitForFinished() { d.waitForFinished(); }
+<span class="lineNum">     246 </span>            : 
+<span class="lineNum">     247 </span>            : private:
+<span class="lineNum">     248 </span>            :     friend class QFutureWatcher&lt;void&gt;;
+<span class="lineNum">     249 </span>            : 
+<span class="lineNum">     250 </span>            : #ifdef QFUTURE_TEST
+<span class="lineNum">     251 </span>            : public:
+<span class="lineNum">     252 </span>            : #endif
+<span class="lineNum">     253 </span>            :     mutable QFutureInterfaceBase d;
+<span class="lineNum">     254 </span>            : };
+<span class="lineNum">     255 </span>            : 
+<span class="lineNum">     256 </span>            : inline QFuture&lt;void&gt; &amp;QFuture&lt;void&gt;::operator=(const QFuture&lt;void&gt; &amp;other)
+<span class="lineNum">     257 </span>            : {
+<span class="lineNum">     258 </span>            :     d = other.d;
+<span class="lineNum">     259 </span>            :     return *this;
+<span class="lineNum">     260 </span>            : }
+<span class="lineNum">     261 </span>            : 
+<span class="lineNum">     262 </span>            : inline QFuture&lt;void&gt; QFutureInterface&lt;void&gt;::future()
+<span class="lineNum">     263 </span>            : {
+<span class="lineNum">     264 </span>            :     return QFuture&lt;void&gt;(this);
+<span class="lineNum">     265 </span>            : }
+<span class="lineNum">     266 </span>            : 
+<span class="lineNum">     267 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     268 </span>            : QFuture&lt;void&gt; qToVoidFuture(const QFuture&lt;T&gt; &amp;future)
+<span class="lineNum">     269 </span>            : {
+<span class="lineNum">     270 </span>            :     return QFuture&lt;void&gt;(future.d);
+<span class="lineNum">     271 </span>            : }
+<span class="lineNum">     272 </span>            : 
+<span class="lineNum">     273 </span>            : QT_END_NAMESPACE
+<span class="lineNum">     274 </span>            : QT_END_HEADER
+<span class="lineNum">     275 </span>            : 
+<span class="lineNum">     276 </span>            : #endif // QT_NO_CONCURRENT
+<span class="lineNum">     277 </span>            : 
+<span class="lineNum">     278 </span>            : #endif // QFUTURE_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

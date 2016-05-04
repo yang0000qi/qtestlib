@@ -1,0 +1,12 @@
+TN:
+SF:/home/yq/gcov/lcov/single_src/test.c
+FN:3,main
+FNDA:1,main
+FNF:1
+FNH:1
+DA:3,1
+DA:5,1
+DA:6,1
+LF:3
+LH:3
+end_of_record

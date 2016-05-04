@@ -1,0 +1,973 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - QtGui/qevent.h</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">QtGui</a> - qevent.h<span style="font-size: 80%;"> (source / <a href="qevent.h.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-05-04</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">-</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /****************************************************************************</a>
+<span class="lineNum">       2 </span>            : **
+<span class="lineNum">       3 </span>            : ** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
+<span class="lineNum">       4 </span>            : ** Contact: http://www.qt-project.org/legal
+<span class="lineNum">       5 </span>            : **
+<span class="lineNum">       6 </span>            : ** This file is part of the QtGui module of the Qt Toolkit.
+<span class="lineNum">       7 </span>            : **
+<span class="lineNum">       8 </span>            : ** $QT_BEGIN_LICENSE:LGPL$
+<span class="lineNum">       9 </span>            : ** Commercial License Usage
+<span class="lineNum">      10 </span>            : ** Licensees holding valid commercial Qt licenses may use this file in
+<span class="lineNum">      11 </span>            : ** accordance with the commercial license agreement provided with the
+<span class="lineNum">      12 </span>            : ** Software or, alternatively, in accordance with the terms contained in
+<span class="lineNum">      13 </span>            : ** a written agreement between you and Digia.  For licensing terms and
+<span class="lineNum">      14 </span>            : ** conditions see http://qt.digia.com/licensing.  For further information
+<span class="lineNum">      15 </span>            : ** use the contact form at http://qt.digia.com/contact-us.
+<span class="lineNum">      16 </span>            : **
+<span class="lineNum">      17 </span>            : ** GNU Lesser General Public License Usage
+<span class="lineNum">      18 </span>            : ** Alternatively, this file may be used under the terms of the GNU Lesser
+<span class="lineNum">      19 </span>            : ** General Public License version 2.1 as published by the Free Software
+<span class="lineNum">      20 </span>            : ** Foundation and appearing in the file LICENSE.LGPL included in the
+<span class="lineNum">      21 </span>            : ** packaging of this file.  Please review the following information to
+<span class="lineNum">      22 </span>            : ** ensure the GNU Lesser General Public License version 2.1 requirements
+<span class="lineNum">      23 </span>            : ** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+<span class="lineNum">      24 </span>            : **
+<span class="lineNum">      25 </span>            : ** In addition, as a special exception, Digia gives you certain additional
+<span class="lineNum">      26 </span>            : ** rights.  These rights are described in the Digia Qt LGPL Exception
+<span class="lineNum">      27 </span>            : ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+<span class="lineNum">      28 </span>            : **
+<span class="lineNum">      29 </span>            : ** GNU General Public License Usage
+<span class="lineNum">      30 </span>            : ** Alternatively, this file may be used under the terms of the GNU
+<span class="lineNum">      31 </span>            : ** General Public License version 3.0 as published by the Free Software
+<span class="lineNum">      32 </span>            : ** Foundation and appearing in the file LICENSE.GPL included in the
+<span class="lineNum">      33 </span>            : ** packaging of this file.  Please review the following information to
+<span class="lineNum">      34 </span>            : ** ensure the GNU General Public License version 3.0 requirements will be
+<span class="lineNum">      35 </span>            : ** met: http://www.gnu.org/copyleft/gpl.html.
+<span class="lineNum">      36 </span>            : **
+<span class="lineNum">      37 </span>            : **
+<span class="lineNum">      38 </span>            : ** $QT_END_LICENSE$
+<span class="lineNum">      39 </span>            : **
+<span class="lineNum">      40 </span>            : ****************************************************************************/
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : #ifndef QEVENT_H
+<span class="lineNum">      43 </span>            : #define QEVENT_H
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : #include &lt;QtGui/qwindowdefs.h&gt;
+<span class="lineNum">      46 </span>            : #include &lt;QtCore/qobject.h&gt;
+<span class="lineNum">      47 </span>            : #include &lt;QtGui/qregion.h&gt;
+<span class="lineNum">      48 </span>            : #include &lt;QtCore/qnamespace.h&gt;
+<span class="lineNum">      49 </span>            : #include &lt;QtCore/qstring.h&gt;
+<span class="lineNum">      50 </span>            : #include &lt;QtGui/qkeysequence.h&gt;
+<span class="lineNum">      51 </span>            : #include &lt;QtCore/qcoreevent.h&gt;
+<span class="lineNum">      52 </span>            : #include &lt;QtGui/qmime.h&gt;
+<span class="lineNum">      53 </span>            : #include &lt;QtGui/qdrag.h&gt;
+<span class="lineNum">      54 </span>            : #include &lt;QtCore/qvariant.h&gt;
+<span class="lineNum">      55 </span>            : #include &lt;QtCore/qmap.h&gt;
+<span class="lineNum">      56 </span>            : #include &lt;QtCore/qset.h&gt;
+<span class="lineNum">      57 </span>            : #include &lt;QtCore/qfile.h&gt;
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : #ifdef Q_OS_SYMBIAN
+<span class="lineNum">      60 </span>            : class RFile;
+<span class="lineNum">      61 </span>            : #endif
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            : QT_BEGIN_HEADER
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span>            : QT_BEGIN_NAMESPACE
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span>            : QT_MODULE(Gui)
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span>            : class QAction;
+<span class="lineNum">      70 </span>            : #ifndef QT_NO_GESTURES
+<span class="lineNum">      71 </span>            : class QGesture;
+<span class="lineNum">      72 </span>            : #endif
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 : class Q_GUI_EXPORT QInputEvent : public QEvent</span>
+<span class="lineNum">      75 </span>            : {
+<span class="lineNum">      76 </span>            : public:
+<span class="lineNum">      77 </span>            :     QInputEvent(Type type, Qt::KeyboardModifiers modifiers = Qt::NoModifier);
+<span class="lineNum">      78 </span>            :     ~QInputEvent();
+<span class="lineNum">      79 </span>            :     inline Qt::KeyboardModifiers modifiers() const { return modState; }
+<span class="lineNum">      80 </span>            :     inline void setModifiers(Qt::KeyboardModifiers amodifiers) { modState = amodifiers; }
+<span class="lineNum">      81 </span>            : protected:
+<span class="lineNum">      82 </span>            :     Qt::KeyboardModifiers modState;
+<span class="lineNum">      83 </span>            : };
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 : class Q_GUI_EXPORT QMouseEvent : public QInputEvent</span>
+<span class="lineNum">      86 </span>            : {
+<span class="lineNum">      87 </span>            : public:
+<span class="lineNum">      88 </span>            :     QMouseEvent(Type type, const QPoint &amp;pos, Qt::MouseButton button,
+<span class="lineNum">      89 </span>            :                 Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers);
+<span class="lineNum">      90 </span>            :     QMouseEvent(Type type, const QPoint &amp;pos, const QPoint &amp;globalPos,
+<span class="lineNum">      91 </span>            :                 Qt::MouseButton button, Qt::MouseButtons buttons,
+<span class="lineNum">      92 </span>            :                 Qt::KeyboardModifiers modifiers);
+<span class="lineNum">      93 </span>            :     ~QMouseEvent();
+<span class="lineNum">      94 </span>            : 
+<span class="lineNum">      95 </span>            :     inline const QPoint &amp;pos() const { return p; }
+<span class="lineNum">      96 </span>            :     inline const QPoint &amp;globalPos() const { return g; }
+<span class="lineNum">      97 </span>            :     inline int x() const { return p.x(); }
+<span class="lineNum">      98 </span>            :     inline int y() const { return p.y(); }
+<span class="lineNum">      99 </span>            :     inline int globalX() const { return g.x(); }
+<span class="lineNum">     100 </span>            :     inline int globalY() const { return g.y(); }
+<span class="lineNum">     101 </span>            :     inline Qt::MouseButton button() const { return b; }
+<span class="lineNum">     102 </span>            :     inline Qt::MouseButtons buttons() const { return mouseState; }
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span>            :     static QMouseEvent *createExtendedMouseEvent(Type type, const QPointF &amp;pos,
+<span class="lineNum">     105 </span>            :                                                  const QPoint &amp;globalPos, Qt::MouseButton button,
+<span class="lineNum">     106 </span>            :                                                  Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers);
+<span class="lineNum">     107 </span>            :     inline bool hasExtendedInfo() const { return reinterpret_cast&lt;const QMouseEvent *&gt;(d) == this; }
+<span class="lineNum">     108 </span>            :     QPointF posF() const;
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     111 </span>            :     QT3_SUPPORT_CONSTRUCTOR QMouseEvent(Type type, const QPoint &amp;pos, Qt::ButtonState button, int state);
+<span class="lineNum">     112 </span>            :     QT3_SUPPORT_CONSTRUCTOR QMouseEvent(Type type, const QPoint &amp;pos, const QPoint &amp;globalPos,
+<span class="lineNum">     113 </span>            :                                       Qt::ButtonState button, int state);
+<span class="lineNum">     114 </span>            :     inline QT3_SUPPORT Qt::ButtonState state() const
+<span class="lineNum">     115 </span>            :     { return Qt::ButtonState((mouseState^b)|int(modifiers())); }
+<span class="lineNum">     116 </span>            :     inline QT3_SUPPORT Qt::ButtonState stateAfter() const
+<span class="lineNum">     117 </span>            :     { return Qt::ButtonState(int(mouseState)|int(modifiers())); }
+<span class="lineNum">     118 </span>            : #endif
+<span class="lineNum">     119 </span>            : protected:
+<span class="lineNum">     120 </span>            :     QPoint p, g;
+<span class="lineNum">     121 </span>            :     Qt::MouseButton b;
+<span class="lineNum">     122 </span>            :     Qt::MouseButtons mouseState;
+<span class="lineNum">     123 </span>            : };
+<span class="lineNum">     124 </span>            : 
+<span class="lineNum">     125 </span>            : class Q_GUI_EXPORT QHoverEvent : public QEvent
+<span class="lineNum">     126 </span>            : {
+<span class="lineNum">     127 </span>            : public:
+<span class="lineNum">     128 </span>            :     QHoverEvent(Type type, const QPoint &amp;pos, const QPoint &amp;oldPos);
+<span class="lineNum">     129 </span>            :     ~QHoverEvent();
+<span class="lineNum">     130 </span>            : 
+<span class="lineNum">     131 </span>            :     inline const QPoint &amp;pos() const { return p; }
+<span class="lineNum">     132 </span>            :     inline const QPoint &amp;oldPos() const { return op; }
+<span class="lineNum">     133 </span>            : 
+<span class="lineNum">     134 </span>            : protected:
+<span class="lineNum">     135 </span>            :     QPoint p, op;
+<span class="lineNum">     136 </span>            : };
+<span class="lineNum">     137 </span>            : 
+<span class="lineNum">     138 </span>            : #ifndef QT_NO_WHEELEVENT
+<span class="lineNum">     139 </span>            : class Q_GUI_EXPORT QWheelEvent : public QInputEvent
+<span class="lineNum">     140 </span>            : {
+<span class="lineNum">     141 </span>            : public:
+<span class="lineNum">     142 </span>            :     QWheelEvent(const QPoint &amp;pos, int delta,
+<span class="lineNum">     143 </span>            :                 Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers,
+<span class="lineNum">     144 </span>            :                 Qt::Orientation orient = Qt::Vertical);
+<span class="lineNum">     145 </span>            :     QWheelEvent(const QPoint &amp;pos, const QPoint&amp; globalPos, int delta,
+<span class="lineNum">     146 </span>            :                 Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers,
+<span class="lineNum">     147 </span>            :                 Qt::Orientation orient = Qt::Vertical);
+<span class="lineNum">     148 </span>            :     ~QWheelEvent();
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span>            :     inline int delta() const { return d; }
+<span class="lineNum">     151 </span>            :     inline const QPoint &amp;pos() const { return p; }
+<span class="lineNum">     152 </span>            :     inline const QPoint &amp;globalPos()   const { return g; }
+<span class="lineNum">     153 </span>            :     inline int x() const { return p.x(); }
+<span class="lineNum">     154 </span>            :     inline int y() const { return p.y(); }
+<span class="lineNum">     155 </span>            :     inline int globalX() const { return g.x(); }
+<span class="lineNum">     156 </span>            :     inline int globalY() const { return g.y(); }
+<span class="lineNum">     157 </span>            : 
+<span class="lineNum">     158 </span>            :     inline Qt::MouseButtons buttons() const { return mouseState; }
+<span class="lineNum">     159 </span>            :     Qt::Orientation orientation() const { return o; }
+<span class="lineNum">     160 </span>            : 
+<span class="lineNum">     161 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     162 </span>            :     QT3_SUPPORT_CONSTRUCTOR QWheelEvent(const QPoint &amp;pos, int delta, int state,
+<span class="lineNum">     163 </span>            :                                       Qt::Orientation orient = Qt::Vertical);
+<span class="lineNum">     164 </span>            :     QT3_SUPPORT_CONSTRUCTOR QWheelEvent(const QPoint &amp;pos, const QPoint&amp; globalPos, int delta, int state,
+<span class="lineNum">     165 </span>            :                                       Qt::Orientation orient = Qt::Vertical);
+<span class="lineNum">     166 </span>            :     inline QT3_SUPPORT Qt::ButtonState state() const
+<span class="lineNum">     167 </span>            :     { return static_cast&lt;Qt::ButtonState&gt;(int(buttons())|int(modifiers())); }
+<span class="lineNum">     168 </span>            : #endif
+<span class="lineNum">     169 </span>            : protected:
+<span class="lineNum">     170 </span>            :     QPoint p;
+<span class="lineNum">     171 </span>            :     QPoint g;
+<span class="lineNum">     172 </span>            :     int d;
+<span class="lineNum">     173 </span>            :     Qt::MouseButtons mouseState;
+<span class="lineNum">     174 </span>            :     Qt::Orientation o;
+<span class="lineNum">     175 </span>            : };
+<span class="lineNum">     176 </span>            : #endif
+<span class="lineNum">     177 </span>            : 
+<span class="lineNum">     178 </span>            : #ifndef QT_NO_TABLETEVENT
+<span class="lineNum">     179 </span>            : class Q_GUI_EXPORT QTabletEvent : public QInputEvent
+<span class="lineNum">     180 </span>            : {
+<span class="lineNum">     181 </span>            : public:
+<span class="lineNum">     182 </span>            :     enum TabletDevice { NoDevice, Puck, Stylus, Airbrush, FourDMouse,
+<span class="lineNum">     183 </span>            :                         XFreeEraser /*internal*/, RotationStylus };
+<span class="lineNum">     184 </span>            :     enum PointerType { UnknownPointer, Pen, Cursor, Eraser };
+<span class="lineNum">     185 </span>            :     QTabletEvent(Type t, const QPoint &amp;pos, const QPoint &amp;globalPos, const QPointF &amp;hiResGlobalPos,
+<span class="lineNum">     186 </span>            :                  int device, int pointerType, qreal pressure, int xTilt, int yTilt,
+<span class="lineNum">     187 </span>            :                  qreal tangentialPressure, qreal rotation, int z,
+<span class="lineNum">     188 </span>            :                  Qt::KeyboardModifiers keyState, qint64 uniqueID);
+<span class="lineNum">     189 </span>            :     ~QTabletEvent();
+<span class="lineNum">     190 </span>            : 
+<span class="lineNum">     191 </span>            :     inline const QPoint &amp;pos() const { return mPos; }
+<span class="lineNum">     192 </span>            :     inline const QPoint &amp;globalPos() const { return mGPos; }
+<span class="lineNum">     193 </span>            :     inline const QPointF &amp;hiResGlobalPos() const { return mHiResGlobalPos; }
+<span class="lineNum">     194 </span>            :     inline int x() const { return mPos.x(); }
+<span class="lineNum">     195 </span>            :     inline int y() const { return mPos.y(); }
+<span class="lineNum">     196 </span>            :     inline int globalX() const { return mGPos.x(); }
+<span class="lineNum">     197 </span>            :     inline int globalY() const { return mGPos.y(); }
+<span class="lineNum">     198 </span>            :     inline qreal hiResGlobalX() const { return mHiResGlobalPos.x(); }
+<span class="lineNum">     199 </span>            :     inline qreal hiResGlobalY() const { return mHiResGlobalPos.y(); }
+<span class="lineNum">     200 </span>            :     inline TabletDevice device() const { return TabletDevice(mDev); }
+<span class="lineNum">     201 </span>            :     inline PointerType pointerType() const { return PointerType(mPointerType); }
+<span class="lineNum">     202 </span>            :     inline qint64 uniqueId() const { return mUnique; }
+<span class="lineNum">     203 </span>            :     inline qreal pressure() const { return mPress; }
+<span class="lineNum">     204 </span>            :     inline int z() const { return mZ; }
+<span class="lineNum">     205 </span>            :     inline qreal tangentialPressure() const { return mTangential; }
+<span class="lineNum">     206 </span>            :     inline qreal rotation() const { return mRot; }
+<span class="lineNum">     207 </span>            :     inline int xTilt() const { return mXT; }
+<span class="lineNum">     208 </span>            :     inline int yTilt() const { return mYT; }
+<span class="lineNum">     209 </span>            : 
+<span class="lineNum">     210 </span>            : protected:
+<span class="lineNum">     211 </span>            :     QPoint mPos, mGPos;
+<span class="lineNum">     212 </span>            :     QPointF mHiResGlobalPos;
+<span class="lineNum">     213 </span>            :     int mDev, mPointerType, mXT, mYT, mZ;
+<span class="lineNum">     214 </span>            :     qreal mPress, mTangential, mRot;
+<span class="lineNum">     215 </span>            :     qint64 mUnique;
+<span class="lineNum">     216 </span>            : 
+<span class="lineNum">     217 </span>            :     // I don't know what the future holds for tablets but there could be some
+<span class="lineNum">     218 </span>            :     // new devices coming along, and there seem to be &quot;holes&quot; in the
+<span class="lineNum">     219 </span>            :     // OS-specific events for this.
+<span class="lineNum">     220 </span>            :     void *mExtra;
+<span class="lineNum">     221 </span>            : };
+<span class="lineNum">     222 </span>            : #endif // QT_NO_TABLETEVENT
+<span class="lineNum">     223 </span>            : 
+<span class="lineNum">     224 </span>            : class Q_GUI_EXPORT QKeyEvent : public QInputEvent
+<span class="lineNum">     225 </span>            : {
+<span class="lineNum">     226 </span>            : public:
+<span class="lineNum">     227 </span>            :     QKeyEvent(Type type, int key, Qt::KeyboardModifiers modifiers, const QString&amp; text = QString(),
+<span class="lineNum">     228 </span>            :               bool autorep = false, ushort count = 1);
+<span class="lineNum">     229 </span>            :     ~QKeyEvent();
+<span class="lineNum">     230 </span>            : 
+<span class="lineNum">     231 </span>            :     int key() const { return k; }
+<span class="lineNum">     232 </span>            : #ifndef QT_NO_SHORTCUT
+<span class="lineNum">     233 </span>            :     bool matches(QKeySequence::StandardKey key) const;
+<span class="lineNum">     234 </span>            : #endif
+<span class="lineNum">     235 </span>            :     Qt::KeyboardModifiers modifiers() const;
+<span class="lineNum">     236 </span>            :     inline QString text() const { return txt; }
+<span class="lineNum">     237 </span>            :     inline bool isAutoRepeat() const { return autor; }
+<span class="lineNum">     238 </span>            :     inline int count() const { return int(c); }
+<span class="lineNum">     239 </span>            : 
+<span class="lineNum">     240 </span>            :     // Functions for the extended key event information
+<span class="lineNum">     241 </span>            :     static QKeyEvent *createExtendedKeyEvent(Type type, int key, Qt::KeyboardModifiers modifiers,
+<span class="lineNum">     242 </span>            :                                              quint32 nativeScanCode, quint32 nativeVirtualKey,
+<span class="lineNum">     243 </span>            :                                              quint32 nativeModifiers,
+<span class="lineNum">     244 </span>            :                                              const QString&amp; text = QString(), bool autorep = false,
+<span class="lineNum">     245 </span>            :                                              ushort count = 1);
+<span class="lineNum">     246 </span>            :     inline bool hasExtendedInfo() const { return reinterpret_cast&lt;const QKeyEvent*&gt;(d) == this; }
+<span class="lineNum">     247 </span>            :     quint32 nativeScanCode() const;
+<span class="lineNum">     248 </span>            :     quint32 nativeVirtualKey() const;
+<span class="lineNum">     249 </span>            :     quint32 nativeModifiers() const;
+<span class="lineNum">     250 </span>            : 
+<span class="lineNum">     251 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     252 </span>            :     inline QT3_SUPPORT_CONSTRUCTOR QKeyEvent(Type type, int key, int /*ascii*/,
+<span class="lineNum">     253 </span>            :                                            int modifiers, const QString&amp; text = QString(),
+<span class="lineNum">     254 </span>            :                                            bool autorep = false, ushort count = 1)
+<span class="lineNum">     255 </span>            :         : QInputEvent(type, Qt::KeyboardModifiers(modifiers &amp; (int)Qt::KeyButtonMask)), txt(text), k(key),
+<span class="lineNum">     256 </span>            :           c(count), autor(autorep)
+<span class="lineNum">     257 </span>            :     {
+<span class="lineNum">     258 </span>            :         if (key &gt;= Qt::Key_Back &amp;&amp; key &lt;= Qt::Key_MediaLast)
+<span class="lineNum">     259 </span>            :             ignore();
+<span class="lineNum">     260 </span>            :     }
+<span class="lineNum">     261 </span>            :     inline QT3_SUPPORT int ascii() const
+<span class="lineNum">     262 </span>            :     { return (txt.length() ? txt.unicode()-&gt;toLatin1() : 0); }
+<span class="lineNum">     263 </span>            :     inline QT3_SUPPORT Qt::ButtonState state() const { return Qt::ButtonState(QInputEvent::modifiers()); }
+<span class="lineNum">     264 </span>            :     inline QT3_SUPPORT Qt::ButtonState stateAfter() const { return Qt::ButtonState(modifiers()); }
+<span class="lineNum">     265 </span>            : #endif
+<span class="lineNum">     266 </span>            : 
+<span class="lineNum">     267 </span>            : protected:
+<span class="lineNum">     268 </span>            :     QString txt;
+<span class="lineNum">     269 </span>            :     int k;
+<span class="lineNum">     270 </span>            :     ushort c;
+<span class="lineNum">     271 </span>            :     uint autor:1;
+<span class="lineNum">     272 </span>            : };
+<span class="lineNum">     273 </span>            : 
+<span class="lineNum">     274 </span>            : 
+<span class="lineNum">     275 </span>            : class Q_GUI_EXPORT QFocusEvent : public QEvent
+<span class="lineNum">     276 </span>            : {
+<span class="lineNum">     277 </span>            : public:
+<span class="lineNum">     278 </span>            :     QFocusEvent(Type type, Qt::FocusReason reason=Qt::OtherFocusReason);
+<span class="lineNum">     279 </span>            :     ~QFocusEvent();
+<span class="lineNum">     280 </span>            : 
+<span class="lineNum">     281 </span>            :     inline bool gotFocus() const { return type() == FocusIn; }
+<span class="lineNum">     282 </span>            :     inline bool lostFocus() const { return type() == FocusOut; }
+<span class="lineNum">     283 </span>            : 
+<span class="lineNum">     284 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     285 </span>            :     enum Reason { Mouse=Qt::MouseFocusReason, Tab=Qt::TabFocusReason,
+<span class="lineNum">     286 </span>            :                   Backtab=Qt::BacktabFocusReason, MenuBar=Qt::MenuBarFocusReason,
+<span class="lineNum">     287 </span>            :                   ActiveWindow=Qt::ActiveWindowFocusReason, Other=Qt::OtherFocusReason,
+<span class="lineNum">     288 </span>            :                   Popup=Qt::PopupFocusReason, Shortcut=Qt::ShortcutFocusReason };
+<span class="lineNum">     289 </span>            : #endif
+<span class="lineNum">     290 </span>            :     Qt::FocusReason reason();
+<span class="lineNum">     291 </span>            :     Qt::FocusReason reason() const;
+<span class="lineNum">     292 </span>            : 
+<span class="lineNum">     293 </span>            : private:
+<span class="lineNum">     294 </span>            :     Qt::FocusReason m_reason;
+<span class="lineNum">     295 </span>            : };
+<span class="lineNum">     296 </span>            : 
+<span class="lineNum">     297 </span>            : 
+<span class="lineNum">     298 </span>            : class Q_GUI_EXPORT QPaintEvent : public QEvent
+<span class="lineNum">     299 </span>            : {
+<span class="lineNum">     300 </span>            : public:
+<span class="lineNum">     301 </span>            :     QPaintEvent(const QRegion&amp; paintRegion);
+<span class="lineNum">     302 </span>            :     QPaintEvent(const QRect &amp;paintRect);
+<span class="lineNum">     303 </span>            :     ~QPaintEvent();
+<span class="lineNum">     304 </span>            : 
+<span class="lineNum">     305 </span>            :     inline const QRect &amp;rect() const { return m_rect; }
+<span class="lineNum">     306 </span>            :     inline const QRegion &amp;region() const { return m_region; }
+<span class="lineNum">     307 </span>            : 
+<span class="lineNum">     308 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     309 </span>            :     QT3_SUPPORT_CONSTRUCTOR QPaintEvent(const QRegion &amp;paintRegion, const QRect &amp;paintRect);
+<span class="lineNum">     310 </span>            :     inline QT3_SUPPORT bool erased() const { return m_erased; }
+<span class="lineNum">     311 </span>            :     inline QT3_SUPPORT void setErased(bool b) { m_erased = b; }
+<span class="lineNum">     312 </span>            : #endif
+<span class="lineNum">     313 </span>            : 
+<span class="lineNum">     314 </span>            : protected:
+<span class="lineNum">     315 </span>            :     friend class QApplication;
+<span class="lineNum">     316 </span>            :     friend class QCoreApplication;
+<span class="lineNum">     317 </span>            :     QRect m_rect;
+<span class="lineNum">     318 </span>            :     QRegion m_region;
+<span class="lineNum">     319 </span>            :     bool m_erased;
+<span class="lineNum">     320 </span>            : };
+<span class="lineNum">     321 </span>            : 
+<span class="lineNum">     322 </span>            : class QUpdateLaterEvent : public QEvent
+<span class="lineNum">     323 </span>            : {
+<span class="lineNum">     324 </span>            : public:
+<span class="lineNum">     325 </span>            :     QUpdateLaterEvent(const QRegion&amp; paintRegion);
+<span class="lineNum">     326 </span>            :     ~QUpdateLaterEvent();
+<span class="lineNum">     327 </span>            : 
+<span class="lineNum">     328 </span>            :     inline const QRegion &amp;region() const { return m_region; }
+<span class="lineNum">     329 </span>            : 
+<span class="lineNum">     330 </span>            : protected:
+<span class="lineNum">     331 </span>            :     QRegion m_region;
+<span class="lineNum">     332 </span>            : };
+<span class="lineNum">     333 </span>            : 
+<span class="lineNum">     334 </span>            : class Q_GUI_EXPORT QMoveEvent : public QEvent
+<span class="lineNum">     335 </span>            : {
+<span class="lineNum">     336 </span>            : public:
+<span class="lineNum">     337 </span>            :     QMoveEvent(const QPoint &amp;pos, const QPoint &amp;oldPos);
+<span class="lineNum">     338 </span>            :     ~QMoveEvent();
+<span class="lineNum">     339 </span>            : 
+<span class="lineNum">     340 </span>            :     inline const QPoint &amp;pos() const { return p; }
+<span class="lineNum">     341 </span>            :     inline const QPoint &amp;oldPos() const { return oldp;}
+<span class="lineNum">     342 </span>            : protected:
+<span class="lineNum">     343 </span>            :     QPoint p, oldp;
+<span class="lineNum">     344 </span>            :     friend class QApplication;
+<span class="lineNum">     345 </span>            :     friend class QCoreApplication;
+<span class="lineNum">     346 </span>            : };
+<span class="lineNum">     347 </span>            : 
+<span class="lineNum">     348 </span>            : 
+<span class="lineNum">     349 </span>            : class Q_GUI_EXPORT QResizeEvent : public QEvent
+<span class="lineNum">     350 </span>            : {
+<span class="lineNum">     351 </span>            : public:
+<span class="lineNum">     352 </span>            :     QResizeEvent(const QSize &amp;size, const QSize &amp;oldSize);
+<span class="lineNum">     353 </span>            :     ~QResizeEvent();
+<span class="lineNum">     354 </span>            : 
+<span class="lineNum">     355 </span>            :     inline const QSize &amp;size() const { return s; }
+<span class="lineNum">     356 </span>            :     inline const QSize &amp;oldSize()const { return olds;}
+<span class="lineNum">     357 </span>            : protected:
+<span class="lineNum">     358 </span>            :     QSize s, olds;
+<span class="lineNum">     359 </span>            :     friend class QApplication;
+<span class="lineNum">     360 </span>            :     friend class QCoreApplication;
+<span class="lineNum">     361 </span>            : };
+<span class="lineNum">     362 </span>            : 
+<span class="lineNum">     363 </span>            : 
+<span class="lineNum">     364 </span>            : class Q_GUI_EXPORT QCloseEvent : public QEvent
+<span class="lineNum">     365 </span>            : {
+<span class="lineNum">     366 </span>            : public:
+<span class="lineNum">     367 </span>            :     QCloseEvent();
+<span class="lineNum">     368 </span>            :     ~QCloseEvent();
+<span class="lineNum">     369 </span>            : };
+<span class="lineNum">     370 </span>            : 
+<span class="lineNum">     371 </span>            : 
+<span class="lineNum">     372 </span>            : class Q_GUI_EXPORT QIconDragEvent : public QEvent
+<span class="lineNum">     373 </span>            : {
+<span class="lineNum">     374 </span>            : public:
+<span class="lineNum">     375 </span>            :     QIconDragEvent();
+<span class="lineNum">     376 </span>            :     ~QIconDragEvent();
+<span class="lineNum">     377 </span>            : };
+<span class="lineNum">     378 </span>            : 
+<span class="lineNum">     379 </span>            : 
+<span class="lineNum">     380 </span>            : class Q_GUI_EXPORT QShowEvent : public QEvent
+<span class="lineNum">     381 </span>            : {
+<span class="lineNum">     382 </span>            : public:
+<span class="lineNum">     383 </span>            :     QShowEvent();
+<span class="lineNum">     384 </span>            :     ~QShowEvent();
+<span class="lineNum">     385 </span>            : };
+<span class="lineNum">     386 </span>            : 
+<span class="lineNum">     387 </span>            : 
+<span class="lineNum">     388 </span>            : class Q_GUI_EXPORT QHideEvent : public QEvent
+<span class="lineNum">     389 </span>            : {
+<span class="lineNum">     390 </span>            : public:
+<span class="lineNum">     391 </span>            :     QHideEvent();
+<span class="lineNum">     392 </span>            :     ~QHideEvent();
+<span class="lineNum">     393 </span>            : };
+<span class="lineNum">     394 </span>            : 
+<span class="lineNum">     395 </span>            : #ifndef QT_NO_CONTEXTMENU
+<span class="lineNum">     396 </span>            : class Q_GUI_EXPORT QContextMenuEvent : public QInputEvent
+<span class="lineNum">     397 </span>            : {
+<span class="lineNum">     398 </span>            : public:
+<span class="lineNum">     399 </span>            :     enum Reason { Mouse, Keyboard, Other };
+<span class="lineNum">     400 </span>            : 
+<span class="lineNum">     401 </span>            :     QContextMenuEvent(Reason reason, const QPoint &amp;pos, const QPoint &amp;globalPos,
+<span class="lineNum">     402 </span>            :                       Qt::KeyboardModifiers modifiers);
+<span class="lineNum">     403 </span>            :     QContextMenuEvent(Reason reason, const QPoint &amp;pos, const QPoint &amp;globalPos);
+<span class="lineNum">     404 </span>            :     QContextMenuEvent(Reason reason, const QPoint &amp;pos);
+<span class="lineNum">     405 </span>            :     ~QContextMenuEvent();
+<span class="lineNum">     406 </span>            : 
+<span class="lineNum">     407 </span>            :     inline int x() const { return p.x(); }
+<span class="lineNum">     408 </span>            :     inline int y() const { return p.y(); }
+<span class="lineNum">     409 </span>            :     inline int globalX() const { return gp.x(); }
+<span class="lineNum">     410 </span>            :     inline int globalY() const { return gp.y(); }
+<span class="lineNum">     411 </span>            : 
+<span class="lineNum">     412 </span>            :     inline const QPoint&amp; pos() const { return p; }
+<span class="lineNum">     413 </span>            :     inline const QPoint&amp; globalPos() const { return gp; }
+<span class="lineNum">     414 </span>            : 
+<span class="lineNum">     415 </span>            :     inline Reason reason() const { return Reason(reas); }
+<span class="lineNum">     416 </span>            : 
+<span class="lineNum">     417 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     418 </span>            :     QT3_SUPPORT_CONSTRUCTOR QContextMenuEvent(Reason reason, const QPoint &amp;pos, const QPoint &amp;globalPos, int);
+<span class="lineNum">     419 </span>            :     QT3_SUPPORT_CONSTRUCTOR QContextMenuEvent(Reason reason, const QPoint &amp;pos, int);
+<span class="lineNum">     420 </span>            : 
+<span class="lineNum">     421 </span>            :     QT3_SUPPORT Qt::ButtonState state() const;
+<span class="lineNum">     422 </span>            : #endif
+<span class="lineNum">     423 </span>            : protected:
+<span class="lineNum">     424 </span>            :     QPoint p;
+<span class="lineNum">     425 </span>            :     QPoint gp;
+<span class="lineNum">     426 </span>            :     uint reas : 8;
+<span class="lineNum">     427 </span>            : };
+<span class="lineNum">     428 </span>            : #endif // QT_NO_CONTEXTMENU
+<span class="lineNum">     429 </span>            : 
+<span class="lineNum">     430 </span>            : #ifndef QT_NO_INPUTMETHOD
+<span class="lineNum">     431 </span>            : class Q_GUI_EXPORT QInputMethodEvent : public QEvent
+<span class="lineNum">     432 </span>            : {
+<span class="lineNum">     433 </span>            : public:
+<span class="lineNum">     434 </span>            :     enum AttributeType {
+<span class="lineNum">     435 </span>            :        TextFormat,
+<span class="lineNum">     436 </span>            :        Cursor,
+<span class="lineNum">     437 </span>            :        Language,
+<span class="lineNum">     438 </span>            :        Ruby,
+<span class="lineNum">     439 </span>            :        Selection
+<span class="lineNum">     440 </span>            :     };
+<span class="lineNum">     441 </span>            :     class Attribute {
+<span class="lineNum">     442 </span>            :     public:
+<span class="lineNum">     443 </span>            :         Attribute(AttributeType t, int s, int l, QVariant val) : type(t), start(s), length(l), value(val) {}
+<span class="lineNum">     444 </span>            :         AttributeType type;
+<span class="lineNum">     445 </span>            : 
+<span class="lineNum">     446 </span>            :         int start;
+<span class="lineNum">     447 </span>            :         int length;
+<span class="lineNum">     448 </span>            :         QVariant value;
+<span class="lineNum">     449 </span>            :     };
+<span class="lineNum">     450 </span>            :     QInputMethodEvent();
+<span class="lineNum">     451 </span>            :     QInputMethodEvent(const QString &amp;preeditText, const QList&lt;Attribute&gt; &amp;attributes);
+<span class="lineNum">     452 </span>            :     void setCommitString(const QString &amp;commitString, int replaceFrom = 0, int replaceLength = 0);
+<span class="lineNum">     453 </span>            : 
+<span class="lineNum">     454 </span>            :     inline const QList&lt;Attribute&gt; &amp;attributes() const { return attrs; }
+<span class="lineNum">     455 </span>            :     inline const QString &amp;preeditString() const { return preedit; }
+<span class="lineNum">     456 </span>            : 
+<span class="lineNum">     457 </span>            :     inline const QString &amp;commitString() const { return commit; }
+<span class="lineNum">     458 </span>            :     inline int replacementStart() const { return replace_from; }
+<span class="lineNum">     459 </span>            :     inline int replacementLength() const { return replace_length; }
+<span class="lineNum">     460 </span>            : 
+<span class="lineNum">     461 </span>            :     QInputMethodEvent(const QInputMethodEvent &amp;other);
+<span class="lineNum">     462 </span>            : 
+<span class="lineNum">     463 </span>            : private:
+<span class="lineNum">     464 </span>            :     QString preedit;
+<span class="lineNum">     465 </span>            :     QList&lt;Attribute&gt; attrs;
+<span class="lineNum">     466 </span>            :     QString commit;
+<span class="lineNum">     467 </span>            :     int replace_from;
+<span class="lineNum">     468 </span>            :     int replace_length;
+<span class="lineNum">     469 </span>            : };
+<span class="lineNum">     470 </span>            : #endif // QT_NO_INPUTMETHOD
+<span class="lineNum">     471 </span>            : 
+<span class="lineNum">     472 </span>            : #ifndef QT_NO_DRAGANDDROP
+<span class="lineNum">     473 </span>            : 
+<span class="lineNum">     474 </span>            : class QMimeData;
+<span class="lineNum">     475 </span>            : 
+<span class="lineNum">     476 </span>            : class Q_GUI_EXPORT QDropEvent : public QEvent
+<span class="lineNum">     477 </span>            : // QT3_SUPPORT
+<span class="lineNum">     478 </span>            :                               , public QMimeSource
+<span class="lineNum">     479 </span>            : // END QT3_SUPPORT
+<span class="lineNum">     480 </span>            : {
+<span class="lineNum">     481 </span>            : public:
+<span class="lineNum">     482 </span>            :     QDropEvent(const QPoint&amp; pos, Qt::DropActions actions, const QMimeData *data,
+<span class="lineNum">     483 </span>            :                Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, Type type = Drop);
+<span class="lineNum">     484 </span>            :     ~QDropEvent();
+<span class="lineNum">     485 </span>            : 
+<span class="lineNum">     486 </span>            :     inline const QPoint &amp;pos() const { return p; }
+<span class="lineNum">     487 </span>            :     inline Qt::MouseButtons mouseButtons() const { return mouseState; }
+<span class="lineNum">     488 </span>            :     inline Qt::KeyboardModifiers keyboardModifiers() const { return modState; }
+<span class="lineNum">     489 </span>            : 
+<span class="lineNum">     490 </span>            :     inline Qt::DropActions possibleActions() const { return act; }
+<span class="lineNum">     491 </span>            :     inline Qt::DropAction proposedAction() const { return default_action; }
+<span class="lineNum">     492 </span>            :     inline void acceptProposedAction() { drop_action = default_action; accept(); }
+<span class="lineNum">     493 </span>            : 
+<span class="lineNum">     494 </span>            :     inline Qt::DropAction dropAction() const { return drop_action; }
+<span class="lineNum">     495 </span>            :     void setDropAction(Qt::DropAction action);
+<span class="lineNum">     496 </span>            : 
+<span class="lineNum">     497 </span>            :     QWidget* source() const;
+<span class="lineNum">     498 </span>            :     inline const QMimeData *mimeData() const { return mdata; }
+<span class="lineNum">     499 </span>            : 
+<span class="lineNum">     500 </span>            : // QT3_SUPPORT
+<span class="lineNum">     501 </span>            :     const char* format(int n = 0) const;
+<span class="lineNum">     502 </span>            :     QByteArray encodedData(const char*) const;
+<span class="lineNum">     503 </span>            :     bool provides(const char*) const;
+<span class="lineNum">     504 </span>            : // END QT3_SUPPORT
+<span class="lineNum">     505 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     506 </span>            :     inline void accept() { QEvent::accept(); }
+<span class="lineNum">     507 </span>            :     inline QT3_SUPPORT void accept(bool y) { setAccepted(y); }
+<span class="lineNum">     508 </span>            :     inline QT3_SUPPORT QByteArray data(const char* f) const { return encodedData(f); }
+<span class="lineNum">     509 </span>            : 
+<span class="lineNum">     510 </span>            :     enum Action { Copy, Link, Move, Private, UserAction = Private };
+<span class="lineNum">     511 </span>            :     QT3_SUPPORT Action action() const;
+<span class="lineNum">     512 </span>            :     inline QT3_SUPPORT void acceptAction(bool y = true)  { if (y) { drop_action = default_action; accept(); } }
+<span class="lineNum">     513 </span>            :     inline QT3_SUPPORT void setPoint(const QPoint&amp; np) { p = np; }
+<span class="lineNum">     514 </span>            : #endif
+<span class="lineNum">     515 </span>            : 
+<span class="lineNum">     516 </span>            : 
+<span class="lineNum">     517 </span>            : protected:
+<span class="lineNum">     518 </span>            :     friend class QApplication;
+<span class="lineNum">     519 </span>            :     QPoint p;
+<span class="lineNum">     520 </span>            :     Qt::MouseButtons mouseState;
+<span class="lineNum">     521 </span>            :     Qt::KeyboardModifiers modState;
+<span class="lineNum">     522 </span>            :     Qt::DropActions act;
+<span class="lineNum">     523 </span>            :     Qt::DropAction drop_action;
+<span class="lineNum">     524 </span>            :     Qt::DropAction default_action;
+<span class="lineNum">     525 </span>            :     const QMimeData *mdata;
+<span class="lineNum">     526 </span>            :     mutable QList&lt;QByteArray&gt; fmts; // only used for QT3_SUPPORT
+<span class="lineNum">     527 </span>            : };
+<span class="lineNum">     528 </span>            : 
+<span class="lineNum">     529 </span>            : 
+<span class="lineNum">     530 </span>            : class Q_GUI_EXPORT QDragMoveEvent : public QDropEvent
+<span class="lineNum">     531 </span>            : {
+<span class="lineNum">     532 </span>            : public:
+<span class="lineNum">     533 </span>            :     QDragMoveEvent(const QPoint &amp;pos, Qt::DropActions actions, const QMimeData *data,
+<span class="lineNum">     534 </span>            :                    Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers, Type type = DragMove);
+<span class="lineNum">     535 </span>            :     ~QDragMoveEvent();
+<span class="lineNum">     536 </span>            : 
+<span class="lineNum">     537 </span>            :     inline QRect answerRect() const { return rect; }
+<span class="lineNum">     538 </span>            : 
+<span class="lineNum">     539 </span>            :     inline void accept() { QDropEvent::accept(); }
+<span class="lineNum">     540 </span>            :     inline void ignore() { QDropEvent::ignore(); }
+<span class="lineNum">     541 </span>            : 
+<span class="lineNum">     542 </span>            :     inline void accept(const QRect &amp; r) { accept(); rect = r; }
+<span class="lineNum">     543 </span>            :     inline void ignore(const QRect &amp; r) { ignore(); rect = r; }
+<span class="lineNum">     544 </span>            : 
+<span class="lineNum">     545 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     546 </span>            :     inline QT3_SUPPORT void accept(bool y) { setAccepted(y); }
+<span class="lineNum">     547 </span>            : #endif
+<span class="lineNum">     548 </span>            : 
+<span class="lineNum">     549 </span>            : protected:
+<span class="lineNum">     550 </span>            :     friend class QApplication;
+<span class="lineNum">     551 </span>            :     QRect rect;
+<span class="lineNum">     552 </span>            : };
+<span class="lineNum">     553 </span>            : 
+<span class="lineNum">     554 </span>            : 
+<span class="lineNum">     555 </span>            : class Q_GUI_EXPORT QDragEnterEvent : public QDragMoveEvent
+<span class="lineNum">     556 </span>            : {
+<span class="lineNum">     557 </span>            : public:
+<span class="lineNum">     558 </span>            :     QDragEnterEvent(const QPoint &amp;pos, Qt::DropActions actions, const QMimeData *data,
+<span class="lineNum">     559 </span>            :                     Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers);
+<span class="lineNum">     560 </span>            :     ~QDragEnterEvent();
+<span class="lineNum">     561 </span>            : };
+<span class="lineNum">     562 </span>            : 
+<span class="lineNum">     563 </span>            : 
+<span class="lineNum">     564 </span>            : /* An internal class */
+<span class="lineNum">     565 </span>            : class Q_GUI_EXPORT QDragResponseEvent : public QEvent
+<span class="lineNum">     566 </span>            : {
+<span class="lineNum">     567 </span>            : public:
+<span class="lineNum">     568 </span>            :     QDragResponseEvent(bool accepted);
+<span class="lineNum">     569 </span>            :     ~QDragResponseEvent();
+<span class="lineNum">     570 </span>            : 
+<span class="lineNum">     571 </span>            :     inline bool dragAccepted() const { return a; }
+<span class="lineNum">     572 </span>            : protected:
+<span class="lineNum">     573 </span>            :     bool a;
+<span class="lineNum">     574 </span>            : };
+<span class="lineNum">     575 </span>            : 
+<span class="lineNum">     576 </span>            : 
+<span class="lineNum">     577 </span>            : class Q_GUI_EXPORT QDragLeaveEvent : public QEvent
+<span class="lineNum">     578 </span>            : {
+<span class="lineNum">     579 </span>            : public:
+<span class="lineNum">     580 </span>            :     QDragLeaveEvent();
+<span class="lineNum">     581 </span>            :     ~QDragLeaveEvent();
+<span class="lineNum">     582 </span>            : };
+<span class="lineNum">     583 </span>            : #endif // QT_NO_DRAGANDDROP
+<span class="lineNum">     584 </span>            : 
+<span class="lineNum">     585 </span>            : 
+<span class="lineNum">     586 </span>            : class Q_GUI_EXPORT QHelpEvent : public QEvent
+<span class="lineNum">     587 </span>            : {
+<span class="lineNum">     588 </span>            : public:
+<span class="lineNum">     589 </span>            :     QHelpEvent(Type type, const QPoint &amp;pos, const QPoint &amp;globalPos);
+<span class="lineNum">     590 </span>            :     ~QHelpEvent();
+<span class="lineNum">     591 </span>            : 
+<span class="lineNum">     592 </span>            :     inline int x() const { return p.x(); }
+<span class="lineNum">     593 </span>            :     inline int y() const { return p.y(); }
+<span class="lineNum">     594 </span>            :     inline int globalX() const { return gp.x(); }
+<span class="lineNum">     595 </span>            :     inline int globalY() const { return gp.y(); }
+<span class="lineNum">     596 </span>            : 
+<span class="lineNum">     597 </span>            :     inline const QPoint&amp; pos()  const { return p; }
+<span class="lineNum">     598 </span>            :     inline const QPoint&amp; globalPos() const { return gp; }
+<span class="lineNum">     599 </span>            : 
+<span class="lineNum">     600 </span>            : private:
+<span class="lineNum">     601 </span>            :     QPoint p;
+<span class="lineNum">     602 </span>            :     QPoint gp;
+<span class="lineNum">     603 </span>            : };
+<span class="lineNum">     604 </span>            : 
+<span class="lineNum">     605 </span>            : #ifndef QT_NO_STATUSTIP
+<span class="lineNum">     606 </span>            : class Q_GUI_EXPORT QStatusTipEvent : public QEvent
+<span class="lineNum">     607 </span>            : {
+<span class="lineNum">     608 </span>            : public:
+<span class="lineNum">     609 </span>            :     QStatusTipEvent(const QString &amp;tip);
+<span class="lineNum">     610 </span>            :     ~QStatusTipEvent();
+<span class="lineNum">     611 </span>            : 
+<span class="lineNum">     612 </span>            :     inline QString tip() const { return s; }
+<span class="lineNum">     613 </span>            : private:
+<span class="lineNum">     614 </span>            :     QString s;
+<span class="lineNum">     615 </span>            : };
+<span class="lineNum">     616 </span>            : #endif
+<span class="lineNum">     617 </span>            : 
+<span class="lineNum">     618 </span>            : #ifndef QT_NO_WHATSTHIS
+<span class="lineNum">     619 </span>            : class Q_GUI_EXPORT QWhatsThisClickedEvent : public QEvent
+<span class="lineNum">     620 </span>            : {
+<span class="lineNum">     621 </span>            : public:
+<span class="lineNum">     622 </span>            :     QWhatsThisClickedEvent(const QString &amp;href);
+<span class="lineNum">     623 </span>            :     ~QWhatsThisClickedEvent();
+<span class="lineNum">     624 </span>            : 
+<span class="lineNum">     625 </span>            :     inline QString href() const { return s; }
+<span class="lineNum">     626 </span>            : private:
+<span class="lineNum">     627 </span>            :     QString s;
+<span class="lineNum">     628 </span>            : };
+<span class="lineNum">     629 </span>            : #endif
+<span class="lineNum">     630 </span>            : 
+<span class="lineNum">     631 </span>            : #ifndef QT_NO_ACTION
+<span class="lineNum">     632 </span>            : class Q_GUI_EXPORT QActionEvent : public QEvent
+<span class="lineNum">     633 </span>            : {
+<span class="lineNum">     634 </span>            :     QAction *act, *bef;
+<span class="lineNum">     635 </span>            : public:
+<span class="lineNum">     636 </span>            :     QActionEvent(int type, QAction *action, QAction *before = 0);
+<span class="lineNum">     637 </span>            :     ~QActionEvent();
+<span class="lineNum">     638 </span>            : 
+<span class="lineNum">     639 </span>            :     inline QAction *action() const { return act; }
+<span class="lineNum">     640 </span>            :     inline QAction *before() const { return bef; }
+<span class="lineNum">     641 </span>            : };
+<span class="lineNum">     642 </span>            : #endif
+<span class="lineNum">     643 </span>            : 
+<span class="lineNum">     644 </span>            : class Q_GUI_EXPORT QFileOpenEvent : public QEvent
+<span class="lineNum">     645 </span>            : {
+<span class="lineNum">     646 </span>            : public:
+<span class="lineNum">     647 </span>            :     QFileOpenEvent(const QString &amp;file);
+<span class="lineNum">     648 </span>            :     QFileOpenEvent(const QUrl &amp;url);
+<span class="lineNum">     649 </span>            : #ifdef Q_OS_SYMBIAN
+<span class="lineNum">     650 </span>            :     QFileOpenEvent(const RFile &amp;fileHandle);
+<span class="lineNum">     651 </span>            : #endif
+<span class="lineNum">     652 </span>            :     ~QFileOpenEvent();
+<span class="lineNum">     653 </span>            : 
+<span class="lineNum">     654 </span>            :     inline QString file() const { return f; }
+<span class="lineNum">     655 </span>            :     QUrl url() const;
+<span class="lineNum">     656 </span>            :     bool openFile(QFile &amp;file, QIODevice::OpenMode flags) const;
+<span class="lineNum">     657 </span>            : private:
+<span class="lineNum">     658 </span>            :     QString f;
+<span class="lineNum">     659 </span>            : };
+<span class="lineNum">     660 </span>            : 
+<span class="lineNum">     661 </span>            : #ifndef QT_NO_TOOLBAR
+<span class="lineNum">     662 </span>            : class Q_GUI_EXPORT QToolBarChangeEvent : public QEvent
+<span class="lineNum">     663 </span>            : {
+<span class="lineNum">     664 </span>            : public:
+<span class="lineNum">     665 </span>            :     QToolBarChangeEvent(bool t);
+<span class="lineNum">     666 </span>            :     ~QToolBarChangeEvent();
+<span class="lineNum">     667 </span>            : 
+<span class="lineNum">     668 </span>            :     inline bool toggle() const { return tog; }
+<span class="lineNum">     669 </span>            : private:
+<span class="lineNum">     670 </span>            :     uint tog : 1;
+<span class="lineNum">     671 </span>            : };
+<span class="lineNum">     672 </span>            : #endif
+<span class="lineNum">     673 </span>            : 
+<span class="lineNum">     674 </span>            : #ifndef QT_NO_SHORTCUT
+<span class="lineNum">     675 </span>            : class Q_GUI_EXPORT QShortcutEvent : public QEvent
+<span class="lineNum">     676 </span>            : {
+<span class="lineNum">     677 </span>            : public:
+<span class="lineNum">     678 </span>            :     QShortcutEvent(const QKeySequence &amp;key, int id, bool ambiguous = false);
+<span class="lineNum">     679 </span>            :     ~QShortcutEvent();
+<span class="lineNum">     680 </span>            : 
+<span class="lineNum">     681 </span>            :     inline const QKeySequence &amp;key() { return sequence; }
+<span class="lineNum">     682 </span>            :     inline const QKeySequence &amp;key() const { return sequence; }
+<span class="lineNum">     683 </span>            :     inline int shortcutId() { return sid; }
+<span class="lineNum">     684 </span>            :     inline int shortcutId() const { return sid; }
+<span class="lineNum">     685 </span>            :     inline bool isAmbiguous() { return ambig; }
+<span class="lineNum">     686 </span>            :     inline bool isAmbiguous() const { return ambig; }
+<span class="lineNum">     687 </span>            : protected:
+<span class="lineNum">     688 </span>            :     QKeySequence sequence;
+<span class="lineNum">     689 </span>            :     bool ambig;
+<span class="lineNum">     690 </span>            :     int  sid;
+<span class="lineNum">     691 </span>            : };
+<span class="lineNum">     692 </span>            : #endif
+<span class="lineNum">     693 </span>            : 
+<span class="lineNum">     694 </span>            : #ifndef QT_NO_CLIPBOARD
+<span class="lineNum">     695 </span>            : class Q_GUI_EXPORT QClipboardEvent : public QEvent
+<span class="lineNum">     696 </span>            : {
+<span class="lineNum">     697 </span>            : public:
+<span class="lineNum">     698 </span>            :     QClipboardEvent(QEventPrivate *data);
+<span class="lineNum">     699 </span>            :     ~QClipboardEvent();
+<span class="lineNum">     700 </span>            : 
+<span class="lineNum">     701 </span>            :     QEventPrivate *data() { return d; }
+<span class="lineNum">     702 </span>            : };
+<span class="lineNum">     703 </span>            : #endif
+<span class="lineNum">     704 </span>            : 
+<span class="lineNum">     705 </span>            : class Q_GUI_EXPORT QWindowStateChangeEvent: public QEvent
+<span class="lineNum">     706 </span>            : {
+<span class="lineNum">     707 </span>            : public:
+<span class="lineNum">     708 </span>            :     QWindowStateChangeEvent(Qt::WindowStates aOldState);
+<span class="lineNum">     709 </span>            :     QWindowStateChangeEvent(Qt::WindowStates aOldState, bool isOverride);
+<span class="lineNum">     710 </span>            :     ~QWindowStateChangeEvent();
+<span class="lineNum">     711 </span>            : 
+<span class="lineNum">     712 </span>            :     inline Qt::WindowStates oldState() const { return ostate; }
+<span class="lineNum">     713 </span>            :     bool isOverride() const;
+<span class="lineNum">     714 </span>            : 
+<span class="lineNum">     715 </span>            : private:
+<span class="lineNum">     716 </span>            :     Qt::WindowStates ostate;
+<span class="lineNum">     717 </span>            : };
+<span class="lineNum">     718 </span>            : 
+<span class="lineNum">     719 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     720 </span>            : class QMenuBar;
+<span class="lineNum">     721 </span>            : class Q_GUI_EXPORT QMenubarUpdatedEvent: public QEvent
+<span class="lineNum">     722 </span>            : {
+<span class="lineNum">     723 </span>            : public:
+<span class="lineNum">     724 </span>            :     QMenubarUpdatedEvent(QMenuBar * const menBar);
+<span class="lineNum">     725 </span>            :     inline QMenuBar *menuBar() { return m_menuBar; }
+<span class="lineNum">     726 </span>            : private:
+<span class="lineNum">     727 </span>            :     QMenuBar *m_menuBar;
+<span class="lineNum">     728 </span>            : };
+<span class="lineNum">     729 </span>            : #endif
+<span class="lineNum">     730 </span>            : 
+<span class="lineNum">     731 </span>            : #ifndef QT_NO_DEBUG_STREAM
+<span class="lineNum">     732 </span>            : Q_GUI_EXPORT QDebug operator&lt;&lt;(QDebug, const QEvent *);
+<span class="lineNum">     733 </span>            : #endif
+<span class="lineNum">     734 </span>            : 
+<span class="lineNum">     735 </span>            : #ifndef QT_NO_SHORTCUT
+<span class="lineNum">     736 </span>            : inline bool operator==(QKeyEvent *e, QKeySequence::StandardKey key){return (e ? e-&gt;matches(key) : false);}
+<span class="lineNum">     737 </span>            : inline bool operator==(QKeySequence::StandardKey key, QKeyEvent *e){return (e ? e-&gt;matches(key) : false);}
+<span class="lineNum">     738 </span>            : #endif // QT_NO_SHORTCUT
+<span class="lineNum">     739 </span>            : 
+<span class="lineNum">     740 </span>            : class QTouchEventTouchPointPrivate;
+<span class="lineNum">     741 </span>            : class Q_GUI_EXPORT QTouchEvent : public QInputEvent
+<span class="lineNum">     742 </span>            : {
+<span class="lineNum">     743 </span>            : public:
+<span class="lineNum">     744 </span>            :     class Q_GUI_EXPORT TouchPoint
+<span class="lineNum">     745 </span>            :     {
+<span class="lineNum">     746 </span>            :     public:
+<span class="lineNum">     747 </span>            :         TouchPoint(int id = -1);
+<span class="lineNum">     748 </span>            :         TouchPoint(const QTouchEvent::TouchPoint &amp;other);
+<span class="lineNum">     749 </span>            :         ~TouchPoint();
+<span class="lineNum">     750 </span>            : 
+<span class="lineNum">     751 </span>            :         int id() const;
+<span class="lineNum">     752 </span>            : 
+<span class="lineNum">     753 </span>            :         Qt::TouchPointState state() const;
+<span class="lineNum">     754 </span>            :         bool isPrimary() const;
+<span class="lineNum">     755 </span>            : 
+<span class="lineNum">     756 </span>            :         QPointF pos() const;
+<span class="lineNum">     757 </span>            :         QPointF startPos() const;
+<span class="lineNum">     758 </span>            :         QPointF lastPos() const;
+<span class="lineNum">     759 </span>            : 
+<span class="lineNum">     760 </span>            :         QPointF scenePos() const;
+<span class="lineNum">     761 </span>            :         QPointF startScenePos() const;
+<span class="lineNum">     762 </span>            :         QPointF lastScenePos() const;
+<span class="lineNum">     763 </span>            : 
+<span class="lineNum">     764 </span>            :         QPointF screenPos() const;
+<span class="lineNum">     765 </span>            :         QPointF startScreenPos() const;
+<span class="lineNum">     766 </span>            :         QPointF lastScreenPos() const;
+<span class="lineNum">     767 </span>            : 
+<span class="lineNum">     768 </span>            :         QPointF normalizedPos() const;
+<span class="lineNum">     769 </span>            :         QPointF startNormalizedPos() const;
+<span class="lineNum">     770 </span>            :         QPointF lastNormalizedPos() const;
+<span class="lineNum">     771 </span>            : 
+<span class="lineNum">     772 </span>            :         QRectF rect() const;
+<span class="lineNum">     773 </span>            :         QRectF sceneRect() const;
+<span class="lineNum">     774 </span>            :         QRectF screenRect() const;
+<span class="lineNum">     775 </span>            : 
+<span class="lineNum">     776 </span>            :         qreal pressure() const;
+<span class="lineNum">     777 </span>            : 
+<span class="lineNum">     778 </span>            :         // internal
+<span class="lineNum">     779 </span>            :         void setId(int id);
+<span class="lineNum">     780 </span>            :         void setState(Qt::TouchPointStates state);
+<span class="lineNum">     781 </span>            :         void setPos(const QPointF &amp;pos);
+<span class="lineNum">     782 </span>            :         void setScenePos(const QPointF &amp;scenePos);
+<span class="lineNum">     783 </span>            :         void setScreenPos(const QPointF &amp;screenPos);
+<span class="lineNum">     784 </span>            :         void setNormalizedPos(const QPointF &amp;normalizedPos);
+<span class="lineNum">     785 </span>            :         void setStartPos(const QPointF &amp;startPos);
+<span class="lineNum">     786 </span>            :         void setStartScenePos(const QPointF &amp;startScenePos);
+<span class="lineNum">     787 </span>            :         void setStartScreenPos(const QPointF &amp;startScreenPos);
+<span class="lineNum">     788 </span>            :         void setStartNormalizedPos(const QPointF &amp;startNormalizedPos);
+<span class="lineNum">     789 </span>            :         void setLastPos(const QPointF &amp;lastPos);
+<span class="lineNum">     790 </span>            :         void setLastScenePos(const QPointF &amp;lastScenePos);
+<span class="lineNum">     791 </span>            :         void setLastScreenPos(const QPointF &amp;lastScreenPos);
+<span class="lineNum">     792 </span>            :         void setLastNormalizedPos(const QPointF &amp;lastNormalizedPos);
+<span class="lineNum">     793 </span>            :         void setRect(const QRectF &amp;rect);
+<span class="lineNum">     794 </span>            :         void setSceneRect(const QRectF &amp;sceneRect);
+<span class="lineNum">     795 </span>            :         void setScreenRect(const QRectF &amp;screenRect);
+<span class="lineNum">     796 </span>            :         void setPressure(qreal pressure);
+<span class="lineNum">     797 </span>            :         QTouchEvent::TouchPoint &amp;operator=(const QTouchEvent::TouchPoint &amp;other);
+<span class="lineNum">     798 </span>            : 
+<span class="lineNum">     799 </span>            :     private:
+<span class="lineNum">     800 </span>            :         QTouchEventTouchPointPrivate *d;
+<span class="lineNum">     801 </span>            :         friend class QApplication;
+<span class="lineNum">     802 </span>            :         friend class QApplicationPrivate;
+<span class="lineNum">     803 </span>            :         friend class QETWidget;
+<span class="lineNum">     804 </span>            :     };
+<span class="lineNum">     805 </span>            : 
+<span class="lineNum">     806 </span>            :     enum DeviceType {
+<span class="lineNum">     807 </span>            :         TouchScreen,
+<span class="lineNum">     808 </span>            :         TouchPad
+<span class="lineNum">     809 </span>            :     };
+<span class="lineNum">     810 </span>            : 
+<span class="lineNum">     811 </span>            :     QTouchEvent(QEvent::Type eventType,
+<span class="lineNum">     812 </span>            :                 QTouchEvent::DeviceType deviceType = TouchScreen,
+<span class="lineNum">     813 </span>            :                 Qt::KeyboardModifiers modifiers = Qt::NoModifier,
+<span class="lineNum">     814 </span>            :                 Qt::TouchPointStates touchPointStates = 0,
+<span class="lineNum">     815 </span>            :                 const QList&lt;QTouchEvent::TouchPoint&gt; &amp;touchPoints = QList&lt;QTouchEvent::TouchPoint&gt;());
+<span class="lineNum">     816 </span>            :     ~QTouchEvent();
+<span class="lineNum">     817 </span>            : 
+<span class="lineNum">     818 </span>            :     inline QWidget *widget() const { return _widget; }
+<span class="lineNum">     819 </span>            :     inline QTouchEvent::DeviceType deviceType() const { return _deviceType; }
+<span class="lineNum">     820 </span>            :     inline Qt::TouchPointStates touchPointStates() const { return _touchPointStates; }
+<span class="lineNum">     821 </span>            :     inline const QList&lt;QTouchEvent::TouchPoint&gt; &amp;touchPoints() const { return _touchPoints; }
+<span class="lineNum">     822 </span>            : 
+<span class="lineNum">     823 </span>            :     // internal
+<span class="lineNum">     824 </span>            :     inline void setWidget(QWidget *awidget) { _widget = awidget; }
+<span class="lineNum">     825 </span>            :     inline void setDeviceType(DeviceType adeviceType) { _deviceType = adeviceType; }
+<span class="lineNum">     826 </span>            :     inline void setTouchPointStates(Qt::TouchPointStates aTouchPointStates) { _touchPointStates = aTouchPointStates; }
+<span class="lineNum">     827 </span>            :     inline void setTouchPoints(const QList&lt;QTouchEvent::TouchPoint&gt; &amp;atouchPoints) { _touchPoints = atouchPoints; }
+<span class="lineNum">     828 </span>            : 
+<span class="lineNum">     829 </span>            : protected:
+<span class="lineNum">     830 </span>            :     QWidget *_widget;
+<span class="lineNum">     831 </span>            :     QTouchEvent::DeviceType _deviceType;
+<span class="lineNum">     832 </span>            :     Qt::TouchPointStates _touchPointStates;
+<span class="lineNum">     833 </span>            :     QList&lt;QTouchEvent::TouchPoint&gt; _touchPoints;
+<span class="lineNum">     834 </span>            : 
+<span class="lineNum">     835 </span>            :     friend class QApplication;
+<span class="lineNum">     836 </span>            :     friend class QApplicationPrivate;
+<span class="lineNum">     837 </span>            : };
+<span class="lineNum">     838 </span>            : 
+<span class="lineNum">     839 </span>            : #ifndef QT_NO_GESTURES
+<span class="lineNum">     840 </span>            : class QGesture;
+<span class="lineNum">     841 </span>            : class QGestureEventPrivate;
+<span class="lineNum">     842 </span>            : class Q_GUI_EXPORT QGestureEvent : public QEvent
+<span class="lineNum">     843 </span>            : {
+<span class="lineNum">     844 </span>            : public:
+<span class="lineNum">     845 </span>            :     QGestureEvent(const QList&lt;QGesture *&gt; &amp;gestures);
+<span class="lineNum">     846 </span>            :     ~QGestureEvent();
+<span class="lineNum">     847 </span>            : 
+<span class="lineNum">     848 </span>            :     QList&lt;QGesture *&gt; gestures() const;
+<span class="lineNum">     849 </span>            :     QGesture *gesture(Qt::GestureType type) const;
+<span class="lineNum">     850 </span>            : 
+<span class="lineNum">     851 </span>            :     QList&lt;QGesture *&gt; activeGestures() const;
+<span class="lineNum">     852 </span>            :     QList&lt;QGesture *&gt; canceledGestures() const;
+<span class="lineNum">     853 </span>            : 
+<span class="lineNum">     854 </span>            : #ifdef Q_NO_USING_KEYWORD
+<span class="lineNum">     855 </span>            :     inline void setAccepted(bool accepted) { QEvent::setAccepted(accepted); }
+<span class="lineNum">     856 </span>            :     inline bool isAccepted() const { return QEvent::isAccepted(); }
+<span class="lineNum">     857 </span>            : 
+<span class="lineNum">     858 </span>            :     inline void accept() { QEvent::accept(); }
+<span class="lineNum">     859 </span>            :     inline void ignore() { QEvent::ignore(); }
+<span class="lineNum">     860 </span>            : #else
+<span class="lineNum">     861 </span>            :     using QEvent::setAccepted;
+<span class="lineNum">     862 </span>            :     using QEvent::isAccepted;
+<span class="lineNum">     863 </span>            :     using QEvent::accept;
+<span class="lineNum">     864 </span>            :     using QEvent::ignore;
+<span class="lineNum">     865 </span>            : #endif
+<span class="lineNum">     866 </span>            : 
+<span class="lineNum">     867 </span>            :     void setAccepted(QGesture *, bool);
+<span class="lineNum">     868 </span>            :     void accept(QGesture *);
+<span class="lineNum">     869 </span>            :     void ignore(QGesture *);
+<span class="lineNum">     870 </span>            :     bool isAccepted(QGesture *) const;
+<span class="lineNum">     871 </span>            : 
+<span class="lineNum">     872 </span>            :     void setAccepted(Qt::GestureType, bool);
+<span class="lineNum">     873 </span>            :     void accept(Qt::GestureType);
+<span class="lineNum">     874 </span>            :     void ignore(Qt::GestureType);
+<span class="lineNum">     875 </span>            :     bool isAccepted(Qt::GestureType) const;
+<span class="lineNum">     876 </span>            : 
+<span class="lineNum">     877 </span>            :     void setWidget(QWidget *widget);
+<span class="lineNum">     878 </span>            :     QWidget *widget() const;
+<span class="lineNum">     879 </span>            : 
+<span class="lineNum">     880 </span>            : #ifndef QT_NO_GRAPHICSVIEW
+<span class="lineNum">     881 </span>            :     QPointF mapToGraphicsScene(const QPointF &amp;gesturePoint) const;
+<span class="lineNum">     882 </span>            : #endif
+<span class="lineNum">     883 </span>            : 
+<span class="lineNum">     884 </span>            : private:
+<span class="lineNum">     885 </span>            :     QGestureEventPrivate *d_func();
+<span class="lineNum">     886 </span>            :     const QGestureEventPrivate *d_func() const;
+<span class="lineNum">     887 </span>            : 
+<span class="lineNum">     888 </span>            :     friend class QApplication;
+<span class="lineNum">     889 </span>            :     friend class QGestureManager;
+<span class="lineNum">     890 </span>            : };
+<span class="lineNum">     891 </span>            : #endif // QT_NO_GESTURES
+<span class="lineNum">     892 </span>            : 
+<span class="lineNum">     893 </span>            : QT_END_NAMESPACE
+<span class="lineNum">     894 </span>            : 
+<span class="lineNum">     895 </span>            : QT_END_HEADER
+<span class="lineNum">     896 </span>            : 
+<span class="lineNum">     897 </span>            : #endif // QEVENT_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

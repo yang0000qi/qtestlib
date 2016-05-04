@@ -1,0 +1,472 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - QtCore/qcoreevent.h</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">QtCore</a> - qcoreevent.h<span style="font-size: 80%;"> (source / <a href="qcoreevent.h.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-05-04</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">-</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /****************************************************************************</a>
+<span class="lineNum">       2 </span>            : **
+<span class="lineNum">       3 </span>            : ** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
+<span class="lineNum">       4 </span>            : ** Contact: http://www.qt-project.org/legal
+<span class="lineNum">       5 </span>            : **
+<span class="lineNum">       6 </span>            : ** This file is part of the QtCore module of the Qt Toolkit.
+<span class="lineNum">       7 </span>            : **
+<span class="lineNum">       8 </span>            : ** $QT_BEGIN_LICENSE:LGPL$
+<span class="lineNum">       9 </span>            : ** Commercial License Usage
+<span class="lineNum">      10 </span>            : ** Licensees holding valid commercial Qt licenses may use this file in
+<span class="lineNum">      11 </span>            : ** accordance with the commercial license agreement provided with the
+<span class="lineNum">      12 </span>            : ** Software or, alternatively, in accordance with the terms contained in
+<span class="lineNum">      13 </span>            : ** a written agreement between you and Digia.  For licensing terms and
+<span class="lineNum">      14 </span>            : ** conditions see http://qt.digia.com/licensing.  For further information
+<span class="lineNum">      15 </span>            : ** use the contact form at http://qt.digia.com/contact-us.
+<span class="lineNum">      16 </span>            : **
+<span class="lineNum">      17 </span>            : ** GNU Lesser General Public License Usage
+<span class="lineNum">      18 </span>            : ** Alternatively, this file may be used under the terms of the GNU Lesser
+<span class="lineNum">      19 </span>            : ** General Public License version 2.1 as published by the Free Software
+<span class="lineNum">      20 </span>            : ** Foundation and appearing in the file LICENSE.LGPL included in the
+<span class="lineNum">      21 </span>            : ** packaging of this file.  Please review the following information to
+<span class="lineNum">      22 </span>            : ** ensure the GNU Lesser General Public License version 2.1 requirements
+<span class="lineNum">      23 </span>            : ** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+<span class="lineNum">      24 </span>            : **
+<span class="lineNum">      25 </span>            : ** In addition, as a special exception, Digia gives you certain additional
+<span class="lineNum">      26 </span>            : ** rights.  These rights are described in the Digia Qt LGPL Exception
+<span class="lineNum">      27 </span>            : ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+<span class="lineNum">      28 </span>            : **
+<span class="lineNum">      29 </span>            : ** GNU General Public License Usage
+<span class="lineNum">      30 </span>            : ** Alternatively, this file may be used under the terms of the GNU
+<span class="lineNum">      31 </span>            : ** General Public License version 3.0 as published by the Free Software
+<span class="lineNum">      32 </span>            : ** Foundation and appearing in the file LICENSE.GPL included in the
+<span class="lineNum">      33 </span>            : ** packaging of this file.  Please review the following information to
+<span class="lineNum">      34 </span>            : ** ensure the GNU General Public License version 3.0 requirements will be
+<span class="lineNum">      35 </span>            : ** met: http://www.gnu.org/copyleft/gpl.html.
+<span class="lineNum">      36 </span>            : **
+<span class="lineNum">      37 </span>            : **
+<span class="lineNum">      38 </span>            : ** $QT_END_LICENSE$
+<span class="lineNum">      39 </span>            : **
+<span class="lineNum">      40 </span>            : ****************************************************************************/
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : #ifndef QCOREEVENT_H
+<span class="lineNum">      43 </span>            : #define QCOREEVENT_H
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : #include &lt;QtCore/qnamespace.h&gt;
+<span class="lineNum">      46 </span>            : #include &lt;QtCore/qbytearray.h&gt;
+<span class="lineNum">      47 </span>            : #include &lt;QtCore/qobjectdefs.h&gt;
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            : QT_BEGIN_HEADER
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            : QT_BEGIN_NAMESPACE
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            : QT_MODULE(Core)
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            : class QEventPrivate;
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : class Q_CORE_EXPORT QEvent           // event base class</span>
+<span class="lineNum">      57 </span>            : {
+<span class="lineNum">      58 </span>            :     Q_GADGET
+<span class="lineNum">      59 </span>            :     QDOC_PROPERTY(bool accepted READ isAccepted WRITE setAccepted)
+<span class="lineNum">      60 </span>            :     Q_ENUMS(Type)
+<span class="lineNum">      61 </span>            : public:
+<span class="lineNum">      62 </span>            :     enum Type {
+<span class="lineNum">      63 </span>            :         /*
+<span class="lineNum">      64 </span>            :           If you get a strange compiler error on the line with None,
+<span class="lineNum">      65 </span>            :           it's probably because you're also including X11 headers,
+<span class="lineNum">      66 </span>            :           which #define the symbol None. Put the X11 includes after
+<span class="lineNum">      67 </span>            :           the Qt includes to solve this problem.
+<span class="lineNum">      68 </span>            :         */
+<span class="lineNum">      69 </span>            :         None = 0,                               // invalid event
+<span class="lineNum">      70 </span>            :         Timer = 1,                              // timer event
+<span class="lineNum">      71 </span>            :         MouseButtonPress = 2,                   // mouse button pressed
+<span class="lineNum">      72 </span>            :         MouseButtonRelease = 3,                 // mouse button released
+<span class="lineNum">      73 </span>            :         MouseButtonDblClick = 4,                // mouse button double click
+<span class="lineNum">      74 </span>            :         MouseMove = 5,                          // mouse move
+<span class="lineNum">      75 </span>            :         KeyPress = 6,                           // key pressed
+<span class="lineNum">      76 </span>            :         KeyRelease = 7,                         // key released
+<span class="lineNum">      77 </span>            :         FocusIn = 8,                            // keyboard focus received
+<span class="lineNum">      78 </span>            :         FocusOut = 9,                           // keyboard focus lost
+<span class="lineNum">      79 </span>            :         Enter = 10,                             // mouse enters widget
+<span class="lineNum">      80 </span>            :         Leave = 11,                             // mouse leaves widget
+<span class="lineNum">      81 </span>            :         Paint = 12,                             // paint widget
+<span class="lineNum">      82 </span>            :         Move = 13,                              // move widget
+<span class="lineNum">      83 </span>            :         Resize = 14,                            // resize widget
+<span class="lineNum">      84 </span>            :         Create = 15,                            // after widget creation
+<span class="lineNum">      85 </span>            :         Destroy = 16,                           // during widget destruction
+<span class="lineNum">      86 </span>            :         Show = 17,                              // widget is shown
+<span class="lineNum">      87 </span>            :         Hide = 18,                              // widget is hidden
+<span class="lineNum">      88 </span>            :         Close = 19,                             // request to close widget
+<span class="lineNum">      89 </span>            :         Quit = 20,                              // request to quit application
+<span class="lineNum">      90 </span>            :         ParentChange = 21,                      // widget has been reparented
+<span class="lineNum">      91 </span>            :         ParentAboutToChange = 131,              // sent just before the parent change is done
+<span class="lineNum">      92 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">      93 </span>            :         Reparent = ParentChange,
+<span class="lineNum">      94 </span>            : #endif
+<span class="lineNum">      95 </span>            :         ThreadChange = 22,                      // object has changed threads
+<span class="lineNum">      96 </span>            :         WindowActivate = 24,                    // window was activated
+<span class="lineNum">      97 </span>            :         WindowDeactivate = 25,                  // window was deactivated
+<span class="lineNum">      98 </span>            :         ShowToParent = 26,                      // widget is shown to parent
+<span class="lineNum">      99 </span>            :         HideToParent = 27,                      // widget is hidden to parent
+<span class="lineNum">     100 </span>            :         Wheel = 31,                             // wheel event
+<span class="lineNum">     101 </span>            :         WindowTitleChange = 33,                 // window title changed
+<span class="lineNum">     102 </span>            :         WindowIconChange = 34,                  // icon changed
+<span class="lineNum">     103 </span>            :         ApplicationWindowIconChange = 35,       // application icon changed
+<span class="lineNum">     104 </span>            :         ApplicationFontChange = 36,             // application font changed
+<span class="lineNum">     105 </span>            :         ApplicationLayoutDirectionChange = 37,  // application layout direction changed
+<span class="lineNum">     106 </span>            :         ApplicationPaletteChange = 38,          // application palette changed
+<span class="lineNum">     107 </span>            :         PaletteChange = 39,                     // widget palette changed
+<span class="lineNum">     108 </span>            :         Clipboard = 40,                         // internal clipboard event
+<span class="lineNum">     109 </span>            :         Speech = 42,                            // reserved for speech input
+<span class="lineNum">     110 </span>            :         MetaCall =  43,                         // meta call event
+<span class="lineNum">     111 </span>            :         SockAct = 50,                           // socket activation
+<span class="lineNum">     112 </span>            :         WinEventAct = 132,                      // win event activation
+<span class="lineNum">     113 </span>            :         DeferredDelete = 52,                    // deferred delete event
+<span class="lineNum">     114 </span>            :         DragEnter = 60,                         // drag moves into widget
+<span class="lineNum">     115 </span>            :         DragMove = 61,                          // drag moves in widget
+<span class="lineNum">     116 </span>            :         DragLeave = 62,                         // drag leaves or is cancelled
+<span class="lineNum">     117 </span>            :         Drop = 63,                              // actual drop
+<span class="lineNum">     118 </span>            :         DragResponse = 64,                      // drag accepted/rejected
+<span class="lineNum">     119 </span>            :         ChildAdded = 68,                        // new child widget
+<span class="lineNum">     120 </span>            :         ChildPolished = 69,                     // polished child widget
+<span class="lineNum">     121 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     122 </span>            :         ChildInsertedRequest = 67,              // send ChildInserted compatibility events to receiver
+<span class="lineNum">     123 </span>            :         ChildInserted = 70,                     // compatibility child inserted
+<span class="lineNum">     124 </span>            :         LayoutHint = 72,                        // compatibility relayout request
+<span class="lineNum">     125 </span>            : #endif
+<span class="lineNum">     126 </span>            :         ChildRemoved = 71,                      // deleted child widget
+<span class="lineNum">     127 </span>            :         ShowWindowRequest = 73,                 // widget's window should be mapped
+<span class="lineNum">     128 </span>            :         PolishRequest = 74,                     // widget should be polished
+<span class="lineNum">     129 </span>            :         Polish = 75,                            // widget is polished
+<span class="lineNum">     130 </span>            :         LayoutRequest = 76,                     // widget should be relayouted
+<span class="lineNum">     131 </span>            :         UpdateRequest = 77,                     // widget should be repainted
+<span class="lineNum">     132 </span>            :         UpdateLater = 78,                       // request update() later
+<span class="lineNum">     133 </span>            : 
+<span class="lineNum">     134 </span>            :         EmbeddingControl = 79,                  // ActiveX embedding
+<span class="lineNum">     135 </span>            :         ActivateControl = 80,                   // ActiveX activation
+<span class="lineNum">     136 </span>            :         DeactivateControl = 81,                 // ActiveX deactivation
+<span class="lineNum">     137 </span>            :         ContextMenu = 82,                       // context popup menu
+<span class="lineNum">     138 </span>            :         InputMethod = 83,                       // input method
+<span class="lineNum">     139 </span>            :         AccessibilityPrepare = 86,              // accessibility information is requested
+<span class="lineNum">     140 </span>            :         TabletMove = 87,                        // Wacom tablet event
+<span class="lineNum">     141 </span>            :         LocaleChange = 88,                      // the system locale changed
+<span class="lineNum">     142 </span>            :         LanguageChange = 89,                    // the application language changed
+<span class="lineNum">     143 </span>            :         LayoutDirectionChange = 90,             // the layout direction changed
+<span class="lineNum">     144 </span>            :         Style = 91,                             // internal style event
+<span class="lineNum">     145 </span>            :         TabletPress = 92,                       // tablet press
+<span class="lineNum">     146 </span>            :         TabletRelease = 93,                     // tablet release
+<span class="lineNum">     147 </span>            :         OkRequest = 94,                         // CE (Ok) button pressed
+<span class="lineNum">     148 </span>            :         HelpRequest = 95,                       // CE (?)  button pressed
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span>            :         IconDrag = 96,                          // proxy icon dragged
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span>            :         FontChange = 97,                        // font has changed
+<span class="lineNum">     153 </span>            :         EnabledChange = 98,                     // enabled state has changed
+<span class="lineNum">     154 </span>            :         ActivationChange = 99,                  // window activation has changed
+<span class="lineNum">     155 </span>            :         StyleChange = 100,                      // style has changed
+<span class="lineNum">     156 </span>            :         IconTextChange = 101,                   // icon text has changed
+<span class="lineNum">     157 </span>            :         ModifiedChange = 102,                   // modified state has changed
+<span class="lineNum">     158 </span>            :         MouseTrackingChange = 109,              // mouse tracking state has changed
+<span class="lineNum">     159 </span>            : 
+<span class="lineNum">     160 </span>            :         WindowBlocked = 103,                    // window is about to be blocked modally
+<span class="lineNum">     161 </span>            :         WindowUnblocked = 104,                  // windows modal blocking has ended
+<span class="lineNum">     162 </span>            :         WindowStateChange = 105,
+<span class="lineNum">     163 </span>            : 
+<span class="lineNum">     164 </span>            :         ToolTip = 110,
+<span class="lineNum">     165 </span>            :         WhatsThis = 111,
+<span class="lineNum">     166 </span>            :         StatusTip = 112,
+<span class="lineNum">     167 </span>            : 
+<span class="lineNum">     168 </span>            :         ActionChanged = 113,
+<span class="lineNum">     169 </span>            :         ActionAdded = 114,
+<span class="lineNum">     170 </span>            :         ActionRemoved = 115,
+<span class="lineNum">     171 </span>            : 
+<span class="lineNum">     172 </span>            :         FileOpen = 116,                         // file open request
+<span class="lineNum">     173 </span>            : 
+<span class="lineNum">     174 </span>            :         Shortcut = 117,                         // shortcut triggered
+<span class="lineNum">     175 </span>            :         ShortcutOverride = 51,                  // shortcut override request
+<span class="lineNum">     176 </span>            : 
+<span class="lineNum">     177 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     178 </span>            :         Accel = 30,                             // accelerator event
+<span class="lineNum">     179 </span>            :         AccelAvailable = 32,                    // accelerator available event
+<span class="lineNum">     180 </span>            :         AccelOverride = ShortcutOverride,       // accelerator override event
+<span class="lineNum">     181 </span>            : #endif
+<span class="lineNum">     182 </span>            : 
+<span class="lineNum">     183 </span>            :         WhatsThisClicked = 118,
+<span class="lineNum">     184 </span>            : 
+<span class="lineNum">     185 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     186 </span>            :         CaptionChange = WindowTitleChange,
+<span class="lineNum">     187 </span>            :         IconChange = WindowIconChange,
+<span class="lineNum">     188 </span>            : #endif
+<span class="lineNum">     189 </span>            :         ToolBarChange = 120,                    // toolbar visibility toggled
+<span class="lineNum">     190 </span>            : 
+<span class="lineNum">     191 </span>            :         ApplicationActivate = 121,              // application has been changed to active
+<span class="lineNum">     192 </span>            :         ApplicationActivated = ApplicationActivate, // deprecated
+<span class="lineNum">     193 </span>            :         ApplicationDeactivate = 122,            // application has been changed to inactive
+<span class="lineNum">     194 </span>            :         ApplicationDeactivated = ApplicationDeactivate, // deprecated
+<span class="lineNum">     195 </span>            : 
+<span class="lineNum">     196 </span>            :         QueryWhatsThis = 123,                   // query what's this widget help
+<span class="lineNum">     197 </span>            :         EnterWhatsThisMode = 124,
+<span class="lineNum">     198 </span>            :         LeaveWhatsThisMode = 125,
+<span class="lineNum">     199 </span>            : 
+<span class="lineNum">     200 </span>            :         ZOrderChange = 126,                     // child widget has had its z-order changed
+<span class="lineNum">     201 </span>            : 
+<span class="lineNum">     202 </span>            :         HoverEnter = 127,                       // mouse cursor enters a hover widget
+<span class="lineNum">     203 </span>            :         HoverLeave = 128,                       // mouse cursor leaves a hover widget
+<span class="lineNum">     204 </span>            :         HoverMove = 129,                        // mouse cursor move inside a hover widget
+<span class="lineNum">     205 </span>            : 
+<span class="lineNum">     206 </span>            :         AccessibilityHelp = 119,                // accessibility help text request
+<span class="lineNum">     207 </span>            :         AccessibilityDescription = 130,         // accessibility description text request
+<span class="lineNum">     208 </span>            : 
+<span class="lineNum">     209 </span>            :         // last event id used = 132
+<span class="lineNum">     210 </span>            : 
+<span class="lineNum">     211 </span>            : #ifdef QT_KEYPAD_NAVIGATION
+<span class="lineNum">     212 </span>            :         EnterEditFocus = 150,                   // enter edit mode in keypad navigation (Defined only with QT_KEYPAD_NAVIGATION)
+<span class="lineNum">     213 </span>            :         LeaveEditFocus = 151,                   // leave edit mode in keypad navigation (Defined only with QT_KEYPAD_NAVIGATION)
+<span class="lineNum">     214 </span>            : #endif
+<span class="lineNum">     215 </span>            :         AcceptDropsChange = 152,
+<span class="lineNum">     216 </span>            : 
+<span class="lineNum">     217 </span>            :         MenubarUpdated = 153,                    // Support event for Q3MainWindow, which needs to
+<span class="lineNum">     218 </span>            :                                                  // knwow when QMenubar is updated.
+<span class="lineNum">     219 </span>            : 
+<span class="lineNum">     220 </span>            :         ZeroTimerEvent = 154,                   // Used for Windows Zero timer events
+<span class="lineNum">     221 </span>            : 
+<span class="lineNum">     222 </span>            :         GraphicsSceneMouseMove = 155,           // GraphicsView
+<span class="lineNum">     223 </span>            :         GraphicsSceneMousePress = 156,
+<span class="lineNum">     224 </span>            :         GraphicsSceneMouseRelease = 157,
+<span class="lineNum">     225 </span>            :         GraphicsSceneMouseDoubleClick = 158,
+<span class="lineNum">     226 </span>            :         GraphicsSceneContextMenu = 159,
+<span class="lineNum">     227 </span>            :         GraphicsSceneHoverEnter = 160,
+<span class="lineNum">     228 </span>            :         GraphicsSceneHoverMove = 161,
+<span class="lineNum">     229 </span>            :         GraphicsSceneHoverLeave = 162,
+<span class="lineNum">     230 </span>            :         GraphicsSceneHelp = 163,
+<span class="lineNum">     231 </span>            :         GraphicsSceneDragEnter = 164,
+<span class="lineNum">     232 </span>            :         GraphicsSceneDragMove = 165,
+<span class="lineNum">     233 </span>            :         GraphicsSceneDragLeave = 166,
+<span class="lineNum">     234 </span>            :         GraphicsSceneDrop = 167,
+<span class="lineNum">     235 </span>            :         GraphicsSceneWheel = 168,
+<span class="lineNum">     236 </span>            : 
+<span class="lineNum">     237 </span>            :         KeyboardLayoutChange = 169,             // keyboard layout changed
+<span class="lineNum">     238 </span>            : 
+<span class="lineNum">     239 </span>            :         DynamicPropertyChange = 170,            // A dynamic property was changed through setProperty/property
+<span class="lineNum">     240 </span>            : 
+<span class="lineNum">     241 </span>            :         TabletEnterProximity = 171,
+<span class="lineNum">     242 </span>            :         TabletLeaveProximity = 172,
+<span class="lineNum">     243 </span>            : 
+<span class="lineNum">     244 </span>            :         NonClientAreaMouseMove = 173,
+<span class="lineNum">     245 </span>            :         NonClientAreaMouseButtonPress = 174,
+<span class="lineNum">     246 </span>            :         NonClientAreaMouseButtonRelease = 175,
+<span class="lineNum">     247 </span>            :         NonClientAreaMouseButtonDblClick = 176,
+<span class="lineNum">     248 </span>            : 
+<span class="lineNum">     249 </span>            :         MacSizeChange = 177,                    // when the Qt::WA_Mac{Normal,Small,Mini}Size changes
+<span class="lineNum">     250 </span>            : 
+<span class="lineNum">     251 </span>            :         ContentsRectChange = 178,               // sent by QWidget::setContentsMargins (internal)
+<span class="lineNum">     252 </span>            : 
+<span class="lineNum">     253 </span>            :         MacGLWindowChange = 179,                // Internal! the window of the GLWidget has changed
+<span class="lineNum">     254 </span>            : 
+<span class="lineNum">     255 </span>            :         FutureCallOut = 180,
+<span class="lineNum">     256 </span>            : 
+<span class="lineNum">     257 </span>            :         GraphicsSceneResize  = 181,
+<span class="lineNum">     258 </span>            :         GraphicsSceneMove  = 182,
+<span class="lineNum">     259 </span>            : 
+<span class="lineNum">     260 </span>            :         CursorChange = 183,
+<span class="lineNum">     261 </span>            :         ToolTipChange = 184,
+<span class="lineNum">     262 </span>            : 
+<span class="lineNum">     263 </span>            :         NetworkReplyUpdated = 185,              // Internal for QNetworkReply
+<span class="lineNum">     264 </span>            : 
+<span class="lineNum">     265 </span>            :         GrabMouse = 186,
+<span class="lineNum">     266 </span>            :         UngrabMouse = 187,
+<span class="lineNum">     267 </span>            :         GrabKeyboard = 188,
+<span class="lineNum">     268 </span>            :         UngrabKeyboard = 189,
+<span class="lineNum">     269 </span>            :         MacGLClearDrawable = 191,               // Internal Cocoa, the window has changed, so we must clear
+<span class="lineNum">     270 </span>            : 
+<span class="lineNum">     271 </span>            :         StateMachineSignal = 192,
+<span class="lineNum">     272 </span>            :         StateMachineWrapped = 193,
+<span class="lineNum">     273 </span>            : 
+<span class="lineNum">     274 </span>            :         TouchBegin = 194,
+<span class="lineNum">     275 </span>            :         TouchUpdate = 195,
+<span class="lineNum">     276 </span>            :         TouchEnd = 196,
+<span class="lineNum">     277 </span>            : 
+<span class="lineNum">     278 </span>            : #ifndef QT_NO_GESTURES
+<span class="lineNum">     279 </span>            :         NativeGesture = 197,                    // Internal for platform gesture support
+<span class="lineNum">     280 </span>            : #endif
+<span class="lineNum">     281 </span>            :         RequestSoftwareInputPanel = 199,
+<span class="lineNum">     282 </span>            :         CloseSoftwareInputPanel = 200,
+<span class="lineNum">     283 </span>            : 
+<span class="lineNum">     284 </span>            :         UpdateSoftKeys = 201,                   // Internal for compressing soft key updates
+<span class="lineNum">     285 </span>            : 
+<span class="lineNum">     286 </span>            :         WinIdChange = 203,
+<span class="lineNum">     287 </span>            : #ifndef QT_NO_GESTURES
+<span class="lineNum">     288 </span>            :         Gesture = 198,
+<span class="lineNum">     289 </span>            :         GestureOverride = 202,
+<span class="lineNum">     290 </span>            : #endif
+<span class="lineNum">     291 </span>            : 
+<span class="lineNum">     292 </span>            :         PlatformPanel = 212,
+<span class="lineNum">     293 </span>            : 
+<span class="lineNum">     294 </span>            :         // 512 reserved for Qt Jambi's MetaCall event
+<span class="lineNum">     295 </span>            :         // 513 reserved for Qt Jambi's DeleteOnMainThread event
+<span class="lineNum">     296 </span>            : 
+<span class="lineNum">     297 </span>            :         User = 1000,                            // first user event id
+<span class="lineNum">     298 </span>            :         MaxUser = 65535                         // last user event id
+<span class="lineNum">     299 </span>            :     };
+<span class="lineNum">     300 </span>            : 
+<span class="lineNum">     301 </span>            :     QEvent(Type type);
+<span class="lineNum">     302 </span>            :     virtual ~QEvent();
+<span class="lineNum">     303 </span>            :     inline Type type() const { return static_cast&lt;Type&gt;(t); }
+<span class="lineNum">     304 </span>            :     inline bool spontaneous() const { return spont; }
+<span class="lineNum">     305 </span>            : 
+<span class="lineNum">     306 </span>            :     inline void setAccepted(bool accepted) { m_accept = accepted; }
+<span class="lineNum">     307 </span>            :     inline bool isAccepted() const { return m_accept; }
+<span class="lineNum">     308 </span>            : 
+<span class="lineNum">     309 </span>            :     inline void accept() { m_accept = true; }
+<span class="lineNum">     310 </span>            :     inline void ignore() { m_accept = false; }
+<span class="lineNum">     311 </span>            : 
+<span class="lineNum">     312 </span>            :     static int registerEventType(int hint = -1);
+<span class="lineNum">     313 </span>            : 
+<span class="lineNum">     314 </span>            : protected:
+<span class="lineNum">     315 </span>            :     QEventPrivate *d;
+<span class="lineNum">     316 </span>            :     ushort t;
+<span class="lineNum">     317 </span>            : 
+<span class="lineNum">     318 </span>            : private:
+<span class="lineNum">     319 </span>            :     ushort posted : 1;
+<span class="lineNum">     320 </span>            :     ushort spont : 1;
+<span class="lineNum">     321 </span>            :     ushort m_accept : 1;
+<span class="lineNum">     322 </span>            :     ushort reserved : 13;
+<span class="lineNum">     323 </span>            : 
+<span class="lineNum">     324 </span>            :     friend class QCoreApplication;
+<span class="lineNum">     325 </span>            :     friend class QCoreApplicationPrivate;
+<span class="lineNum">     326 </span>            :     friend class QThreadData;
+<span class="lineNum">     327 </span>            :     friend class QApplication;
+<span class="lineNum">     328 </span>            :     friend class QApplicationPrivate;
+<span class="lineNum">     329 </span>            :     friend class Q3AccelManager;
+<span class="lineNum">     330 </span>            :     friend class QShortcutMap;
+<span class="lineNum">     331 </span>            :     friend class QETWidget;
+<span class="lineNum">     332 </span>            :     friend class QGraphicsView;
+<span class="lineNum">     333 </span>            :     friend class QGraphicsViewPrivate;
+<span class="lineNum">     334 </span>            :     friend class QGraphicsScene;
+<span class="lineNum">     335 </span>            :     friend class QGraphicsScenePrivate;
+<span class="lineNum">     336 </span>            : #ifndef QT_NO_GESTURES
+<span class="lineNum">     337 </span>            :     friend class QGestureManager;
+<span class="lineNum">     338 </span>            : #endif
+<span class="lineNum">     339 </span>            : };
+<span class="lineNum">     340 </span>            : 
+<span class="lineNum">     341 </span>            : class Q_CORE_EXPORT QTimerEvent : public QEvent
+<span class="lineNum">     342 </span>            : {
+<span class="lineNum">     343 </span>            : public:
+<span class="lineNum">     344 </span>            :     QTimerEvent( int timerId );
+<span class="lineNum">     345 </span>            :     ~QTimerEvent();
+<span class="lineNum">     346 </span>            :     int timerId() const { return id; }
+<span class="lineNum">     347 </span>            : protected:
+<span class="lineNum">     348 </span>            :     int id;
+<span class="lineNum">     349 </span>            : };
+<span class="lineNum">     350 </span>            : 
+<span class="lineNum">     351 </span>            : class QObject;
+<span class="lineNum">     352 </span>            : 
+<span class="lineNum">     353 </span>            : class Q_CORE_EXPORT QChildEvent : public QEvent
+<span class="lineNum">     354 </span>            : {
+<span class="lineNum">     355 </span>            : public:
+<span class="lineNum">     356 </span>            :     QChildEvent( Type type, QObject *child );
+<span class="lineNum">     357 </span>            :     ~QChildEvent();
+<span class="lineNum">     358 </span>            :     QObject *child() const { return c; }
+<span class="lineNum">     359 </span>            :     bool added() const { return type() == ChildAdded; }
+<span class="lineNum">     360 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     361 </span>            :     QT3_SUPPORT bool inserted() const { return type() == ChildInserted; }
+<span class="lineNum">     362 </span>            : #endif
+<span class="lineNum">     363 </span>            :     bool polished() const { return type() == ChildPolished; }
+<span class="lineNum">     364 </span>            :     bool removed() const { return type() == ChildRemoved; }
+<span class="lineNum">     365 </span>            : protected:
+<span class="lineNum">     366 </span>            :     QObject *c;
+<span class="lineNum">     367 </span>            : };
+<span class="lineNum">     368 </span>            : 
+<span class="lineNum">     369 </span>            : #ifdef QT3_SUPPORT
+<span class="lineNum">     370 </span>            : class Q_CORE_EXPORT QCustomEvent : public QEvent
+<span class="lineNum">     371 </span>            : {
+<span class="lineNum">     372 </span>            : public:
+<span class="lineNum">     373 </span>            :     QT3_SUPPORT_CONSTRUCTOR QCustomEvent(int type, void *data = 0);
+<span class="lineNum">     374 </span>            :     ~QCustomEvent();
+<span class="lineNum">     375 </span>            :     QT3_SUPPORT void *data()  const { return d; }
+<span class="lineNum">     376 </span>            :     QT3_SUPPORT void setData(void* aData) { d = reinterpret_cast&lt;QEventPrivate *&gt;(aData); }
+<span class="lineNum">     377 </span>            : };
+<span class="lineNum">     378 </span>            : #endif
+<span class="lineNum">     379 </span>            : 
+<span class="lineNum">     380 </span>            : class Q_CORE_EXPORT QDynamicPropertyChangeEvent : public QEvent
+<span class="lineNum">     381 </span>            : {
+<span class="lineNum">     382 </span>            : public:
+<span class="lineNum">     383 </span>            :     QDynamicPropertyChangeEvent(const QByteArray &amp;name);
+<span class="lineNum">     384 </span>            :     ~QDynamicPropertyChangeEvent();
+<span class="lineNum">     385 </span>            : 
+<span class="lineNum">     386 </span>            :     inline QByteArray propertyName() const { return n; }
+<span class="lineNum">     387 </span>            : 
+<span class="lineNum">     388 </span>            : private:
+<span class="lineNum">     389 </span>            :     QByteArray n;
+<span class="lineNum">     390 </span>            : };
+<span class="lineNum">     391 </span>            : 
+<span class="lineNum">     392 </span>            : QT_END_NAMESPACE
+<span class="lineNum">     393 </span>            : 
+<span class="lineNum">     394 </span>            : QT_END_HEADER
+<span class="lineNum">     395 </span>            : 
+<span class="lineNum">     396 </span>            : #endif // QCOREEVENT_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

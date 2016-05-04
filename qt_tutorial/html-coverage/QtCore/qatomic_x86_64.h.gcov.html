@@ -1,0 +1,439 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - QtCore/qatomic_x86_64.h</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">QtCore</a> - qatomic_x86_64.h<span style="font-size: 80%;"> (source / <a href="qatomic_x86_64.h.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-05-04</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">-</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /****************************************************************************</a>
+<span class="lineNum">       2 </span>            : **
+<span class="lineNum">       3 </span>            : ** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
+<span class="lineNum">       4 </span>            : ** Contact: http://www.qt-project.org/legal
+<span class="lineNum">       5 </span>            : **
+<span class="lineNum">       6 </span>            : ** This file is part of the QtCore module of the Qt Toolkit.
+<span class="lineNum">       7 </span>            : **
+<span class="lineNum">       8 </span>            : ** $QT_BEGIN_LICENSE:LGPL$
+<span class="lineNum">       9 </span>            : ** Commercial License Usage
+<span class="lineNum">      10 </span>            : ** Licensees holding valid commercial Qt licenses may use this file in
+<span class="lineNum">      11 </span>            : ** accordance with the commercial license agreement provided with the
+<span class="lineNum">      12 </span>            : ** Software or, alternatively, in accordance with the terms contained in
+<span class="lineNum">      13 </span>            : ** a written agreement between you and Digia.  For licensing terms and
+<span class="lineNum">      14 </span>            : ** conditions see http://qt.digia.com/licensing.  For further information
+<span class="lineNum">      15 </span>            : ** use the contact form at http://qt.digia.com/contact-us.
+<span class="lineNum">      16 </span>            : **
+<span class="lineNum">      17 </span>            : ** GNU Lesser General Public License Usage
+<span class="lineNum">      18 </span>            : ** Alternatively, this file may be used under the terms of the GNU Lesser
+<span class="lineNum">      19 </span>            : ** General Public License version 2.1 as published by the Free Software
+<span class="lineNum">      20 </span>            : ** Foundation and appearing in the file LICENSE.LGPL included in the
+<span class="lineNum">      21 </span>            : ** packaging of this file.  Please review the following information to
+<span class="lineNum">      22 </span>            : ** ensure the GNU Lesser General Public License version 2.1 requirements
+<span class="lineNum">      23 </span>            : ** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+<span class="lineNum">      24 </span>            : **
+<span class="lineNum">      25 </span>            : ** In addition, as a special exception, Digia gives you certain additional
+<span class="lineNum">      26 </span>            : ** rights.  These rights are described in the Digia Qt LGPL Exception
+<span class="lineNum">      27 </span>            : ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+<span class="lineNum">      28 </span>            : **
+<span class="lineNum">      29 </span>            : ** GNU General Public License Usage
+<span class="lineNum">      30 </span>            : ** Alternatively, this file may be used under the terms of the GNU
+<span class="lineNum">      31 </span>            : ** General Public License version 3.0 as published by the Free Software
+<span class="lineNum">      32 </span>            : ** Foundation and appearing in the file LICENSE.GPL included in the
+<span class="lineNum">      33 </span>            : ** packaging of this file.  Please review the following information to
+<span class="lineNum">      34 </span>            : ** ensure the GNU General Public License version 3.0 requirements will be
+<span class="lineNum">      35 </span>            : ** met: http://www.gnu.org/copyleft/gpl.html.
+<span class="lineNum">      36 </span>            : **
+<span class="lineNum">      37 </span>            : **
+<span class="lineNum">      38 </span>            : ** $QT_END_LICENSE$
+<span class="lineNum">      39 </span>            : **
+<span class="lineNum">      40 </span>            : ****************************************************************************/
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : #ifndef QATOMIC_X86_64_H
+<span class="lineNum">      43 </span>            : #define QATOMIC_X86_64_H
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : QT_BEGIN_HEADER
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span>            : QT_BEGIN_NAMESPACE
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            : #define Q_ATOMIC_INT_REFERENCE_COUNTING_IS_ALWAYS_NATIVE
+<span class="lineNum">      50 </span>            : #define Q_ATOMIC_INT_REFERENCE_COUNTING_IS_WAIT_FREE
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : inline bool QBasicAtomicInt::isReferenceCountingNative()
+<span class="lineNum">      53 </span>            : { return true; }
+<span class="lineNum">      54 </span>            : inline bool QBasicAtomicInt::isReferenceCountingWaitFree()
+<span class="lineNum">      55 </span>            : { return true; }
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            : #define Q_ATOMIC_INT_TEST_AND_SET_IS_ALWAYS_NATIVE
+<span class="lineNum">      58 </span>            : #define Q_ATOMIC_INT_TEST_AND_SET_IS_WAIT_FREE
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span>            : inline bool QBasicAtomicInt::isTestAndSetNative()
+<span class="lineNum">      61 </span>            : { return true; }
+<span class="lineNum">      62 </span>            : inline bool QBasicAtomicInt::isTestAndSetWaitFree()
+<span class="lineNum">      63 </span>            : { return true; }
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span>            : #define Q_ATOMIC_INT_FETCH_AND_STORE_IS_ALWAYS_NATIVE
+<span class="lineNum">      66 </span>            : #define Q_ATOMIC_INT_FETCH_AND_STORE_IS_WAIT_FREE
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            : inline bool QBasicAtomicInt::isFetchAndStoreNative()
+<span class="lineNum">      69 </span>            : { return true; }
+<span class="lineNum">      70 </span>            : inline bool QBasicAtomicInt::isFetchAndStoreWaitFree()
+<span class="lineNum">      71 </span>            : { return true; }
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span>            : #define Q_ATOMIC_INT_FETCH_AND_ADD_IS_ALWAYS_NATIVE
+<span class="lineNum">      74 </span>            : #define Q_ATOMIC_INT_FETCH_AND_ADD_IS_WAIT_FREE
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            : inline bool QBasicAtomicInt::isFetchAndAddNative()
+<span class="lineNum">      77 </span>            : { return true; }
+<span class="lineNum">      78 </span>            : inline bool QBasicAtomicInt::isFetchAndAddWaitFree()
+<span class="lineNum">      79 </span>            : { return true; }
+<span class="lineNum">      80 </span>            : 
+<span class="lineNum">      81 </span>            : #define Q_ATOMIC_POINTER_TEST_AND_SET_IS_ALWAYS_NATIVE
+<span class="lineNum">      82 </span>            : #define Q_ATOMIC_POINTER_TEST_AND_SET_IS_WAIT_FREE
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span>            : template &lt;typename T&gt;
+<span class="lineNum">      85 </span>            : Q_INLINE_TEMPLATE bool QBasicAtomicPointer&lt;T&gt;::isTestAndSetNative()
+<span class="lineNum">      86 </span>            : { return true; }
+<span class="lineNum">      87 </span>            : template &lt;typename T&gt;
+<span class="lineNum">      88 </span>            : Q_INLINE_TEMPLATE bool QBasicAtomicPointer&lt;T&gt;::isTestAndSetWaitFree()
+<span class="lineNum">      89 </span>            : { return true; }
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span>            : #define Q_ATOMIC_POINTER_FETCH_AND_STORE_IS_ALWAYS_NATIVE
+<span class="lineNum">      92 </span>            : #define Q_ATOMIC_POINTER_FETCH_AND_STORE_IS_WAIT_FREE
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span>            : template &lt;typename T&gt;
+<span class="lineNum">      95 </span>            : Q_INLINE_TEMPLATE bool QBasicAtomicPointer&lt;T&gt;::isFetchAndStoreNative()
+<span class="lineNum">      96 </span>            : { return true; }
+<span class="lineNum">      97 </span>            : template &lt;typename T&gt;
+<span class="lineNum">      98 </span>            : Q_INLINE_TEMPLATE bool QBasicAtomicPointer&lt;T&gt;::isFetchAndStoreWaitFree()
+<span class="lineNum">      99 </span>            : { return true; }
+<span class="lineNum">     100 </span>            : 
+<span class="lineNum">     101 </span>            : #define Q_ATOMIC_POINTER_FETCH_AND_ADD_IS_ALWAYS_NATIVE
+<span class="lineNum">     102 </span>            : #define Q_ATOMIC_POINTER_FETCH_AND_ADD_IS_WAIT_FREE
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     105 </span>            : Q_INLINE_TEMPLATE bool QBasicAtomicPointer&lt;T&gt;::isFetchAndAddNative()
+<span class="lineNum">     106 </span>            : { return true; }
+<span class="lineNum">     107 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     108 </span>            : Q_INLINE_TEMPLATE bool QBasicAtomicPointer&lt;T&gt;::isFetchAndAddWaitFree()
+<span class="lineNum">     109 </span>            : { return true; }
+<span class="lineNum">     110 </span>            : 
+<span class="lineNum">     111 </span>            : #if defined(Q_CC_GNU) || defined(Q_CC_INTEL)
+<span class="lineNum">     112 </span>            : 
+<span class="lineNum">     113 </span>            : inline bool QBasicAtomicInt::ref()
+<span class="lineNum">     114 </span>            : {
+<span class="lineNum">     115 </span>            :     unsigned char ret;
+<span class="lineNum">     116 </span>            :     asm volatile(&quot;lock\n&quot;
+<span class="lineNum">     117 </span>            :                  &quot;incl %0\n&quot;
+<span class="lineNum">     118 </span>            :                  &quot;setne %1&quot;
+<span class="lineNum">     119 </span>            :                  : &quot;=m&quot; (_q_value), &quot;=qm&quot; (ret)
+<span class="lineNum">     120 </span>            :                  : &quot;m&quot; (_q_value)
+<span class="lineNum">     121 </span><span class="lineCov">          6 :                  : &quot;memory&quot;);</span>
+<span class="lineNum">     122 </span>            :     return ret != 0;
+<span class="lineNum">     123 </span>            : }
+<span class="lineNum">     124 </span>            : 
+<span class="lineNum">     125 </span>            : inline bool QBasicAtomicInt::deref()
+<span class="lineNum">     126 </span>            : {
+<span class="lineNum">     127 </span>            :     unsigned char ret;
+<span class="lineNum">     128 </span>            :     asm volatile(&quot;lock\n&quot;
+<span class="lineNum">     129 </span>            :                  &quot;decl %0\n&quot;
+<span class="lineNum">     130 </span>            :                  &quot;setne %1&quot;
+<span class="lineNum">     131 </span>            :                  : &quot;=m&quot; (_q_value), &quot;=qm&quot; (ret)
+<span class="lineNum">     132 </span>            :                  : &quot;m&quot; (_q_value)
+<span class="lineNum">     133 </span><span class="lineCov">         15 :                  : &quot;memory&quot;);</span>
+<span class="lineNum">     134 </span>            :     return ret != 0;
+<span class="lineNum">     135 </span>            : }
+<span class="lineNum">     136 </span>            : 
+<span class="lineNum">     137 </span>            : inline bool QBasicAtomicInt::testAndSetOrdered(int expectedValue, int newValue)
+<span class="lineNum">     138 </span>            : {
+<span class="lineNum">     139 </span>            :     unsigned char ret;
+<span class="lineNum">     140 </span>            :     asm volatile(&quot;lock\n&quot;
+<span class="lineNum">     141 </span>            :                  &quot;cmpxchgl %3,%2\n&quot;
+<span class="lineNum">     142 </span>            :                  &quot;sete %1\n&quot;
+<span class="lineNum">     143 </span>            :                  : &quot;=a&quot; (newValue), &quot;=qm&quot; (ret), &quot;+m&quot; (_q_value)
+<span class="lineNum">     144 </span>            :                  : &quot;r&quot; (newValue), &quot;0&quot; (expectedValue)
+<span class="lineNum">     145 </span>            :                  : &quot;memory&quot;);
+<span class="lineNum">     146 </span>            :     return ret != 0;
+<span class="lineNum">     147 </span>            : }
+<span class="lineNum">     148 </span>            : 
+<span class="lineNum">     149 </span>            : inline int QBasicAtomicInt::fetchAndStoreOrdered(int newValue)
+<span class="lineNum">     150 </span>            : {
+<span class="lineNum">     151 </span>            :     asm volatile(&quot;xchgl %0,%1&quot;
+<span class="lineNum">     152 </span>            :                  : &quot;=r&quot; (newValue), &quot;+m&quot; (_q_value)
+<span class="lineNum">     153 </span>            :                  : &quot;0&quot; (newValue)
+<span class="lineNum">     154 </span>            :                  : &quot;memory&quot;);
+<span class="lineNum">     155 </span>            :     return newValue;
+<span class="lineNum">     156 </span>            : }
+<span class="lineNum">     157 </span>            : 
+<span class="lineNum">     158 </span>            : inline int QBasicAtomicInt::fetchAndAddOrdered(int valueToAdd)
+<span class="lineNum">     159 </span>            : {
+<span class="lineNum">     160 </span>            :     asm volatile(&quot;lock\n&quot;
+<span class="lineNum">     161 </span>            :                  &quot;xaddl %0,%1&quot;
+<span class="lineNum">     162 </span>            :                  : &quot;=r&quot; (valueToAdd), &quot;+m&quot; (_q_value)
+<span class="lineNum">     163 </span>            :                  : &quot;0&quot; (valueToAdd)
+<span class="lineNum">     164 </span>            :                  : &quot;memory&quot;);
+<span class="lineNum">     165 </span>            :     return valueToAdd;
+<span class="lineNum">     166 </span>            : }
+<span class="lineNum">     167 </span>            : 
+<span class="lineNum">     168 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     169 </span>            : Q_INLINE_TEMPLATE bool QBasicAtomicPointer&lt;T&gt;::testAndSetOrdered(T *expectedValue, T *newValue)
+<span class="lineNum">     170 </span>            : {
+<span class="lineNum">     171 </span>            :     unsigned char ret;
+<span class="lineNum">     172 </span>            :     asm volatile(&quot;lock\n&quot;
+<span class="lineNum">     173 </span>            :                  &quot;cmpxchg %3,%2\n&quot;
+<span class="lineNum">     174 </span>            :                  &quot;sete %1\n&quot;
+<span class="lineNum">     175 </span>            :                  : &quot;=a&quot; (newValue), &quot;=qm&quot; (ret), &quot;+m&quot; (_q_value)
+<span class="lineNum">     176 </span>            :                  : &quot;r&quot; (newValue), &quot;0&quot; (expectedValue)
+<span class="lineNum">     177 </span>            :                  : &quot;memory&quot;);
+<span class="lineNum">     178 </span>            :     return ret != 0;
+<span class="lineNum">     179 </span>            : }
+<span class="lineNum">     180 </span>            : 
+<span class="lineNum">     181 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     182 </span>            : Q_INLINE_TEMPLATE T *QBasicAtomicPointer&lt;T&gt;::fetchAndStoreOrdered(T *newValue)
+<span class="lineNum">     183 </span>            : {
+<span class="lineNum">     184 </span>            :     asm volatile(&quot;xchg %0,%1&quot;
+<span class="lineNum">     185 </span>            :                  : &quot;=r&quot; (newValue), &quot;+m&quot; (_q_value)
+<span class="lineNum">     186 </span>            :                  : &quot;0&quot; (newValue)
+<span class="lineNum">     187 </span>            :                  : &quot;memory&quot;);
+<span class="lineNum">     188 </span>            :     return newValue;
+<span class="lineNum">     189 </span>            : }
+<span class="lineNum">     190 </span>            : 
+<span class="lineNum">     191 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     192 </span>            : Q_INLINE_TEMPLATE T *QBasicAtomicPointer&lt;T&gt;::fetchAndAddOrdered(qptrdiff valueToAdd)
+<span class="lineNum">     193 </span>            : {
+<span class="lineNum">     194 </span>            :     asm volatile(&quot;lock\n&quot;
+<span class="lineNum">     195 </span>            :                  &quot;xadd %0,%1&quot;
+<span class="lineNum">     196 </span>            :                  : &quot;=r&quot; (valueToAdd), &quot;+m&quot; (_q_value)
+<span class="lineNum">     197 </span>            :                  : &quot;0&quot; (valueToAdd * sizeof(T))
+<span class="lineNum">     198 </span>            :                  : &quot;memory&quot;);
+<span class="lineNum">     199 </span>            :     return reinterpret_cast&lt;T *&gt;(valueToAdd);
+<span class="lineNum">     200 </span>            : }
+<span class="lineNum">     201 </span>            : 
+<span class="lineNum">     202 </span>            : #else // !Q_CC_INTEL &amp;&amp; !Q_CC_GNU
+<span class="lineNum">     203 </span>            : 
+<span class="lineNum">     204 </span>            : extern &quot;C&quot; {
+<span class="lineNum">     205 </span>            :     Q_CORE_EXPORT int q_atomic_test_and_set_int(volatile int *ptr, int expected, int newval);
+<span class="lineNum">     206 </span>            :     Q_CORE_EXPORT int q_atomic_test_and_set_ptr(volatile void *ptr, void *expected, void *newval);
+<span class="lineNum">     207 </span>            :     Q_CORE_EXPORT int q_atomic_increment(volatile int *ptr);
+<span class="lineNum">     208 </span>            :     Q_CORE_EXPORT int q_atomic_decrement(volatile int *ptr);
+<span class="lineNum">     209 </span>            :     Q_CORE_EXPORT int q_atomic_set_int(volatile int *ptr, int newval);
+<span class="lineNum">     210 </span>            :     Q_CORE_EXPORT void *q_atomic_set_ptr(volatile void *ptr, void *newval);
+<span class="lineNum">     211 </span>            :     Q_CORE_EXPORT int q_atomic_fetch_and_add_int(volatile int *ptr, int value);
+<span class="lineNum">     212 </span>            :     Q_CORE_EXPORT void *q_atomic_fetch_and_add_ptr(volatile void *ptr, qptrdiff value);
+<span class="lineNum">     213 </span>            : } // extern &quot;C&quot;
+<span class="lineNum">     214 </span>            : 
+<span class="lineNum">     215 </span>            : inline bool QBasicAtomicInt::ref()
+<span class="lineNum">     216 </span>            : {
+<span class="lineNum">     217 </span>            :     return q_atomic_increment(&amp;_q_value) != 0;
+<span class="lineNum">     218 </span>            : }
+<span class="lineNum">     219 </span>            : 
+<span class="lineNum">     220 </span>            : inline bool QBasicAtomicInt::deref()
+<span class="lineNum">     221 </span>            : {
+<span class="lineNum">     222 </span>            :     return q_atomic_decrement(&amp;_q_value) != 0;
+<span class="lineNum">     223 </span>            : }
+<span class="lineNum">     224 </span>            : 
+<span class="lineNum">     225 </span>            : inline bool QBasicAtomicInt::testAndSetOrdered(int expected, int newval)
+<span class="lineNum">     226 </span>            : {
+<span class="lineNum">     227 </span>            :     return q_atomic_test_and_set_int(&amp;_q_value, expected, newval) != 0;
+<span class="lineNum">     228 </span>            : }
+<span class="lineNum">     229 </span>            : 
+<span class="lineNum">     230 </span>            : inline int QBasicAtomicInt::fetchAndStoreOrdered(int newval)
+<span class="lineNum">     231 </span>            : {
+<span class="lineNum">     232 </span>            :     return q_atomic_set_int(&amp;_q_value, newval);
+<span class="lineNum">     233 </span>            : }
+<span class="lineNum">     234 </span>            : 
+<span class="lineNum">     235 </span>            : inline int QBasicAtomicInt::fetchAndAddOrdered(int aValue)
+<span class="lineNum">     236 </span>            : {
+<span class="lineNum">     237 </span>            :     return q_atomic_fetch_and_add_int(&amp;_q_value, aValue);
+<span class="lineNum">     238 </span>            : }
+<span class="lineNum">     239 </span>            : 
+<span class="lineNum">     240 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     241 </span>            : Q_INLINE_TEMPLATE bool QBasicAtomicPointer&lt;T&gt;::testAndSetOrdered(T *expectedValue, T *newValue)
+<span class="lineNum">     242 </span>            : {
+<span class="lineNum">     243 </span>            :     return q_atomic_test_and_set_ptr(&amp;_q_value, expectedValue, newValue);
+<span class="lineNum">     244 </span>            : }
+<span class="lineNum">     245 </span>            : 
+<span class="lineNum">     246 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     247 </span>            : Q_INLINE_TEMPLATE T *QBasicAtomicPointer&lt;T&gt;::fetchAndStoreOrdered(T *newValue)
+<span class="lineNum">     248 </span>            : {
+<span class="lineNum">     249 </span>            :     return reinterpret_cast&lt;T *&gt;(q_atomic_set_ptr(&amp;_q_value, newValue));
+<span class="lineNum">     250 </span>            : }
+<span class="lineNum">     251 </span>            : 
+<span class="lineNum">     252 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     253 </span>            : Q_INLINE_TEMPLATE T *QBasicAtomicPointer&lt;T&gt;::fetchAndAddOrdered(qptrdiff valueToAdd)
+<span class="lineNum">     254 </span>            : {
+<span class="lineNum">     255 </span>            :     return reinterpret_cast&lt;T *&gt;(q_atomic_fetch_and_add_ptr(&amp;_q_value, valueToAdd * sizeof(T)));
+<span class="lineNum">     256 </span>            : }
+<span class="lineNum">     257 </span>            : 
+<span class="lineNum">     258 </span>            : #endif // Q_CC_GNU || Q_CC_INTEL
+<span class="lineNum">     259 </span>            : 
+<span class="lineNum">     260 </span>            : inline bool QBasicAtomicInt::testAndSetRelaxed(int expectedValue, int newValue)
+<span class="lineNum">     261 </span>            : {
+<span class="lineNum">     262 </span>            :     return testAndSetOrdered(expectedValue, newValue);
+<span class="lineNum">     263 </span>            : }
+<span class="lineNum">     264 </span>            : 
+<span class="lineNum">     265 </span>            : inline bool QBasicAtomicInt::testAndSetAcquire(int expectedValue, int newValue)
+<span class="lineNum">     266 </span>            : {
+<span class="lineNum">     267 </span>            :     return testAndSetOrdered(expectedValue, newValue);
+<span class="lineNum">     268 </span>            : }
+<span class="lineNum">     269 </span>            : 
+<span class="lineNum">     270 </span>            : inline bool QBasicAtomicInt::testAndSetRelease(int expectedValue, int newValue)
+<span class="lineNum">     271 </span>            : {
+<span class="lineNum">     272 </span>            :     return testAndSetOrdered(expectedValue, newValue);
+<span class="lineNum">     273 </span>            : }
+<span class="lineNum">     274 </span>            : 
+<span class="lineNum">     275 </span>            : inline int QBasicAtomicInt::fetchAndStoreRelaxed(int newValue)
+<span class="lineNum">     276 </span>            : {
+<span class="lineNum">     277 </span>            :     return fetchAndStoreOrdered(newValue);
+<span class="lineNum">     278 </span>            : }
+<span class="lineNum">     279 </span>            : 
+<span class="lineNum">     280 </span>            : inline int QBasicAtomicInt::fetchAndStoreAcquire(int newValue)
+<span class="lineNum">     281 </span>            : {
+<span class="lineNum">     282 </span>            :     return fetchAndStoreOrdered(newValue);
+<span class="lineNum">     283 </span>            : }
+<span class="lineNum">     284 </span>            : 
+<span class="lineNum">     285 </span>            : inline int QBasicAtomicInt::fetchAndStoreRelease(int newValue)
+<span class="lineNum">     286 </span>            : {
+<span class="lineNum">     287 </span>            :     return fetchAndStoreOrdered(newValue);
+<span class="lineNum">     288 </span>            : }
+<span class="lineNum">     289 </span>            : 
+<span class="lineNum">     290 </span>            : inline int QBasicAtomicInt::fetchAndAddRelaxed(int valueToAdd)
+<span class="lineNum">     291 </span>            : {
+<span class="lineNum">     292 </span>            :     return fetchAndAddOrdered(valueToAdd);
+<span class="lineNum">     293 </span>            : }
+<span class="lineNum">     294 </span>            : 
+<span class="lineNum">     295 </span>            : inline int QBasicAtomicInt::fetchAndAddAcquire(int valueToAdd)
+<span class="lineNum">     296 </span>            : {
+<span class="lineNum">     297 </span>            :     return fetchAndAddOrdered(valueToAdd);
+<span class="lineNum">     298 </span>            : }
+<span class="lineNum">     299 </span>            : 
+<span class="lineNum">     300 </span>            : inline int QBasicAtomicInt::fetchAndAddRelease(int valueToAdd)
+<span class="lineNum">     301 </span>            : {
+<span class="lineNum">     302 </span>            :     return fetchAndAddOrdered(valueToAdd);
+<span class="lineNum">     303 </span>            : }
+<span class="lineNum">     304 </span>            : 
+<span class="lineNum">     305 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     306 </span>            : Q_INLINE_TEMPLATE bool QBasicAtomicPointer&lt;T&gt;::testAndSetRelaxed(T *expectedValue, T *newValue)
+<span class="lineNum">     307 </span>            : {
+<span class="lineNum">     308 </span>            :     return testAndSetOrdered(expectedValue, newValue);
+<span class="lineNum">     309 </span>            : }
+<span class="lineNum">     310 </span>            : 
+<span class="lineNum">     311 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     312 </span>            : Q_INLINE_TEMPLATE bool QBasicAtomicPointer&lt;T&gt;::testAndSetAcquire(T *expectedValue, T *newValue)
+<span class="lineNum">     313 </span>            : {
+<span class="lineNum">     314 </span>            :     return testAndSetOrdered(expectedValue, newValue);
+<span class="lineNum">     315 </span>            : }
+<span class="lineNum">     316 </span>            : 
+<span class="lineNum">     317 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     318 </span>            : Q_INLINE_TEMPLATE bool QBasicAtomicPointer&lt;T&gt;::testAndSetRelease(T *expectedValue, T *newValue)
+<span class="lineNum">     319 </span>            : {
+<span class="lineNum">     320 </span>            :     return testAndSetOrdered(expectedValue, newValue);
+<span class="lineNum">     321 </span>            : }
+<span class="lineNum">     322 </span>            : 
+<span class="lineNum">     323 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     324 </span>            : Q_INLINE_TEMPLATE T *QBasicAtomicPointer&lt;T&gt;::fetchAndStoreRelaxed(T *newValue)
+<span class="lineNum">     325 </span>            : {
+<span class="lineNum">     326 </span>            :     return fetchAndStoreOrdered(newValue);
+<span class="lineNum">     327 </span>            : }
+<span class="lineNum">     328 </span>            : 
+<span class="lineNum">     329 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     330 </span>            : Q_INLINE_TEMPLATE T *QBasicAtomicPointer&lt;T&gt;::fetchAndStoreAcquire(T *newValue)
+<span class="lineNum">     331 </span>            : {
+<span class="lineNum">     332 </span>            :     return fetchAndStoreOrdered(newValue);
+<span class="lineNum">     333 </span>            : }
+<span class="lineNum">     334 </span>            : 
+<span class="lineNum">     335 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     336 </span>            : Q_INLINE_TEMPLATE T *QBasicAtomicPointer&lt;T&gt;::fetchAndStoreRelease(T *newValue)
+<span class="lineNum">     337 </span>            : {
+<span class="lineNum">     338 </span>            :     return fetchAndStoreOrdered(newValue);
+<span class="lineNum">     339 </span>            : }
+<span class="lineNum">     340 </span>            : 
+<span class="lineNum">     341 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     342 </span>            : Q_INLINE_TEMPLATE T *QBasicAtomicPointer&lt;T&gt;::fetchAndAddRelaxed(qptrdiff valueToAdd)
+<span class="lineNum">     343 </span>            : {
+<span class="lineNum">     344 </span>            :     return fetchAndAddOrdered(valueToAdd);
+<span class="lineNum">     345 </span>            : }
+<span class="lineNum">     346 </span>            : 
+<span class="lineNum">     347 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     348 </span>            : Q_INLINE_TEMPLATE T *QBasicAtomicPointer&lt;T&gt;::fetchAndAddAcquire(qptrdiff valueToAdd)
+<span class="lineNum">     349 </span>            : {
+<span class="lineNum">     350 </span>            :     return fetchAndAddOrdered(valueToAdd);
+<span class="lineNum">     351 </span>            : }
+<span class="lineNum">     352 </span>            : 
+<span class="lineNum">     353 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     354 </span>            : Q_INLINE_TEMPLATE T *QBasicAtomicPointer&lt;T&gt;::fetchAndAddRelease(qptrdiff valueToAdd)
+<span class="lineNum">     355 </span>            : {
+<span class="lineNum">     356 </span>            :     return fetchAndAddOrdered(valueToAdd);
+<span class="lineNum">     357 </span>            : }
+<span class="lineNum">     358 </span>            : 
+<span class="lineNum">     359 </span>            : QT_END_NAMESPACE
+<span class="lineNum">     360 </span>            : 
+<span class="lineNum">     361 </span>            : QT_END_HEADER
+<span class="lineNum">     362 </span>            : 
+<span class="lineNum">     363 </span>            : #endif // QATOMIC_X86_64_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
